@@ -1,0 +1,413 @@
+/* ─────────────────────────────────────────────────────────────────────
+   eZee 2do — shared site stylesheet
+   Used by every page on cjmo71.github.io/ezee2do/
+   Dark by default, auto-switches to light via prefers-color-scheme.
+   ──────────────────────────────────────────────────────────────────── */
+
+:root {
+  --bg:        #1a1a1a;
+  --card:      #252525;
+  --fg:        #ffffff;
+  --body:      #dddddd;
+  --dim:       #888888;
+  --accent:    #4a9eff;
+  --accent-dk: #2d7ad9;
+  --border:    #3a3a3f;
+  --success:   #4ade80;
+  --danger:    #f87171;
+  --code-bg:   #1f1f24;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:        #f6f7fa;
+    --card:      #ffffff;
+    --fg:        #0f172a;
+    --body:      #1f2937;
+    --dim:       #6b7280;
+    --accent:    #2563eb;
+    --accent-dk: #1d4ed8;
+    --border:    #e5e7eb;
+    --success:   #15803d;
+    --danger:    #b91c1c;
+    --code-bg:   #f1f5f9;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 40px 20px 60px;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+}
+
+/* ── top nav ─────────────────────────────────────────────────────── */
+
+.topnav {
+  max-width: 760px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  font-size: 14px;
+}
+
+.topnav .brand {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.topnav .brand .check {
+  color: var(--success);
+  margin-right: 6px;
+}
+
+.topnav nav a {
+  color: var(--dim);
+  text-decoration: none;
+  margin-left: 16px;
+}
+
+.topnav nav a:hover { color: var(--accent); }
+.topnav nav a.current { color: var(--fg); }
+
+/* ── headings and text ──────────────────────────────────────────── */
+
+h1 {
+  font-size: 30px;
+  margin: 0 0 8px 0;
+  color: var(--fg);
+}
+
+.updated {
+  color: var(--dim);
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+h2 {
+  font-size: 20px;
+  color: var(--accent);
+  margin-top: 36px;
+  margin-bottom: 10px;
+  scroll-margin-top: 20px;
+}
+
+h3 {
+  font-size: 16px;
+  color: var(--fg);
+  margin-top: 22px;
+  margin-bottom: 6px;
+}
+
+p, li { color: var(--body); margin: 8px 0; }
+ul, ol { padding-left: 22px; }
+strong { color: var(--fg); }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+
+kbd {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  background: var(--code-bg);
+  color: var(--fg);
+}
+
+/* ── logo badge ──────────────────────────────────────────────────── */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dk));
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+/* ── table of contents ──────────────────────────────────────────── */
+
+.toc {
+  background: rgba(74, 158, 255, 0.06);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 24px 0 8px;
+}
+
+.toc .toc-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li { margin: 4px 0; }
+
+.toc a {
+  color: var(--body);
+  font-size: 14px;
+}
+
+.toc a:hover { color: var(--accent); }
+
+/* ── download button ────────────────────────────────────────────── */
+
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff !important;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.pdf-btn:hover {
+  background: var(--accent-dk);
+  text-decoration: none;
+}
+
+.pdf-btn::before { content: "📄"; }
+
+/* ── FAQ accordion ──────────────────────────────────────────────── */
+
+details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  background: rgba(255,255,255,0.02);
+}
+
+details[open] { background: rgba(74, 158, 255, 0.05); }
+
+details summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--fg);
+  list-style: none;
+  padding-right: 24px;
+  position: relative;
+}
+
+details summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+  color: var(--dim);
+  transition: transform 0.15s;
+}
+
+details[open] summary::after { content: "−"; }
+
+details summary::-webkit-details-marker { display: none; }
+
+details p, details ul { margin-top: 10px; }
+
+/* ── app screenshot card (landing page) ─────────────────────────── */
+
+.hero {
+  text-align: center;
+  padding: 20px 0 10px;
+}
+
+.hero .tag {
+  color: var(--dim);
+  font-size: 16px;
+  margin: 0 0 20px;
+}
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--border);
+}
+
+.cta.primary {
+  background: var(--accent);
+  color: #fff !important;
+  border-color: var(--accent);
+}
+
+.cta.primary:hover { background: var(--accent-dk); text-decoration: none; }
+
+.cta.secondary {
+  background: transparent;
+  color: var(--fg) !important;
+}
+
+.cta.secondary:hover { border-color: var(--accent); color: var(--accent) !important; text-decoration: none; }
+
+/* ── feature bullets (landing page) ─────────────────────────────── */
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 28px 0 8px;
+}
+
+@media (max-width: 560px) {
+  .features { grid-template-columns: 1fr; }
+  .container { padding: 28px 20px; }
+  body { padding: 24px 12px 40px; }
+}
+
+.feature {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+}
+
+.feature h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: var(--fg);
+}
+
+.feature p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--body);
+}
+
+/* ── contact form ───────────────────────────────────────────────── */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0 8px;
+  padding: 20px;
+  background: rgba(74, 158, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.contact-form button:hover { background: var(--accent-dk); }
+
+/* Hidden honeypot field — real users never see or fill this. */
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* ── footer ─────────────────────────────────────────────────────── */
+
+.footer {
+  margin-top: 44px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--dim);
+  font-size: 13px;
+  text-align: center;
+}
+
+.footer a { color: var(--dim); margin: 0 8px; }
+.footer a:hover { color: var(--accent); }

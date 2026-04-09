@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Somos InControl</title>
+<meta name="description" content="Somos InControl privacy policy. No accounts, no tracking, no cloud. Works entirely on your local network.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="topnav">
+  <a class="brand" href="index.html"><span class="check">🔊</span>Somos InControl</a>
+  <a href="../index.html" style="color: var(--dim); font-size: 13px; margin-left: 10px; text-decoration: none;">← All apps</a>
+  <nav>
+    <a href="how-to.html">How to Use</a>
+    <a href="support.html">Support</a>
+    <a href="privacy.html" class="current">Privacy</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div class="logo" style="background: linear-gradient(135deg, #10b981, #0f766e);">🔊</div>
+  <h1>Privacy Policy</h1>
+  <div class="updated">Somos InControl · Last updated: April 2026</div>
+
+  <a class="pdf-btn" href="../downloads/somos-incontrol-privacy.pdf" download>Download PDF</a>
+
+  <div class="toc">
+    <div class="toc-title">On this page</div>
+    <ul>
+      <li><a href="#summary">The short version</a></li>
+      <li><a href="#collect">What we collect</a></li>
+      <li><a href="#network">Local network access</a></li>
+      <li><a href="#bluetooth">Bluetooth access</a></li>
+      <li><a href="#internet">The one internet request we make</a></li>
+      <li><a href="#storage">Where your settings live</a></li>
+      <li><a href="#sonos">Relationship with Sonos</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#third-parties">Third parties</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <h2 id="summary">The short version</h2>
+  <p>Somos InControl is designed to stay on your local network and mind its own business. We don't collect any data, we don't have any servers that see your activity, and the only thing the app talks to on the internet is Sonos's own public image library (to show you photos of your speakers). No account. No analytics. No ads.</p>
+
+  <h2 id="collect">What we collect</h2>
+  <p><strong>Nothing.</strong> Somos InControl does not collect, transmit, or store any personal information on our servers — in fact, we don't operate any servers. We do not use analytics, tracking pixels, advertising identifiers, crash reporting SDKs, or any third-party code that phones home. The app contains zero third-party libraries; it's built entirely on Apple's own frameworks.</p>
+
+  <h2 id="network">Local network access</h2>
+  <p>To find your Sonos speakers, the app uses two standard local discovery methods on the Wi-Fi network your device is connected to:</p>
+  <ul>
+    <li><strong>Bonjour (mDNS)</strong> — the same kind of discovery Apple's AirPlay, Apple TV, and the official Sonos app use. The app listens for Sonos speakers advertising the <code>_sonos._tcp</code> Bonjour service.</li>
+    <li><strong>A direct subnet probe</strong> — as a fallback, the app sends a short HTTP request to each address on your local subnet asking "are you a Sonos speaker?". Any address that responds is added to your speaker list. Nothing is sent beyond the asking.</li>
+  </ul>
+  <p>Once speakers are found, the app controls them using the publicly documented local control protocol Sonos speakers expose on their own network port. All discovery and control traffic stays on your Wi-Fi network.</p>
+  <p>When you first launch the app, iOS will ask permission to use the local network. This permission is required for the app to find your speakers. If you decline, the app will have nothing to control.</p>
+
+  <h2 id="bluetooth">Bluetooth access</h2>
+  <p>The app also uses Bluetooth for one purpose: detecting Sonos speakers that are nearby but <strong>not yet on your Wi-Fi network</strong> — for example, a brand-new speaker you're about to set up, or one that's temporarily offline. iOS will ask for Bluetooth permission on first launch.</p>
+  <p>The app only looks at the advertising name of nearby devices and filters for Sonos speakers. It does not pair with anything, does not send any data over Bluetooth, and does not identify you or your device. If you decline Bluetooth permission, the app still works for speakers already on your Wi-Fi.</p>
+
+  <h2 id="internet">The one internet request we make</h2>
+  <p>We want to be upfront about this: when the app displays your speakers, it fetches each speaker's product photo from Sonos's public image library at <code>media.sonos.com</code>. This is a plain HTTPS request for a static image, the same kind of request your browser makes when loading any website's logo. <strong>No personal information is sent</strong> — not your IP address beyond what any HTTPS request reveals, not your speaker names, not your network, nothing. It's purely "please send me the picture of this speaker model."</p>
+  <p>If Sonos's image library is unreachable, the app falls back to the low-resolution icon served by your speaker itself on the local network, so the app still works fully offline.</p>
+  <p>Beyond this one image fetch, the app makes no other internet requests. No telemetry, no "analytics," no "product improvement" pings. You can verify this yourself by putting your iPhone in Airplane Mode with Wi-Fi on — everything except the speaker images still works.</p>
+
+  <h2 id="storage">Where your settings live</h2>
+  <p>Your preferences — selected speakers, presets, EQ settings, and tutorial state — are stored in the app's local storage on your device (iOS <code>UserDefaults</code>), the same way any iOS app stores its settings. A small piece of this storage is shared with the Somos InControl widget and Live Activity so they can show the same speaker you're controlling. Everything stays on your device.</p>
+  <p>The app does not use iCloud, iCloud Drive, or CloudKit for your data. Nothing syncs to any cloud.</p>
+  <p>Uninstalling the app removes all of its local data.</p>
+
+  <h2 id="sonos">Relationship with Sonos</h2>
+  <p>Somos InControl is an independent, unofficial third-party app. It is not affiliated with, endorsed by, or sponsored by Sonos, Inc. "Sonos" is a trademark of Sonos, Inc., used here only for the factual purpose of describing which speakers the app works with.</p>
+  <p>The app communicates with your Sonos speakers using the same publicly documented local control protocol that Sonos speakers expose on the local network.</p>
+
+  <h2 id="children">Children's privacy</h2>
+  <p>Somos InControl does not knowingly collect data from anyone, including children. The app is safe for all ages. Since we don't collect anything at all, there's nothing child-specific to protect against.</p>
+
+  <h2 id="third-parties">Third parties</h2>
+  <p>We do not share, sell, or disclose any data to third parties, because we don't collect any data to begin with. The app does not include any third-party advertising networks, analytics services, or tracking SDKs.</p>
+
+  <h2 id="changes">Changes to this policy</h2>
+  <p>If this policy ever changes, we'll update the date at the top of this page. Continued use of the app after a change means you accept the updated policy. Material changes will also be called out in the app's release notes.</p>
+
+  <h2 id="contact">Contact</h2>
+  <p>Questions about privacy? Visit the <a href="support.html">Support page</a> and send a message through the contact form. A real human reads every message.</p>
+
+  <div class="footer">
+    Somos InControl · © 2026 Chris Moore ·
+    <a href="index.html">Home</a> ·
+    <a href="how-to.html">How to Use</a> ·
+    <a href="support.html">Support</a>
+  </div>
+
+</div>
+
+</body>
+</html>

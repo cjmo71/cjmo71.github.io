@@ -1,0 +1,7 @@
+# lychee config — be tolerant of common false-positives
+exclude = [
+  "https?://localhost",
+  "https?://127.0.0.1",
+]
+accept = [200, 301, 302, 308, 403, 429]
+max_retries = 2

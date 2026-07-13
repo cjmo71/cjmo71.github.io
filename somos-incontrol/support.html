@@ -128,6 +128,10 @@
   -->
   <form action="https://formsubmit.co/cjmo.app@gmail.com" method="POST" class="contact-form">
     <input type="hidden" name="_subject" value="Somos InControl support message">
+    <!-- Reply-To = the submitter, subject = THEIR subject (7/13): one tap of
+         Reply in any mail client fills the right recipient + "Re: Somos: ..."
+         — no copy-pasting from the body. JS below stamps both before submit. -->
+    <input type="hidden" name="_replyto" value="">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="true">
 
@@ -166,5 +170,13 @@
 
 </div>
 
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function () {
+      var subj = this.querySelector('[name="user_subject"]').value || 'support message';
+      this.querySelector('[name="_subject"]').value = 'Somos: ' + subj;
+      this.querySelector('[name="_replyto"]').value =
+        this.querySelector('[name="email"]').value;
+    });
+  </script>
 </body>
 </html>

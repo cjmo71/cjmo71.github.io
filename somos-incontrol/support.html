@@ -172,10 +172,11 @@
 
   <script>
     document.querySelector('.contact-form').addEventListener('submit', function () {
-      var subj = this.querySelector('[name="user_subject"]').value || 'support message';
-      this.querySelector('[name="_subject"]').value = 'Somos: ' + subj;
-      this.querySelector('[name="_replyto"]').value =
-        this.querySelector('[name="email"]').value;
+      var subj  = this.querySelector('[name="user_subject"]').value || 'support message';
+      var email = this.querySelector('[name="email"]').value || '';
+      // Subject shows sender + issue at a glance in the inbox (Chris 7/16).
+      this.querySelector('[name="_subject"]').value = 'Somos support — ' + email + ' — ' + subj;
+      this.querySelector('[name="_replyto"]').value = email;
     });
   </script>
 </body>

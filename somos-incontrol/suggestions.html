@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suggestions — Somos InControl</title>
+<meta name="description" content="Suggest a feature for Somos InControl. Every idea is read and logged by a real human.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="topnav">
+  <a class="brand" href="index.html"><span class="check">🔊</span>Somos InControl</a>
+  <a href="../index.html" style="color: var(--dim); font-size: 13px; margin-left: 10px; text-decoration: none;">← Home</a>
+  <nav>
+    <a href="how-to.html">How to Use</a>
+    <a href="support.html">Support</a>
+    <a href="suggestions.html" class="current">Suggestions</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div class="logo" style="background: linear-gradient(135deg, #f59e0b, #d97706);">💡</div>
+  <h1>Suggest a Feature</h1>
+  <div class="updated">Somos InControl · Every idea is read and logged</div>
+
+  <p>Somos is built in the open, shaped directly by what its users ask for — the surround toggle, single-speaker surrounds, and the quarantine warning all started as suggestions. There's no formal roadmap: there's a suggestions list, and the best ideas get built. Yours could be next.</p>
+
+  <p style="font-size: 14px; color: var(--dim);">Found a bug instead? Use the <a href="support.html#contact">support form</a> so it gets triaged as one.</p>
+
+  <form action="https://formsubmit.co/cjmo.app@gmail.com" method="POST" class="contact-form">
+    <input type="hidden" name="_subject" value="Somos suggestion">
+    <input type="hidden" name="_replyto" value="">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="true">
+
+    <!-- FormSubmit honeypot -->
+    <input type="text" name="_honey" style="display:none">
+
+    <label>Your name
+      <input type="text" name="name" required>
+    </label>
+
+    <label>Your email (in case we have questions)
+      <input type="email" name="email" required>
+    </label>
+
+    <label>The idea, in one line
+      <input type="text" name="user_subject" placeholder="e.g. Test tone to check each speaker" required>
+    </label>
+
+    <label>Tell us more
+      <textarea name="message" placeholder="What would it do? When would you use it? What speakers do you have?" required></textarea>
+    </label>
+
+    <button type="submit">Send suggestion</button>
+  </form>
+
+  <p style="font-size: 13px; color: var(--dim); margin-top: 12px;">
+    Your message is delivered directly to the developer. No email address is stored on this page. See our <a href="privacy.html">Privacy Policy</a> for how we handle contact data.
+  </p>
+
+  <div class="footer">
+    Somos InControl · © 2026 Chris Moore ·
+    <a href="index.html">Home</a> ·
+    <a href="how-to.html">How to Use</a> ·
+    <a href="support.html">Support</a> ·
+    <a href="privacy.html">Privacy</a>
+  </div>
+
+</div>
+
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function () {
+      var subj = this.querySelector('[name="user_subject"]').value || 'suggestion';
+      this.querySelector('[name="_subject"]').value = 'Somos suggestion: ' + subj;
+      this.querySelector('[name="_replyto"]').value =
+        this.querySelector('[name="email"]').value;
+    });
+  </script>
+</body>
+</html>

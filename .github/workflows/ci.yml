@@ -1,0 +1,61 @@
+name: Site CI
+on:
+  push:
+  pull_request:
+
+env:
+  PATH: /Users/cjmo/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+jobs:
+  check:
+    name: HTML lint, link check, asset audit
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show runner
+        run: |
+          echo "Host: $(hostname)"
+          echo "Tools: $(which htmlhint lychee)"
+
+      - name: HTML lint
+        run: htmlhint --config .htmlhintrc "**/*.html" || true
+
+      - name: Link check (no external — fast)
+        run: |
+          lychee --offline --no-progress \
+            --base . \
+            --exclude-mail \
+            './**/*.html' || true
+
+      - name: Link check (external links — slower, soft-fail)
+        run: |
+          lychee --no-progress \
+            --max-concurrency 4 \
+            --timeout 15 \
+            --exclude-mail \
+            './**/*.html' || true
+
+      - name: Asset size audit
+        run: |
+          echo "Files over 500 KB:"
+          find . -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.pdf' \) \
+            -size +500k -not -path './.git/*' -exec ls -lh {} \; | awk '{print $5, $NF}'
+
+      - name: Site summary
+        if: always()
+        run: |
+          {
+            echo "## Site CI Summary"
+            echo ""
+            HTML=$(find . -name '*.html' -not -path './.git/*' | wc -l | tr -d ' ')
+            PDF=$(find . -name '*.pdf' -not -path './.git/*' | wc -l | tr -d ' ')
+            IMG=$(find . \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \) -not -path './.git/*' | wc -l | tr -d ' ')
+            SIZE=$(du -sh . | cut -f1)
+            echo "- Runner: \`$(hostname)\` (\`$(uname -m)\`)"
+            echo "- HTML pages: $HTML"
+            echo "- PDFs: $PDF"
+            echo "- Images: $IMG"
+            echo "- Repo size: $SIZE"
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crossover — Somos InControl</title>
+<meta name="description" content="Your speaker refused a crossover change. A few taps tell us why.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* The shared stylesheet styles .contact-form input and textarea but not select, so a bare
+     dropdown would render in the browser's own chrome next to the site's fields. Matched here
+     rather than in style.css so no other page changes. */
+  .contact-form select {
+    background: var(--card);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="brand" href="index.html"><span class="check">&#128266;</span>Somos InControl</a>
+  <a href="../index.html" style="color: var(--dim); font-size: 13px; margin-left: 10px; text-decoration: none;">&larr; Home</a>
+  <nav>
+    <a href="how-to.html">How to Use</a>
+    <a href="support.html">Support</a>
+    <a href="suggestions.html">Suggestions</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div class="cardhead">
+    <div class="cardhead-main">
+    <div class="logo" style="background: linear-gradient(135deg, #0ea5e9, #0369a1);">&#127925;</div>
+    <h1>Crossover</h1>
+    <div class="updated">Somos InControl &middot; Your speaker refused this setting</div>
+    </div>
+  </div>
+
+  <p style="font-size: 15px; line-height: 1.7;">
+    Somos tried to change <strong>the crossover</strong>, read it back, and saw that your speaker had not
+    taken it. That is why you are here &mdash; the app told you rather than pretending it worked.</p>
+
+  <p style="font-size: 15px; line-height: 1.7;">
+    <strong>Nobody on the Somos team owns every Sonos model.</strong> Some of these faults we simply
+    cannot reproduce, and guessing has not got us anywhere. A few taps below tells us more than a week
+    of it.</p>
+
+  <p style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
+    Every question can be skipped, and the app itself sent us nothing &mdash; it only opened this page.</p>
+
+  <form action="https://formsubmit.co/cjmo.app@gmail.com" method="POST" class="contact-form">
+    <input type="hidden" name="_subject" value="Somos speaker check: Crossover">
+    <input type="hidden" name="_replyto" value="">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="text" name="_honey" style="display:none">
+    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+      <legend style="padding: 0 6px; font-size: 14px;">1. Which speaker refused it?</legend>
+      <label style="margin: 6px 0;">Speaker
+              <select name="xo_model">
+                <option value="">Choose…</option>
+                <option>Arc Ultra</option>
+                <option>Arc</option>
+                <option>Beam (Gen 2)</option>
+                <option>Beam (Gen 1)</option>
+                <option>Ray</option>
+                <option>Playbar</option>
+                <option>Playbase</option>
+                <option>Era 300</option>
+                <option>Era 100</option>
+                <option>Five</option>
+                <option>One</option>
+                <option>One SL</option>
+                <option>Play:5</option>
+                <option>Play:3</option>
+                <option>Play:1</option>
+                <option>Move 2</option>
+                <option>Move</option>
+                <option>Roam 2</option>
+                <option>Roam</option>
+                <option>Symfonisk</option>
+                <option>Amp</option>
+                <option>Connect:Amp</option>
+                <option>Port</option>
+                <option>Connect</option>
+                <option>Sub</option>
+                <option>Sub Mini</option>
+                <option>Something else</option>
+                <option>Prefer not to answer</option>
+              </select>
+            </label>
+    </fieldset>
+
+    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+          <legend style="padding: 0 6px; font-size: 14px;">2. Can you change the crossover for that speaker in the official Sonos app?</legend>
+          <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Tells us whether Sonos exposes the setting for your system at all.</p>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sonos_app" value="Yes - it works there"> Yes - it works there</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sonos_app" value="No - it fails there too"> No - it fails there too</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sonos_app" value="Can&rsquo;t find it"> Can&rsquo;t find it</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sonos_app" value="Haven&rsquo;t tried"> Haven&rsquo;t tried</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sonos_app" value="Prefer not to answer"> Prefer not to answer</label>
+        </fieldset>
+
+    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+      <legend style="padding: 0 6px; font-size: 14px;">3. If yes — what values does the Sonos app let you pick?</legend>
+      <label style="margin: 6px 0;"><input type="text" name="xo_range" placeholder="e.g. 50 to 110 Hz in steps of 10 — or leave blank"></label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="xo_range_skip" value="Prefer not to answer"> Prefer not to answer</label>
+    </fieldset>
+
+    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+          <legend style="padding: 0 6px; font-size: 14px;">4. Is there a Sub in that room?</legend>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sub" value="Sub"> Sub</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sub" value="Sub Mini"> Sub Mini</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sub" value="No sub"> No sub</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sub" value="Not sure"> Not sure</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="xo_sub" value="Prefer not to answer"> Prefer not to answer</label>
+        </fieldset>
+
+    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+      <legend style="padding: 0 6px; font-size: 14px;">5. Which device are you using, and which OS?</legend>
+      <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Fill in the one you were using. Somos runs on iPhone, iPad and Apple silicon Macs.</p>
+      <label style="margin: 6px 0;">iPhone
+              <select name="xo_iphone">
+                <option value="">Choose…</option>
+                <option>iPhone 17 Pro Max</option>
+                <option>iPhone 17 Pro</option>
+                <option>iPhone Air</option>
+                <option>iPhone 17</option>
+                <option>iPhone 17e</option>
+                <option>iPhone 16 Pro Max</option>
+                <option>iPhone 16 Pro</option>
+                <option>iPhone 16 Plus</option>
+                <option>iPhone 16</option>
+                <option>iPhone 16e</option>
+                <option>iPhone 15 Pro Max</option>
+                <option>iPhone 15 Pro</option>
+                <option>iPhone 15 Plus</option>
+                <option>iPhone 15</option>
+                <option>iPhone 14 Pro Max</option>
+                <option>iPhone 14 Pro</option>
+                <option>iPhone 14 Plus</option>
+                <option>iPhone 14</option>
+                <option>iPhone 13 Pro Max</option>
+                <option>iPhone 13 Pro</option>
+                <option>iPhone 13 mini</option>
+                <option>iPhone 13</option>
+                <option>iPhone SE</option>
+                <option>Older than iPhone 13</option>
+                <option>Not on an iPhone</option>
+                <option>Prefer not to answer</option>
+              </select>
+            </label>
+      <label style="margin: 6px 0;">iPad
+              <select name="xo_ipad">
+                <option value="">Choose…</option>
+                <option>iPad Pro (M5)</option>
+                <option>iPad Pro (M4)</option>
+                <option>iPad Pro (M2)</option>
+                <option>iPad Air (M4)</option>
+                <option>iPad Air (M3)</option>
+                <option>iPad Air (M2)</option>
+                <option>iPad mini (A17 Pro)</option>
+                <option>iPad mini (6th generation)</option>
+                <option>iPad (A16)</option>
+                <option>iPad (10th generation)</option>
+                <option>Another iPad</option>
+                <option>Not on an iPad</option>
+                <option>Prefer not to answer</option>
+              </select>
+            </label>
+      <label style="margin: 6px 0;">Mac
+              <select name="xo_mac">
+                <option value="">Choose…</option>
+                <option>MacBook Air (M4)</option>
+                <option>MacBook Air (M3)</option>
+                <option>MacBook Air (M2)</option>
+                <option>MacBook Air (M1)</option>
+                <option>MacBook Pro (M4 family)</option>
+                <option>MacBook Pro (M3 family)</option>
+                <option>MacBook Pro (M2 family)</option>
+                <option>MacBook Pro (M1 family)</option>
+                <option>iMac (M4)</option>
+                <option>iMac (M3)</option>
+                <option>iMac (M1)</option>
+                <option>Mac mini (M4)</option>
+                <option>Mac mini (M2)</option>
+                <option>Mac mini (M1)</option>
+                <option>Mac Studio</option>
+                <option>Mac Pro</option>
+                <option>Another Apple silicon Mac</option>
+                <option>Not on a Mac</option>
+                <option>Prefer not to answer</option>
+              </select>
+            </label>
+      <label style="margin: 6px 0;">iOS / iPadOS version
+              <select name="xo_ios">
+                <option value="">Choose…</option>
+                <option>iOS / iPadOS 27 (beta)</option>
+                <option>iOS / iPadOS 26</option>
+                <option>iOS / iPadOS 18</option>
+                <option>Older than 18</option>
+                <option>Not sure</option>
+                <option>Prefer not to answer</option>
+              </select>
+            </label>
+      <label style="margin: 6px 0;">macOS version
+              <select name="xo_macos">
+                <option value="">Choose…</option>
+                <option>macOS 27 (beta)</option>
+                <option>macOS 26</option>
+                <option>macOS 15 Sequoia</option>
+                <option>macOS 14 Sonoma</option>
+                <option>Older than macOS 14</option>
+                <option>Not sure</option>
+                <option>Prefer not to answer</option>
+              </select>
+            </label>
+    </fieldset>
+
+    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+      <legend style="padding: 0 6px; font-size: 14px;">6. What Sonos software version does the Sonos app show for that speaker?</legend>
+      <label style="margin: 6px 0;"><input type="text" name="xo_sonos_version" placeholder="e.g. 16.3.1 — or leave blank"></label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="xo_sonos_version_skip" value="Prefer not to answer"> Prefer not to answer</label>
+    </fieldset>
+
+    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+      <legend style="padding: 0 6px; font-size: 14px;">7. Which version of Somos are you on?</legend>
+      <label style="margin: 6px 0;"><input type="text" name="xo_somos_version" placeholder="e.g. 1.1 (35.2) — or leave blank"></label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="xo_somos_version_skip" value="Prefer not to answer"> Prefer not to answer</label>
+    </fieldset>
+
+    <label>Anything else that looked wrong? (optional)
+      <textarea name="xo_note" placeholder="Optional — anything you noticed"></textarea>
+    </label>
+
+    <label>Your email, if you&rsquo;d like to know when we work it out (optional)
+      <input type="email" name="email" placeholder="Optional">
+    </label>
+
+    <button type="submit">Send my answers</button>
+  </form>
+
+  <div style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 16px 18px; margin: 28px 0 8px;">
+    <p style="margin: 0; font-size: 15px;">
+      <strong>Wrong setting?</strong> If it was Speech Boost that got refused, that has its own
+      page &mdash; <a href="speech-boost.html">answer the Speech Boost questions instead</a>.</p>
+  </div>
+
+  <p style="font-size: 14px; color: var(--dim); margin-top: 22px;">
+    Something actually broken instead? Use the <a href="support.html#contact">support form</a> so it
+    gets triaged as a bug.</p>
+
+  <p style="font-size: 13px; color: var(--dim); margin-top: 12px;">
+    <strong>Every question here is optional</strong>, including your email address &mdash; leave it
+    blank and we simply have no way to write back. Your answers go straight to the developer, and the
+    app sent nothing itself; it only opened this page. See our
+    <a href="privacy.html">Privacy Policy</a>.
+  </p>
+
+  <div class="footer">
+    Somos InControl &middot; &copy; 2026 Chris Moore &middot;
+    <a href="index.html">Home</a> &middot;
+    <a href="how-to.html">How to Use</a> &middot;
+    <a href="support.html">Support</a> &middot;
+    <a href="privacy.html">Privacy</a>
+  </div>
+
+</div>
+
+<script>
+  // Put the speaker model in the subject line so the inbox sorts itself, and set reply-to only
+  // when they chose to leave an email.
+  document.querySelectorAll('.contact-form').forEach(function (form) {
+    form.addEventListener('submit', function () {
+      var subj = form.querySelector('[name="_subject"]');
+      var model = form.querySelector('select[name$="_model"]');
+      if (subj && model && model.value) { subj.value = subj.value + ' — ' + model.value; }
+      var email = form.querySelector('[name="email"]');
+      var replyto = form.querySelector('[name="_replyto"]');
+      if (email && replyto && email.value) { replyto.value = email.value; }
+    });
+  });
+</script>
+</body>
+</html>

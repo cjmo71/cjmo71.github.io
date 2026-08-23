@@ -66,7 +66,7 @@
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">1. Which speaker refused it?</legend>
       <label style="margin: 6px 0;">Speaker
-              <select name="sb_model">
+              <select name="Speaker">
                 <option value="">Choose…</option>
                 <option>Arc Ultra</option>
                 <option>Arc</option>
@@ -103,45 +103,45 @@
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
           <legend style="padding: 0 6px; font-size: 14px;">2. Right now, can you change Speech Boost for that speaker in the official Sonos app?</legend>
           <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">This is the one that matters most. Please try it before answering.</p>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_app" value="Yes - it works there"> Yes - it works there</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_app" value="No - it fails there too"> No - it fails there too</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_app" value="Can&rsquo;t find the control"> Can&rsquo;t find the control</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_app" value="Haven&rsquo;t tried"> Haven&rsquo;t tried</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_app" value="Prefer not to answer"> Prefer not to answer</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Works in Sonos app" value="Yes - it works there"> Yes - it works there</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Works in Sonos app" value="No - it fails there too"> No - it fails there too</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Works in Sonos app" value="Can&rsquo;t find the control"> Can&rsquo;t find the control</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Works in Sonos app" value="Haven&rsquo;t tried"> Haven&rsquo;t tried</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Works in Sonos app" value="Prefer not to answer"> Prefer not to answer</label>
         </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
           <legend style="padding: 0 6px; font-size: 14px;">3. In the Sonos app, how does it show Speech Boost for that speaker?</legend>
           <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Sonos does not present it the same way on every model, and that is what we are after.</p>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_shape" value="A single on/off switch"> A single on/off switch</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_shape" value="Levels — Low / Medium / High"> Levels — Low / Medium / High</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_shape" value="Something else"> Something else</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_shape" value="It isn&rsquo;t there at all"> It isn&rsquo;t there at all</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_shape" value="Not sure"> Not sure</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_sonos_shape" value="Prefer not to answer"> Prefer not to answer</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How Sonos shows it" value="A single on/off switch"> A single on/off switch</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How Sonos shows it" value="Levels — Low / Medium / High"> Levels — Low / Medium / High</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How Sonos shows it" value="Something else"> Something else</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How Sonos shows it" value="It isn&rsquo;t there at all"> It isn&rsquo;t there at all</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How Sonos shows it" value="Not sure"> Not sure</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How Sonos shows it" value="Prefer not to answer"> Prefer not to answer</label>
         </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
           <legend style="padding: 0 6px; font-size: 14px;">4. Was music playing through that speaker when Somos refused it?</legend>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_music_playing" value="Yes"> Yes</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_music_playing" value="No"> No</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_music_playing" value="Not sure"> Not sure</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_music_playing" value="Prefer not to answer"> Prefer not to answer</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Music playing" value="Yes"> Yes</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Music playing" value="No"> No</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Music playing" value="Not sure"> Not sure</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Music playing" value="Prefer not to answer"> Prefer not to answer</label>
         </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
           <legend style="padding: 0 6px; font-size: 14px;">5. Was the TV playing through that speaker when Somos refused it?</legend>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_tv_playing" value="Yes"> Yes</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_tv_playing" value="No"> No</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_tv_playing" value="Not sure"> Not sure</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="sb_tv_playing" value="Prefer not to answer"> Prefer not to answer</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="TV playing" value="Yes"> Yes</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="TV playing" value="No"> No</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="TV playing" value="Not sure"> Not sure</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="TV playing" value="Prefer not to answer"> Prefer not to answer</label>
         </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">6. Which device are you using, and which OS?</legend>
       <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Fill in the one you were using. Somos runs on iPhone, iPad and Apple silicon Macs.</p>
       <label style="margin: 6px 0;">iPhone
-              <select name="sb_iphone">
+              <select name="iPhone">
                 <option value="">Choose…</option>
                 <option>iPhone 17 Pro Max</option>
                 <option>iPhone 17 Pro</option>
@@ -172,7 +172,7 @@
               </select>
             </label>
       <label style="margin: 6px 0;">iPad
-              <select name="sb_ipad">
+              <select name="iPad">
                 <option value="">Choose…</option>
                 <option>iPad Pro (M5)</option>
                 <option>iPad Pro (M4)</option>
@@ -190,7 +190,7 @@
               </select>
             </label>
       <label style="margin: 6px 0;">Mac
-              <select name="sb_mac">
+              <select name="Mac">
                 <option value="">Choose…</option>
                 <option>MacBook Air (M4)</option>
                 <option>MacBook Air (M3)</option>
@@ -214,7 +214,7 @@
               </select>
             </label>
       <label style="margin: 6px 0;">iOS / iPadOS version
-              <select name="sb_ios">
+              <select name="iOS version">
                 <option value="">Choose…</option>
                 <option>iOS / iPadOS 27 (beta)</option>
                 <option>iOS / iPadOS 26</option>
@@ -225,7 +225,7 @@
               </select>
             </label>
       <label style="margin: 6px 0;">macOS version
-              <select name="sb_macos">
+              <select name="macOS version">
                 <option value="">Choose…</option>
                 <option>macOS 27 (beta)</option>
                 <option>macOS 26</option>
@@ -241,19 +241,19 @@
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">7. What Sonos software version does the Sonos app show for that speaker?</legend>
       <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Sonos app → Settings → System → your room → About.</p>
-      <label style="margin: 6px 0;"><input type="text" name="sb_sonos_version" placeholder="e.g. 16.3.1 — or leave blank"></label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="sb_sonos_version_skip" value="Prefer not to answer"> Prefer not to answer</label>
+      <label style="margin: 6px 0;"><input type="text" name="Sonos version" placeholder="e.g. 16.3.1 — or leave blank"></label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="Sonos version skipped" value="Prefer not to answer"> Prefer not to answer</label>
     </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">8. Which version of Somos are you on?</legend>
       <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Somos → menu → the version is at the bottom.</p>
-      <label style="margin: 6px 0;"><input type="text" name="sb_somos_version" placeholder="e.g. 1.1 (35.2) — or leave blank"></label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="sb_somos_version_skip" value="Prefer not to answer"> Prefer not to answer</label>
+      <label style="margin: 6px 0;"><input type="text" name="Somos version" placeholder="e.g. 1.1 (35.2) — or leave blank"></label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="Somos version skipped" value="Prefer not to answer"> Prefer not to answer</label>
     </fieldset>
 
     <label>Anything else that looked wrong? (optional)
-      <textarea name="sb_note" placeholder="Optional — anything you noticed"></textarea>
+      <textarea name="Note" placeholder="Optional — anything you noticed"></textarea>
     </label>
 
     <label>Your email, if you&rsquo;d like to know when we work it out (optional)

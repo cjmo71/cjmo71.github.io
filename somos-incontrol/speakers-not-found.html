@@ -66,7 +66,7 @@
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">1. Which speaker didn't show up?</legend>
       <label style="margin: 6px 0;">Speaker
-              <select name="nf_model">
+              <select name="Speaker">
                 <option value="">Choose…</option>
                 <option>Arc Ultra</option>
                 <option>Arc</option>
@@ -103,49 +103,49 @@
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
           <legend style="padding: 0 6px; font-size: 14px;">2. Right now, does the official Sonos app find that speaker?</legend>
           <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">This is the one that matters most. Please check before answering.</p>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_sonos_app" value="Yes - the Sonos app finds it"> Yes - the Sonos app finds it</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_sonos_app" value="No - the Sonos app can&rsquo;t find it either"> No - the Sonos app can&rsquo;t find it either</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_sonos_app" value="Some of them"> Some of them</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_sonos_app" value="Haven&rsquo;t tried"> Haven&rsquo;t tried</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_sonos_app" value="Prefer not to answer"> Prefer not to answer</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds it" value="Yes - the Sonos app finds it"> Yes - the Sonos app finds it</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds it" value="No - the Sonos app can&rsquo;t find it either"> No - the Sonos app can&rsquo;t find it either</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds it" value="Some of them"> Some of them</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds it" value="Haven&rsquo;t tried"> Haven&rsquo;t tried</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds it" value="Prefer not to answer"> Prefer not to answer</label>
         </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
           <legend style="padding: 0 6px; font-size: 14px;">3. How many separate Sonos systems do you have?</legend>
           <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Two systems in one home is the case we are chasing hardest.</p>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_systems" value="One system"> One system</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_systems" value="Two - an S1 and an S2"> Two - an S1 and an S2</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_systems" value="Two S2 systems"> Two S2 systems</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_systems" value="More than two"> More than two</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_systems" value="Not sure"> Not sure</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_systems" value="Prefer not to answer"> Prefer not to answer</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How many Sonos systems" value="One system"> One system</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How many Sonos systems" value="Two - an S1 and an S2"> Two - an S1 and an S2</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How many Sonos systems" value="Two S2 systems"> Two S2 systems</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How many Sonos systems" value="More than two"> More than two</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How many Sonos systems" value="Not sure"> Not sure</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How many Sonos systems" value="Prefer not to answer"> Prefer not to answer</label>
         </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
           <legend style="padding: 0 6px; font-size: 14px;">4. Are your phone and your speakers on the same Wi-Fi?</legend>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_network" value="Yes - same Wi-Fi"> Yes - same Wi-Fi</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_network" value="No - different networks"> No - different networks</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_network" value="Speakers are on a guest network"> Speakers are on a guest network</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_network" value="Speakers are on a separate IoT VLAN"> Speakers are on a separate IoT VLAN</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_network" value="Not sure"> Not sure</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_network" value="Prefer not to answer"> Prefer not to answer</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Phone & speakers same Wi-Fi" value="Yes - same Wi-Fi"> Yes - same Wi-Fi</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Phone & speakers same Wi-Fi" value="No - different networks"> No - different networks</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Phone & speakers same Wi-Fi" value="Speakers are on a guest network"> Speakers are on a guest network</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Phone & speakers same Wi-Fi" value="Speakers are on a separate IoT VLAN"> Speakers are on a separate IoT VLAN</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Phone & speakers same Wi-Fi" value="Not sure"> Not sure</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Phone & speakers same Wi-Fi" value="Prefer not to answer"> Prefer not to answer</label>
         </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
           <legend style="padding: 0 6px; font-size: 14px;">5. In the Sonos app, is UPnP turned on?</legend>
           <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Sonos app → Settings → System. Somos needs it to find your speakers.</p>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_upnp" value="On"> On</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_upnp" value="Off"> Off</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_upnp" value="I can&rsquo;t find the setting"> I can&rsquo;t find the setting</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_upnp" value="Not sure"> Not sure</label>
-          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="nf_upnp" value="Prefer not to answer"> Prefer not to answer</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="UPnP on in Sonos app" value="On"> On</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="UPnP on in Sonos app" value="Off"> Off</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="UPnP on in Sonos app" value="I can&rsquo;t find the setting"> I can&rsquo;t find the setting</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="UPnP on in Sonos app" value="Not sure"> Not sure</label>
+          <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="UPnP on in Sonos app" value="Prefer not to answer"> Prefer not to answer</label>
         </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">6. Which device are you using, and which OS?</legend>
       <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Fill in the one you were using. Somos runs on iPhone, iPad and Apple silicon Macs.</p>
       <label style="margin: 6px 0;">iPhone
-              <select name="nf_iphone">
+              <select name="iPhone">
                 <option value="">Choose…</option>
                 <option>iPhone 17 Pro Max</option>
                 <option>iPhone 17 Pro</option>
@@ -176,7 +176,7 @@
               </select>
             </label>
       <label style="margin: 6px 0;">iPad
-              <select name="nf_ipad">
+              <select name="iPad">
                 <option value="">Choose…</option>
                 <option>iPad Pro (M5)</option>
                 <option>iPad Pro (M4)</option>
@@ -194,7 +194,7 @@
               </select>
             </label>
       <label style="margin: 6px 0;">Mac
-              <select name="nf_mac">
+              <select name="Mac">
                 <option value="">Choose…</option>
                 <option>MacBook Air (M4)</option>
                 <option>MacBook Air (M3)</option>
@@ -218,7 +218,7 @@
               </select>
             </label>
       <label style="margin: 6px 0;">iOS / iPadOS version
-              <select name="nf_ios">
+              <select name="iOS version">
                 <option value="">Choose…</option>
                 <option>iOS / iPadOS 27 (beta)</option>
                 <option>iOS / iPadOS 26</option>
@@ -229,7 +229,7 @@
               </select>
             </label>
       <label style="margin: 6px 0;">macOS version
-              <select name="nf_macos">
+              <select name="macOS version">
                 <option value="">Choose…</option>
                 <option>macOS 27 (beta)</option>
                 <option>macOS 26</option>
@@ -244,18 +244,18 @@
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">7. What Sonos software version does the Sonos app show?</legend>
-      <label style="margin: 6px 0;"><input type="text" name="nf_sonos_version" placeholder="e.g. 16.3.1 — or leave blank"></label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="nf_sonos_version_skip" value="Prefer not to answer"> Prefer not to answer</label>
+      <label style="margin: 6px 0;"><input type="text" name="Sonos version" placeholder="e.g. 16.3.1 — or leave blank"></label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="Sonos version skipped" value="Prefer not to answer"> Prefer not to answer</label>
     </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">8. Which version of Somos are you on?</legend>
-      <label style="margin: 6px 0;"><input type="text" name="nf_somos_version" placeholder="e.g. 1.1 (35.2) — or leave blank"></label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="nf_somos_version_skip" value="Prefer not to answer"> Prefer not to answer</label>
+      <label style="margin: 6px 0;"><input type="text" name="Somos version" placeholder="e.g. 1.1 (35.2) — or leave blank"></label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="Somos version skipped" value="Prefer not to answer"> Prefer not to answer</label>
     </fieldset>
 
     <label>Anything else that looked wrong? (optional)
-      <textarea name="nf_note" placeholder="Optional — anything you noticed"></textarea>
+      <textarea name="Note" placeholder="Optional — anything you noticed"></textarea>
     </label>
 
     <label>Your email, if you&rsquo;d like to know when we work it out (optional)

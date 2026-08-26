@@ -100,41 +100,6 @@
     <li>❌ Side-channel speakers, alongside fronts and rears</li>
   </ul>
 
-  <h3 id="poll">One question, if you have ten seconds</h3>
-  <p style="font-size: 14px; color: var(--dim); margin-top: -6px; margin-bottom: 14px;">
-    The Home Screen widgets are the most complicated part of Somos to keep working, and I have no idea
-    whether anybody uses them. Tell me and it decides whether they stay.</p>
-  <form id="poll-form" action="https://formsubmit.co/cjmo.app@gmail.com" method="POST" class="contact-form">
-    <input type="hidden" name="_subject" value="Somos poll: widgets">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="true">
-    <input type="text" name="_honey" style="display:none">
-
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">Do you use the Somos Home Screen widgets?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;">
-        <input type="radio" name="widgets" data-key="never" value="No - never used them" required> No, never used them</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;">
-        <input type="radio" name="widgets" data-key="presets" value="Yes - for presets"> Yes — for presets</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;">
-        <input type="radio" name="widgets" data-key="volume" value="Yes - for volume"> Yes — for volume</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;">
-        <input type="radio" name="widgets" data-key="rooms" value="Yes - for changing rooms"> Yes — for changing rooms</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;">
-        <input type="radio" name="widgets" data-key="didnt-know" value="Didn't know there were widgets"> I didn&rsquo;t know there were widgets</label>
-    </fieldset>
-
-    <label>Anything else about them (optional)
-      <input type="text" name="note" placeholder="e.g. I&rsquo;d use them if they showed what&rsquo;s playing">
-    </label>
-
-    <button type="submit">Send my answer</button>
-  </form>
-
-  <div id="poll-results" hidden style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-    <div id="poll-bars"></div>
-    <p id="poll-total" style="font-size: 13px; color: var(--dim); margin: 12px 0 0;"></p>
-  </div>
 
   <p style="font-size: 14px; color: var(--dim);">Found a bug instead? Use the <a href="support.html#contact">support form</a> so it gets triaged as one.</p>
 
@@ -181,87 +146,6 @@
 </div>
 
   <script>
-    // Widgets poll. The vote goes to a Cloudflare Worker that returns every total, so the
-    // bars include the vote just cast. If the Worker is unreachable the form is left to
-    // submit normally to FormSubmit, so an answer still reaches the inbox either way.
-    (function () {
-      var API = 'https://somos-poll.somos-poll.workers.dev';
-      var VOTED = 'somos-poll-widgets';
-      var LABELS = {
-        'never': 'Never used them',
-        'presets': 'Yes — presets',
-        'volume': 'Yes — volume',
-        'rooms': 'Yes — changing rooms',
-        'didnt-know': 'Didn’t know they existed'
-      };
-      var form = document.getElementById('poll-form');
-      var panel = document.getElementById('poll-results');
-      var bars = document.getElementById('poll-bars');
-      var totalLine = document.getElementById('poll-total');
-      if (!form || !panel) return;
-
-      function render(data, mine) {
-        var total = data.total || 0;
-        bars.innerHTML = '';
-        Object.keys(LABELS).forEach(function (key) {
-          var count = (data.counts && data.counts[key]) || 0;
-          var pct = total ? Math.round((count / total) * 100) : 0;
-          var row = document.createElement('div');
-          row.style.margin = '10px 0';
-          var head = document.createElement('div');
-          head.style.cssText = 'display:flex; justify-content:space-between; font-size:14px; margin-bottom:4px;';
-          head.innerHTML = '<span>' + LABELS[key] + (key === mine ? ' &larr; you' : '') +
-            '</span><span style="color: var(--dim);">' + pct + '%</span>';
-          var track = document.createElement('div');
-          track.style.cssText = 'height:8px; border-radius:4px; background:rgba(127,127,127,.25); overflow:hidden;';
-          var fill = document.createElement('div');
-          fill.style.cssText = 'height:100%; width:' + pct + '%; border-radius:4px; background:currentColor;' +
-            (key === mine ? '' : ' opacity:.45;');
-          track.appendChild(fill);
-          row.appendChild(head);
-          row.appendChild(track);
-          bars.appendChild(row);
-        });
-        totalLine.textContent = total === 1 ? '1 answer so far.' : total + ' answers so far.';
-        form.hidden = true;
-        panel.hidden = false;
-      }
-
-      // Already answered on this device: show the standings instead of the form.
-      var previous = null;
-      try { previous = localStorage.getItem(VOTED); } catch (e) {}
-      if (previous) {
-        fetch(API + '/results')
-          .then(function (r) { return r.json(); })
-          .then(function (d) { render(d, previous); })
-          .catch(function () {});
-      }
-
-      form.addEventListener('submit', function (event) {
-        var picked = form.querySelector('input[name="widgets"]:checked');
-        if (!picked) return;
-        var key = picked.getAttribute('data-key');
-        event.preventDefault();
-
-        // The optional free-text note still goes to the inbox — the Worker only counts.
-        var note = form.querySelector('[name="note"]');
-        if (note && note.value.trim()) {
-          fetch('https://formsubmit.co/ajax/cjmo.app@gmail.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ _subject: 'Somos poll: widgets', widgets: picked.value, note: note.value })
-          }).catch(function () {});
-        }
-
-        fetch(API + '/vote?option=' + encodeURIComponent(key), { method: 'POST' })
-          .then(function (r) { if (!r.ok) throw new Error('vote failed'); return r.json(); })
-          .then(function (d) {
-            try { localStorage.setItem(VOTED, key); } catch (e) {}
-            render(d, key);
-          })
-          .catch(function () { form.submit(); });
-      });
-    })();
 
     // There are two forms on this page now (the poll and the suggestion box), so this
     // only touches the one that actually has a subject line and an email field.

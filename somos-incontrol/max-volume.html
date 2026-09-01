@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max Volume — Somos InControl</title>
+<meta name="description" content="One question: do you use the Max Volume setting in Somos?">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .contact-form select {
+    background: var(--card);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    width: 100%;
+  }
+</style>
+<style>
+  .poll-q { font-size: 16px; font-weight: 600; margin: 0 0 14px; }
+  .poll-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .vote {
+    flex: 1 1 160px; padding: 14px 18px; font-size: 15px; font-family: inherit;
+    border-radius: 10px; border: 1px solid var(--border, #333);
+    background: var(--card, #1b1b1b); color: var(--fg, #eee); cursor: pointer;
+  }
+  .vote:hover:not(:disabled) { border-color: #0ea5e9; }
+  .vote:disabled { opacity: .55; cursor: default; }
+  .poll-status { font-size: 13px; color: var(--dim, #999); min-height: 18px; margin-bottom: 14px; }
+  /* Bars grow from a common baseline so their HEIGHTS are the comparison — the
+     taller one is the answer at a glance, which is the whole point of the chart. */
+  .chart { display: flex; gap: 28px; align-items: flex-end; height: 210px; padding: 0 6px; }
+  .bar-wrap { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 0 0 90px; }
+  .bar-count { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .bar { width: 62px; border-radius: 6px 6px 0 0; transition: height .45s ease; }
+  .bar-yes { background: linear-gradient(180deg, #0ea5e9, #0369a1); }
+  .bar-no  { background: linear-gradient(180deg, #64748b, #334155); }
+  .bar-label { font-size: 14px; color: var(--dim, #999); margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="brand" href="index.html"><span class="check">&#128266;</span>Somos InControl</a>
+  <a href="../index.html" style="color: var(--dim); font-size: 13px; margin-left: 10px; text-decoration: none;">&larr; Home</a>
+  <nav>
+    <a href="how-to.html">How to Use</a>
+    <a href="support.html">Support</a>
+    <a href="suggestions.html">Suggestions</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div class="cardhead">
+    <div class="cardhead-main">
+    <div class="logo" style="background: linear-gradient(135deg, #0ea5e9, #0369a1);">&#9635;</div>
+    <h1>Max Volume</h1>
+    <div class="updated">Somos InControl &middot; One question, one tap</div>
+    </div>
+  </div>
+
+  <p style="font-size: 15px; line-height: 1.7;">
+    <strong>Max Volume</strong> is the per-room ceiling in Somos &mdash; hold the volume bar to set
+    a level the room will not go past. We are deciding whether to keep it, and the only thing that
+    decides it is whether people actually use it.</p>
+
+  <p style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
+    One tap. Nothing is sent from the app &mdash; it only opened this page &mdash; and the running
+    count below is the only thing we keep.</p>
+
+  <div id="poll">
+    <div class="poll-q">Do you use the Max Volume setting?</div>
+    <div class="poll-buttons">
+      <button type="button" class="vote" data-vote="yes">Yes, I use it</button>
+      <button type="button" class="vote" data-vote="no">No, never</button>
+    </div>
+    <div id="poll-status" class="poll-status">Loading the count&hellip;</div>
+    <div class="chart" id="chart" hidden>
+      <div class="bar-wrap">
+        <div class="bar-count" id="yes-count">0</div>
+        <div class="bar bar-yes" id="yes-bar"></div>
+        <div class="bar-label">Yes</div>
+      </div>
+      <div class="bar-wrap">
+        <div class="bar-count" id="no-count">0</div>
+        <div class="bar bar-no" id="no-bar"></div>
+        <div class="bar-label">No</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size: 13px; color: var(--dim); margin-top: 26px;">
+    No account, no email, nothing that identifies you &mdash; the page keeps two numbers and your
+    browser remembers that you already voted so the count is not skewed by one person tapping twice.
+    See our <a href="privacy.html">Privacy Policy</a>.
+  </p>
+
+  <div class="footer">
+    Somos InControl &middot; &copy; 2026 Chris Moore &middot;
+    <a href="index.html">Home</a> &middot;
+    <a href="how-to.html">How to Use</a> &middot;
+    <a href="support.html">Support</a> &middot;
+    <a href="privacy.html">Privacy</a>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  // The tally lives in a counter service because GitHub Pages is static — it
+  // cannot write a file when somebody votes. COUNTER_BASE is the one thing to
+  // change if we move it.
+  var COUNTER_BASE = window.SOMOS_COUNTER_BASE || "";
+  var VOTED_KEY = "somos.maxvolume.voted";
+
+  var chart  = document.getElementById("chart");
+  var status = document.getElementById("poll-status");
+  var yesBar = document.getElementById("yes-bar");
+  var noBar  = document.getElementById("no-bar");
+  var yesNum = document.getElementById("yes-count");
+  var noNum  = document.getElementById("no-count");
+
+  function draw(yes, no) {
+    yesNum.textContent = yes;
+    noNum.textContent  = no;
+    // The bars are the comparison, so the taller one is always full height and
+    // the other is drawn in proportion to it. Equal counts give two equal bars.
+    var top = Math.max(yes, no, 1);
+    yesBar.style.height = (12 + (yes / top) * 148) + "px";
+    noBar.style.height  = (12 + (no  / top) * 148) + "px";
+    chart.hidden = false;
+  }
+
+  function show(message) { status.textContent = message; }
+
+  function counterURL(path) { return COUNTER_BASE.replace(/\/$/, "") + path; }
+
+  function load() {
+    if (!COUNTER_BASE) {
+      show("The live count is not switched on yet.");
+      return;
+    }
+    fetch(counterURL("/counts"), { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        draw(d.yes || 0, d.no || 0);
+        show(localStorage.getItem(VOTED_KEY) ? "Thanks — your answer is counted." : "");
+      })
+      .catch(function () { show("Could not load the count. Your vote still counts."); });
+  }
+
+  document.querySelectorAll(".vote").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (localStorage.getItem(VOTED_KEY)) { show("You have already answered this one."); return; }
+      var choice = btn.getAttribute("data-vote");
+      localStorage.setItem(VOTED_KEY, choice);
+      document.querySelectorAll(".vote").forEach(function (b) { b.disabled = true; });
+      show("Counting your answer…");
+      if (!COUNTER_BASE) { show("Thanks — noted."); return; }
+      fetch(counterURL("/vote?choice=" + choice), { method: "POST" })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { draw(d.yes || 0, d.no || 0); show("Thanks — your answer is counted."); })
+        .catch(function () { show("Thanks — your answer is counted."); });
+    });
+  });
+
+  load();
+})();
+</script>
+</body>
+</html>

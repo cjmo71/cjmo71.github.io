@@ -1,32 +1,4 @@
-  <form id="poll" action="https://formsubmit.co/cjmo.app@gmail.com" method="POST">
-    <input type="hidden" name="_subject" value="Max Volume poll">
-    <input type="hidden" name="_questionnaire" value="max-volume">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://cjmo71.github.io/somos-incontrol/max-volume.html?thanks=1">
-    <input type="text" name="_honey" style="display:none">
-    <input type="hidden" name="Uses Max Volume" id="answer" value="">
-
-    <div class="poll-q">Do you use the Max Volume setting?</div>
-    <div class="poll-buttons">
-      <button type="submit" class="vote" data-vote="Yes">Yes, I use it</button>
-      <button type="submit" class="vote" data-vote="No">No, never</button>
-    </div>
-    <div id="poll-status" class="poll-status"></div>
-    <div class="chart" id="chart" hidden>
-      <div class="bar-wrap">
-        <div class="bar-count" id="yes-count">0</div>
-        <div class="bar bar-yes" id="yes-bar"></div>
-        <div class="bar-label">Yes</div>
-      </div>
-      <div class="bar-wrap">
-        <div class="bar-count" id="no-count">0</div>
-        <div class="bar bar-no" id="no-bar"></div>
-        <div class="bar-label">No</div>
-      </div>
-    </div>
-    <div class="poll-asof" id="poll-asof"></div>
-  </form><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -101,13 +73,21 @@
     One tap. Nothing is sent from the app &mdash; it only opened this page &mdash; and the count below
     is tallied from the answers and refreshed a few times a day.</p>
 
-  <div id="poll">
+  <form id="poll" action="https://formsubmit.co/cjmo.app@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Max Volume poll">
+    <input type="hidden" name="_questionnaire" value="max-volume">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://cjmo71.github.io/somos-incontrol/max-volume.html?thanks=1">
+    <input type="text" name="_honey" style="display:none">
+    <input type="hidden" name="Uses Max Volume" id="answer" value="">
+
     <div class="poll-q">Do you use the Max Volume setting?</div>
     <div class="poll-buttons">
-      <button type="button" class="vote" data-vote="yes">Yes, I use it</button>
-      <button type="button" class="vote" data-vote="no">No, never</button>
+      <button type="submit" class="vote" data-vote="Yes">Yes, I use it</button>
+      <button type="submit" class="vote" data-vote="No">No, never</button>
     </div>
-    <div id="poll-status" class="poll-status">Loading the count&hellip;</div>
+    <div id="poll-status" class="poll-status"></div>
     <div class="chart" id="chart" hidden>
       <div class="bar-wrap">
         <div class="bar-count" id="yes-count">0</div>
@@ -120,7 +100,8 @@
         <div class="bar-label">No</div>
       </div>
     </div>
-  </div>
+    <div class="poll-asof" id="poll-asof"></div>
+  </form>
 
   <p style="font-size: 13px; color: var(--dim); margin-top: 26px;">
     No account, no email, nothing that identifies you &mdash; the page keeps two numbers and your

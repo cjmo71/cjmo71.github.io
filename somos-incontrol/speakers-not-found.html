@@ -78,48 +78,30 @@
       <legend style="padding: 0 6px; font-size: 14px;">2. Does the OFFICIAL SONOS APP find all your speakers?</legend>
       <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds all speakers" value="Yes"> Yes</label>
       <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds all speakers" value="No"> No</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds all speakers" value="It's not available there"> It's not available there</label>
     </fieldset>
 
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">3. How many Sonos systems do you have?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How many systems" value="One"> One</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="How many systems" value="More than one"> More than one</label>
-    </fieldset>
-
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">4. Do you have a Sonos system at a different address?</legend>
+    <fieldset id="q-address" style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+      <legend style="padding: 0 6px; font-size: 14px;">3. Do you have a Sonos system at a different address?</legend>
       <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="System at a different address" value="Yes"> Yes</label>
       <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="System at a different address" value="No"> No</label>
     </fieldset>
 
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+    <fieldset id="q-second-address" style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
+      <legend style="padding: 0 6px; font-size: 14px;">4. Do all your systems at your second address show up?</legend>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="All systems at second address show up" value="Yes"> Yes</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="All systems at second address show up" value="No"> No</label>
+    </fieldset>
+
+    <fieldset id="q-wifi" style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">5. Are your phone and your speakers on the same Wi-Fi?</legend>
       <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Same Wi-Fi" value="Yes"> Yes</label>
       <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Same Wi-Fi" value="No"> No</label>
     </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">6. Which device are you using, and which OS version?</legend>
-      <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Somos runs on iPhone, iPad and Apple silicon Macs.</p>
-      <label style="margin: 6px 0;">Device
-              <select name="Device">
-                <option value="">Choose…</option>
-                <option>iPhone</option>
-                <option>iPad</option>
-                <option>Mac</option>
-                <option>Prefer not to answer</option>
-              </select>
-            </label>
-      <label style="margin: 6px 0;"><input type="text" name="OS version" placeholder="e.g. iOS 26, iPadOS 26, or macOS 26 — or leave blank"></label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="OS version skipped" value="Prefer not to answer"> Prefer not to answer</label>
-    </fieldset>
-
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">7. Which version of Somos are you on?</legend>
-      <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">Somos → menu → the version is at the bottom.</p>
-      <label style="margin: 6px 0;"><input type="text" name="Somos version" placeholder="e.g. 1.1 (35.2) — or leave blank"></label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="checkbox" name="Somos version skipped" value="Prefer not to answer"> Prefer not to answer</label>
+      <legend style="padding: 0 6px; font-size: 14px;">6. Do you have both an S1 and an S2 system?</legend>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Both S1 and S2 systems" value="Yes"> Yes</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Both S1 and S2 systems" value="No"> No</label>
     </fieldset>
 
     <label>Is there anything else you would like to add? (optional)
@@ -171,6 +153,45 @@
       if (email && replyto && email.value) { replyto.value = email.value; }
     });
   });
+</script>
+<script>
+  // Speakers-not-found branching. Without JS every question stays visible and answerable.
+  (function () {
+    var addr = document.querySelectorAll('input[name="System at a different address"]');
+    var second = document.getElementById('q-second-address');
+    var wifi = document.getElementById('q-wifi');
+    var form = document.querySelector('.contact-form');
+    if (!addr.length || !second || !wifi || !form) { return; }
+
+    function checkedValue(radios) {
+      for (var i = 0; i < radios.length; i++) { if (radios[i].checked) { return radios[i].value; } }
+      return '';
+    }
+    function setVisible(fieldset, visible) {
+      fieldset.hidden = !visible;
+      if (!visible) {
+        var inputs = fieldset.querySelectorAll('input[type="radio"]');
+        for (var i = 0; i < inputs.length; i++) { inputs[i].checked = false; }
+      }
+    }
+    function renumber() {
+      var n = 0;
+      var legends = form.querySelectorAll('fieldset legend');
+      for (var i = 0; i < legends.length; i++) {
+        if (legends[i].parentNode.hidden) { continue; }
+        n += 1;
+        legends[i].textContent = legends[i].textContent.replace(/^\s*\d+\.\s*/, n + '. ');
+      }
+    }
+    function update() {
+      var yes = checkedValue(addr) === 'Yes';
+      setVisible(second, yes);
+      setVisible(wifi, !yes);
+      renumber();
+    }
+    for (var i = 0; i < addr.length; i++) { addr[i].addEventListener('change', update); }
+    update();
+  })();
 </script>
 </body>
 </html>

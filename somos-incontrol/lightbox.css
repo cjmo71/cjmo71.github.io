@@ -1,0 +1,11 @@
+/* Screenshot lightbox — vanilla, no dependencies. */
+.shot { flex: 0 0 auto; display: block; line-height: 0; border-radius: 14px; cursor: zoom-in; }
+.shot:focus-visible { outline: 3px solid #10b981; outline-offset: 3px; }
+.lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+  padding: 16px; background: rgba(0,0,0,0.85); cursor: zoom-out; }
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); width: auto; height: auto;
+  object-fit: contain; border-radius: 14px; box-shadow: 0 6px 22px rgba(0,0,0,0.35); }
+.lightbox-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,0.15); color: #fff; font-size: 28px; line-height: 44px; cursor: pointer; }
+.lightbox-close:hover, .lightbox-close:focus-visible { background: rgba(255,255,255,0.3); outline: 2px solid #fff; }

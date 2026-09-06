@@ -47,7 +47,9 @@ body {
 }
 
 .container {
-  max-width: 760px;
+  /* Chris, 2026-09-06: "all the pages should use the large width." Matches the front
+     page's 1220px so the site stops changing shape when you move between pages. */
+  max-width: 1220px;
   margin: 0 auto;
   background: var(--card);
   border: 1px solid var(--border);
@@ -59,7 +61,7 @@ body {
 /* ── top nav ─────────────────────────────────────────────────────── */
 
 .topnav {
-  max-width: 760px;
+  max-width: 1220px;
   margin: 0 auto 20px;
   display: flex;
   align-items: center;

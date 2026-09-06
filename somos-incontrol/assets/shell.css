@@ -1,0 +1,30 @@
+/* Shared shell: the header and the always-open sidebar that index.html got with v3.
+   Prefixed sh- so it cannot collide with the older ../assets/style.css each inner
+   page still uses for its own content. */
+:root { --sh-bg: #ffffff; --sh-bg2: #f6f7f9; --sh-line: #e5e7eb; --sh-fg: #0f172a; --sh-body: #334155;
+  --sh-dim: #64748b; --sh-accent: #2563eb; }
+@media (prefers-color-scheme: dark) {
+  :root { --sh-bg: #0b0f17; --sh-bg2: #111722; --sh-line: #232b3a; --sh-fg: #f1f5f9; --sh-body: #cbd5e1;
+    --sh-dim: #8b95a7; --sh-accent: #4a9eff; }
+}
+.sh-top { border-bottom: 1px solid var(--sh-line); background: var(--sh-bg); }
+.sh-top .sh-inner { max-width: 1040px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center;
+  justify-content: space-between; height: 58px; gap: 16px; }
+.sh-brand { display: flex; align-items: center; gap: 10px; color: var(--sh-fg); font-weight: 600;
+  font-size: 15px; text-decoration: none; }
+.sh-brand img { width: 28px; height: 28px; border-radius: 7px; }
+.sh-cta { border: 1px solid var(--sh-accent); background: var(--sh-accent); color: #fff; border-radius: 9px;
+  padding: 7px 13px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.sh-rail { position: fixed; top: 0; left: 0; bottom: 0; width: 216px; overflow-y: auto; z-index: 20;
+  background: var(--sh-bg2); border-right: 1px solid var(--sh-line); padding: 16px 18px 26px; }
+.sh-rail h4 { margin: 18px 0 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--sh-dim); }
+.sh-rail h4:first-child { margin-top: 0; }
+.sh-rail a { display: block; padding: 7px 0; color: var(--sh-body); font-size: 14.5px;
+  border-bottom: 1px solid var(--sh-line); text-decoration: none; }
+.sh-rail a:hover { color: var(--sh-accent); }
+.sh-rail .sh-cta { display: block; margin-top: 18px; text-align: center; border-bottom: 0; }
+@media (min-width: 1000px) { body { padding-left: 216px; } }
+@media (max-width: 999px) {
+  .sh-rail { position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--sh-line); }
+}

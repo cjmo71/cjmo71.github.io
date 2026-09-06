@@ -19,7 +19,7 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Inter, Arial, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
+.wrap { max-width: 1220px; margin: 0 auto; padding: 0 22px; }
 
 /* top bar */
 .top { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 10; }
@@ -37,7 +37,7 @@ a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: un
 
 /* hero */
 .hero { padding: 56px 0 40px; background: linear-gradient(180deg, var(--bg-2), var(--bg)); border-bottom: 1px solid var(--line); }
-.hero .wrap { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: center; }
+.hero .wrap { display: grid; grid-template-columns: 1fr 400px; gap: 40px; align-items: center; }
 .pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--tint); color: var(--accent); margin-bottom: 14px; }
 h1 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 14px; }
 .lead { font-size: 18px; color: var(--body); margin: 0 0 24px; max-width: 54ch; }
@@ -57,8 +57,8 @@ h1 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.12; letter-spacing: -.0
 h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .sub { color: var(--dim); margin: 0 0 26px; font-size: 15px; }
 .tour { padding: 56px 0; }
-.walk { display: grid; grid-template-columns: 300px 1fr; gap: 36px; align-items: center; padding: 34px 0; border-top: 1px solid var(--line); }
-.walk:nth-child(even) { grid-template-columns: 1fr 300px; }
+.walk { display: grid; grid-template-columns: 380px 1fr; gap: 36px; align-items: center; padding: 34px 0; border-top: 1px solid var(--line); }
+.walk:nth-child(even) { grid-template-columns: 1fr 380px; }
 .walk:nth-child(even) .device { order: 2; }
 .walk h3 { font-size: 21px; margin: 0 0 10px; letter-spacing: -.01em; }
 .walk p { margin: 0 0 12px; color: var(--body); font-size: 15.5px; }
@@ -82,7 +82,7 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 }
 .film { padding: 10px 0 6px; }
 .film .wrap { text-align: center; }
-.film .device { max-width: 300px; margin: 18px auto 0; }
+.film .device { max-width: 380px; margin: 18px auto 0; }
 .film .device video { display: block; width: 100%; height: auto; border-radius: 27px; }
 .hw { padding: 20px 0 56px; }
 table { width: 100%; border-collapse: collapse; font-size: 14.5px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
@@ -316,5 +316,18 @@ footer a { color: var(--dim); margin-right: 14px; }
   </div>
 </footer>
 
+
+<script>
+// Chris, 2026-09-06: "it is just a white box on the site til yo hit play." The attribute
+// alone is not enough in Safari, so ask each muted video to play once the page is ready.
+// A refusal is fine — the poster frame stays and the controls still work.
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("video[autoplay]").forEach(function (v) {
+    v.muted = true;
+    var p = v.play();
+    if (p && p.catch) { p.catch(function () {}); }
+  });
+});
+</script>
 </body>
 </html>

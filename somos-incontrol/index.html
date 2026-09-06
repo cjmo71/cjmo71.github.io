@@ -68,20 +68,18 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .walk .more::after { content: " →"; }
 
 /* support table */
-.menubtn { display: inline-flex; align-items: center; gap: 8px; background: none; border: 1px solid var(--line);
-  border-radius: 9px; padding: 7px 11px; color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
-.menubtn:hover { border-color: var(--accent); color: var(--accent); }
-.sidewrap[hidden] { display: none; }
-.sidewrap { position: fixed; inset: 0; z-index: 60; }
-.sidewrap .scrim { position: absolute; inset: 0; background: rgba(15,23,42,.45); }
-.side { position: absolute; top: 0; right: 0; height: 100%; width: min(320px, 86vw); overflow-y: auto;
-  background: var(--card); border-left: 1px solid var(--line); box-shadow: var(--shadow); padding: 18px 20px 28px; }
-.side h4 { margin: 20px 0 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
-.side h4:first-of-type { margin-top: 14px; }
-.side a { display: block; padding: 9px 0; color: var(--body); border-bottom: 1px solid var(--line); font-size: 15px; }
-.side a:hover { color: var(--accent); text-decoration: none; }
-.side .close { float: right; background: none; border: 0; font-size: 22px; line-height: 1; color: var(--dim); cursor: pointer; }
-.side .btn { display: block; margin-top: 20px; text-align: center; border-bottom: 0; }
+.rail { position: fixed; top: 0; left: 0; bottom: 0; width: 216px; overflow-y: auto; z-index: 20;
+  background: var(--bg-2); border-right: 1px solid var(--line); padding: 16px 18px 26px; }
+.rail h4 { margin: 18px 0 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.rail h4:first-child { margin-top: 0; }
+.rail a { display: block; padding: 7px 0; color: var(--body); font-size: 14.5px; border-bottom: 1px solid var(--line); }
+.rail a:hover { color: var(--accent); text-decoration: none; }
+.rail .btn { display: block; margin-top: 18px; text-align: center; border-bottom: 0; }
+@media (min-width: 1000px) { body { padding-left: 216px; } }
+@media (max-width: 999px) {
+  .rail { position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  .rail a { padding: 6px 0; }
+}
 .film { padding: 10px 0 6px; }
 .film .wrap { text-align: center; }
 .film .device { max-width: 300px; margin: 18px auto 0; }
@@ -116,7 +114,6 @@ footer a { color: var(--dim); margin-right: 14px; }
   .walk:nth-child(even) .device { order: 0; }
   .card.docs { grid-template-columns: 1fr; }
   .top nav a:not(.btn) { display: none; }
-  .top nav .menubtn { display: inline-flex; }
 }
 </style>
 </head>
@@ -134,32 +131,28 @@ footer a { color: var(--dim); margin-right: 14px; }
       <a href="how-to.html">How to Use</a>
       <a href="support.html">Support</a>
       <a class="btn primary" href="https://testflight.apple.com/join/2D778AXH" target="_blank" rel="noopener">Get the beta</a>
-      <button class="menubtn" type="button" onclick="document.getElementById('sidemenu').hidden=false">☰ Menu</button>
     </nav>
   </div>
 </header>
 
-<div class="sidewrap" id="sidemenu" hidden>
-  <div class="scrim" onclick="this.parentNode.hidden=true"></div>
-  <div class="side">
-    <button class="close" type="button" aria-label="Close" onclick="document.getElementById('sidemenu').hidden=true">&times;</button>
-    <h4>This page</h4>
-    <a href="#see-it" onclick="document.getElementById('sidemenu').hidden=true">See it in action</a>
-    <a href="#tour" onclick="document.getElementById('sidemenu').hidden=true">A tour of the app</a>
-    <a href="#coming-soon" onclick="document.getElementById('sidemenu').hidden=true">Coming soon</a>
-    <a href="#hardware" onclick="document.getElementById('sidemenu').hidden=true">What works with what</a>
-    <h4>Help</h4>
-    <a href="https://docs.somosincontrol.com">Documentation</a>
-    <a href="how-to.html">How to Use</a>
-    <a href="support.html">Support</a>
-    <h4>Have your say</h4>
-    <a href="questions.html">Speaker Checks</a>
-    <a href="polls.html">Polls</a>
-    <a href="suggestions.html">Suggest a feature</a>
-    <h4>Legal</h4>
-    <a href="privacy.html">Privacy</a>
-    <a class="btn primary" href="https://testflight.apple.com/join/2D778AXH" target="_blank" rel="noopener">Get the beta</a>
-  </div>
+<aside class="rail">
+  <h4>This page</h4>
+  <a href="#see-it">See it in action</a>
+  <a href="#tour">A tour of the app</a>
+  <a href="#coming-soon">Coming soon</a>
+  <a href="#hardware">What works with what</a>
+  <h4>Help</h4>
+  <a href="https://docs.somosincontrol.com">Documentation</a>
+  <a href="how-to.html">How to Use</a>
+  <a href="support.html">Support</a>
+  <h4>Have your say</h4>
+  <a href="questions.html">Speaker Checks</a>
+  <a href="polls.html">Polls</a>
+  <a href="suggestions.html">Suggest a feature</a>
+  <h4>Legal</h4>
+  <a href="privacy.html">Privacy</a>
+  <a class="btn primary" href="https://testflight.apple.com/join/2D778AXH" target="_blank" rel="noopener">Get the beta</a>
+</aside>
 </div>
 
 

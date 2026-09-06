@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Somos InControl — A fast, focused remote for Sonos® speakers</title>
+<meta name="description" content="Somos InControl is a fast, local-only iOS remote for Sonos® speakers. One page per room: instant volume, real EQ, sound presets, home theater setup and music — no account, no cloud, no clutter.">
+<link rel="icon" href="assets/app-icon.png">
+<style>
+:root {
+  --bg: #07090d;
+  --bg-2: #0d1117;
+  --card: #131a24;
+  --line: #1f2937;
+  --fg: #f3f4f6;
+  --body: #b6bdc9;
+  --dim: #6b7280;
+  --blue: #0a84ff;
+  --blue-dk: #0066cc;
+  --orange: #ff9f0a;
+  --teal: #30d5c8;
+  --green: #30d158;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Inter, Arial, sans-serif;
+  line-height: 1.55; -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: rgba(7,9,13,.72); border-bottom: 1px solid rgba(255,255,255,.06); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--fg); font-weight: 600; font-size: 16px; }
+.brand:hover { text-decoration: none; }
+.brand img { width: 30px; height: 30px; border-radius: 8px; }
+.nav nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
+.nav nav a { color: var(--body); }
+.nav nav a:hover { color: var(--fg); text-decoration: none; }
+.nav nav .btn { padding: 8px 14px; font-size: 13px; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px;
+  font-weight: 600; font-size: 15px; border: 1px solid transparent; white-space: nowrap; }
+.btn:hover { text-decoration: none; }
+.btn.primary { background: var(--blue); color: #fff; box-shadow: 0 6px 24px rgba(10,132,255,.35); }
+.btn.primary:hover { background: var(--blue-dk); }
+.btn.ghost { background: rgba(255,255,255,.06); color: var(--fg); border-color: rgba(255,255,255,.12); }
+.btn.ghost:hover { background: rgba(255,255,255,.1); }
+.btn svg { width: 18px; height: 18px; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; padding: 72px 0 0; }
+.hero::before { content: ""; position: absolute; inset: -20% -10% auto; height: 120%; pointer-events: none;
+  background: radial-gradient(60% 50% at 70% 30%, rgba(10,132,255,.22), transparent 60%),
+              radial-gradient(40% 40% at 20% 70%, rgba(255,159,10,.12), transparent 60%); }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 18px; }
+.eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(48,209,88,.2); }
+h1 { font-size: clamp(38px, 5.6vw, 66px); line-height: 1.04; letter-spacing: -.03em; margin: 0 0 20px; font-weight: 700; }
+h1 span { color: var(--blue); }
+.lead { font-size: 19px; color: var(--body); max-width: 520px; margin: 0 0 30px; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.fine { margin-top: 16px; font-size: 13px; color: var(--dim); }
+.fine a { color: var(--dim); text-decoration: underline; }
+
+/* phone */
+.phone { width: 300px; margin: 0 auto; border-radius: 44px; padding: 10px; background: #1c1c1e;
+  box-shadow: 0 0 0 1px #2c2c2e, 0 40px 80px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.05); }
+.phone img { display: block; width: 100%; height: auto; border-radius: 36px; }
+.hero .phone { transform: rotate(-2deg) translateY(30px); }
+
+/* proof strip */
+.strip { margin-top: 90px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); }
+.strip .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.strip div { padding: 22px 18px; border-left: 1px solid var(--line); }
+.strip div:first-child { border-left: 0; }
+.strip b { display: block; font-size: 17px; color: var(--fg); }
+.strip span { font-size: 13px; color: var(--dim); }
+
+/* sections */
+section { padding: 88px 0; }
+.sec-head { max-width: 640px; margin-bottom: 44px; }
+h2 { font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -.025em; line-height: 1.1; margin: 0 0 12px; }
+.sec-head p { color: var(--body); font-size: 17px; margin: 0; }
+
+/* screenshots */
+.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.shot { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 18px 18px 20px; }
+.shot .phone { width: 100%; border-radius: 28px; padding: 6px; }
+.shot .phone img { border-radius: 23px; }
+.shot h3 { margin: 18px 0 6px; font-size: 16px; }
+.shot p { margin: 0; font-size: 14px; color: var(--body); }
+
+/* features */
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.feat { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.feat .ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 16px; font-size: 20px; }
+.feat h3 { margin: 0 0 8px; font-size: 17px; }
+.feat p { margin: 0; color: var(--body); font-size: 14.5px; }
+.ic.b { background: rgba(10,132,255,.15); color: var(--blue); } .ic.o { background: rgba(255,159,10,.15); color: var(--orange); } .ic.t { background: rgba(48,213,200,.15); color: var(--teal); }
+
+/* docs band */
+.docs { background: linear-gradient(180deg, var(--bg-2), var(--bg)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.docs .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.doclist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.doclist a { display: block; padding: 14px 16px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); color: var(--fg); font-size: 14.5px; }
+.doclist a small { display: block; color: var(--dim); font-size: 12.5px; margin-top: 2px; }
+.doclist a:hover { border-color: var(--blue); text-decoration: none; }
+
+/* final cta */
+.final { text-align: center; }
+.final .phone { width: 220px; margin-bottom: 36px; }
+footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--dim); font-size: 13px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+footer a { color: var(--dim); margin-right: 16px; }
+
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero .phone { transform: none; margin-top: 10px; }
+  .strip .wrap { grid-template-columns: 1fr 1fr; }
+  .strip div:nth-child(3) { border-left: 0; }
+  .shots { grid-template-columns: 1fr 1fr; }
+  .features { grid-template-columns: 1fr; }
+  .docs .wrap { grid-template-columns: 1fr; }
+  .nav nav a:not(.btn) { display: none; }
+}
+@media (max-width: 520px) { .shots { grid-template-columns: 1fr; } .doclist { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="assets/app-icon.png" alt="">Somos InControl</a>
+    <nav>
+      <a href="#screens">Screens</a>
+      <a href="#features">Features</a>
+      <a href="https://docs.somosincontrol.com">Docs</a>
+      <a href="../somos-incontrol/support.html">Support</a>
+      <a class="btn primary" href="https://testflight.apple.com/join/2D778AXH" target="_blank" rel="noopener">Join the beta</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Public beta on TestFlight</div>
+      <h1>Your Sonos®, <span>one tap</span> from the sound you want.</h1>
+      <p class="lead">One page per room. Volume, real EQ, sound presets, home theater setup and music — all over your local Wi-Fi, with no account and nothing in the way.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://testflight.apple.com/join/2D778AXH" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14 5.3c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.5 2.9-1.4z"/></svg>
+          Download on TestFlight
+        </a>
+        <a class="btn ghost" href="https://docs.somosincontrol.com">Read the docs</a>
+      </div>
+      <p class="fine">Free during the beta · iPhone and iPad, iOS 16.2 or later · Requires the free <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight</a> app</p>
+    </div>
+    <div class="phone"><img src="assets/1-room-page.webp" alt="The Office room page: Arc connected over eARC receiving Dolby Atmos, volume slider, three sound presets, bass, treble and surround sliders" width="720" height="1565"></div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>Local Wi-Fi only</b><span>No cloud, no login, no remote access by design</span></div>
+    <div><b>Every control applies instantly</b><span>No "Apply" button, no loading spinner</span></div>
+    <div><b>S1 and S2 systems</b><span>More than one system at a time</span></div>
+    <div><b>Zero analytics, zero ads</b><span>Nothing leaves your network</span></div>
+  </div>
+</div>
+
+<section id="screens">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The whole app, on four screens.</h2>
+      <p>These are real screenshots from the current beta. What you see is what ships.</p>
+    </div>
+    <div class="shots">
+      <div class="shot">
+        <div class="phone"><img src="assets/1-room-page.webp" alt="Room page for a soundbar room" loading="lazy" width="720" height="1565"></div>
+        <h3>The room page</h3>
+        <p>TV / Music source, a live audio-format badge (here: eARC, Dolby Atmos), pinned volume, presets and every EQ slider the room's hardware has.</p>
+      </div>
+      <div class="shot">
+        <div class="phone"><img src="assets/2-home-theater.webp" alt="Home Theater Setup sheet assigning Era 100 speakers to front and surround positions around an Arc" loading="lazy" width="720" height="1565"></div>
+        <h3>Home Theater Setup</h3>
+        <p>Bond surrounds, separate front speakers and up to two Subs to a soundbar — from inside the app.</p>
+      </div>
+      <div class="shot">
+        <div class="phone"><img src="assets/3-music-page.webp" alt="Music sheet with now-playing controls, music presets and the EQ &amp; Sound card" loading="lazy" width="720" height="1565"></div>
+        <h3>The Music sheet</h3>
+        <p>Play Sonos® favorites and playlists, see the queue, and keep a separate set of music presets and EQ.</p>
+      </div>
+      <div class="shot">
+        <div class="phone"><img src="assets/4-menu.webp" alt="The app menu: Suggest a Feature, Support, system switcher, Live Activity, Haptics, Appearance and the room list" loading="lazy" width="720" height="1565"></div>
+        <h3>The menu</h3>
+        <p>Switch systems, add a second home, turn on the Lock Screen Live Activity, reorder and rename rooms, replay the tour.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Built for the ten seconds you actually spend in a remote.</h2>
+      <p>The official app keeps adding screens. Somos InControl does the opposite: the controls you reach for, and nothing else.</p>
+    </div>
+    <div class="features">
+      <div class="feat"><div class="ic b"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg></div><h3>Instant volume</h3><p>A big slider pinned at the top of every room, − / + buttons, mute, group volume, and a per-room max volume limit you set by holding a row.</p></div>
+      <div class="feat"><div class="ic o"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div><h3>Real EQ controls</h3><p>Bass, treble, loudness and Trueplay in every room. Balance on stereo pairs; surround, height, subwoofer and crossover wherever the hardware exists.</p></div>
+      <div class="feat"><div class="ic t"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><h3>Sound presets</h3><p>Three TV and three music presets per room. Hold to save the room's EQ — and, if you tick them, volume, Night Sound, Speech Boost and Loudness. Tap to bring it all back.</p></div>
+      <div class="feat"><div class="ic b"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 22h8"/></svg></div><h3>Home theater, in one place</h3><p>TV / Music source, audio-format badge, Night Sound, Speech Boost, height, surround, Sub and Group Audio Delay — shown only in soundbar rooms.</p></div>
+      <div class="feat"><div class="ic o"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Lock Screen, widget and Siri</h3><p>A Live Activity with volume, mute, Night Sound and music transport; a Home Screen widget with presets and volume; Siri phrases that work out of the box.</p></div>
+      <div class="feat"><div class="ic t"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></div><h3>Every room, grouped or not</h3><p>Home theaters, stereo pairs, singles and portables. Group rooms from any page, pin four rooms to the bottom bar, save the groups you use most.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="docs">
+  <div class="wrap">
+    <div>
+      <h2>Every feature, documented.</h2>
+      <p style="color:var(--body);font-size:17px">The user guide at <a href="https://docs.somosincontrol.com">docs.somosincontrol.com</a> covers first launch, permissions, every control by room type, troubleshooting and the privacy policy — kept up to date with each beta build.</p>
+      <p><a class="btn ghost" href="https://docs.somosincontrol.com">Open the documentation</a></p>
+    </div>
+    <div class="doclist">
+      <a href="https://docs.somosincontrol.com/getting-started/first-launch">First launch<small>Find My Speakers, permissions, the tour</small></a>
+      <a href="https://docs.somosincontrol.com/features/volume">Volume<small>Mute, group volume, max volume limit</small></a>
+      <a href="https://docs.somosincontrol.com/features/sound-presets">Sound presets<small>Save, load, rename, Siri</small></a>
+      <a href="https://docs.somosincontrol.com/features/eq-and-trueplay">EQ &amp; Trueplay<small>Every slider and toggle</small></a>
+      <a href="https://docs.somosincontrol.com/rooms/speaker-setup">Speaker setup<small>Bonding and stereo pairs</small></a>
+      <a href="https://docs.somosincontrol.com/support/troubleshooting">Troubleshooting<small>Speakers not found, sliders that snap back</small></a>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="phone"><img src="assets/3-music-page.webp" alt="" loading="lazy" width="720" height="1565"></div>
+    <h2>Try the beta today.</h2>
+    <p style="color:var(--body);font-size:17px;max-width:520px;margin:0 auto 28px">Install from TestFlight, tap <strong>Find My Speakers</strong>, allow Local Network, and your rooms appear. Your feedback shapes what ships next.</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn primary" href="https://testflight.apple.com/join/2D778AXH" target="_blank" rel="noopener">Download on TestFlight</a>
+      <a class="btn ghost" href="../somos-incontrol/suggestions.html">Suggest a feature</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="https://docs.somosincontrol.com">Documentation</a>
+      <a href="../somos-incontrol/support.html">Support</a>
+      <a href="../somos-incontrol/questions.html">Questions</a>
+      <a href="../somos-incontrol/polls.html">Polls</a>
+      <a href="../somos-incontrol/suggestions.html">Suggestions</a>
+      <a href="../somos-incontrol/privacy.html">Privacy</a>
+    </div>
+    <div>© 2026 Chris Moore · Somos InControl is an independent app, not affiliated with or endorsed by Sonos, Inc. Sonos® is a registered trademark of Sonos, Inc.</div>
+  </div>
+</footer>
+
+</body>
+</html>

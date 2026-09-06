@@ -77,8 +77,18 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .rail a:hover { color: var(--accent); text-decoration: none; }
 .rail .btn { display: block; margin-top: 18px; text-align: center; border-bottom: 0; }
 @media (min-width: 1000px) { body { padding-left: 216px; } }
+.rail-toggle { display: none; }
 @media (max-width: 999px) {
-  .rail { position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  /* The rail becomes a Menu button on phones — added 2026-09-06 because its full list
+     pushed the page two screens down. Desktop keeps it open, always. */
+  .rail-toggle { display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 12px 22px; font: inherit; font-size: 15px; font-weight: 600;
+    color: var(--fg); background: var(--bg2, #f6f7f9); border: 0;
+    border-bottom: 1px solid var(--line); cursor: pointer; }
+  .rail-bars { display: inline-block; width: 18px; height: 2px; position: relative;
+    background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
+  .rail { display: none; position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  .rail.rail-open { display: block; }
   .rail a { padding: 6px 0; }
 }
 .film { padding: 10px 0 6px; }
@@ -118,6 +128,7 @@ footer a { color: var(--dim); margin-right: 14px; }
   .top .wrap { grid-template-columns: 1fr auto; }
 }
 </style>
+<script src="assets/rail-menu.js" defer></script>
 </head>
 <body>
 

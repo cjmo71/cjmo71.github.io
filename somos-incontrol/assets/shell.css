@@ -28,3 +28,18 @@
 @media (max-width: 999px) {
   .sh-rail { position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--sh-line); }
 }
+
+/* ── The rail collapses behind a Menu button on phones ────────────────────────
+   Added 2026-09-06. Above 1000px nothing changes — the rail stays open, always,
+   which is what he asked for on desktop. Markup comes from assets/rail-menu.js. */
+.rail-toggle { display: none; }
+@media (max-width: 999px) {
+  .rail-toggle { display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 12px 22px; font: inherit; font-size: 15px; font-weight: 600;
+    color: var(--sh-fg, #0f172a); background: var(--sh-bg2, #f6f7f9);
+    border: 0; border-bottom: 1px solid var(--sh-line, #e5e7eb); cursor: pointer; }
+  .rail-bars { display: inline-block; width: 18px; height: 2px; position: relative;
+    background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
+  .sh-rail, .rail { display: none; }
+  .sh-rail.rail-open, .rail.rail-open { display: block; }
+}

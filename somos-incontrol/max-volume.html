@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Max volume limit — Somos InControl</title>
-<meta name="description" content="One question: do you use the Max volume limit feature in Somos?">
+<meta name="description" content="Two questions: did you use the max volume feature in Somos, and do you want it back?">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   .contact-form select {
@@ -20,6 +20,7 @@
 </style>
 <style>
   .poll-q { font-size: 16px; font-weight: 600; margin: 0 0 14px; }
+  .poll-q + .poll-q, #q2 { margin-top: 22px; }
   .poll-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
   .vote {
     flex: 1 1 160px; padding: 14px 18px; font-size: 15px; font-family: inherit;
@@ -27,12 +28,14 @@
     background: var(--card, #1b1b1b); color: var(--fg, #eee); cursor: pointer;
   }
   .vote:hover:not(:disabled) { border-color: #0ea5e9; }
+  .vote.picked { border-color: #0ea5e9; background: #0c2a3a; }
   .vote:disabled { opacity: .55; cursor: default; }
   .poll-asof { font-size: 12px; color: var(--dim, #999); margin-top: 12px; }
   .poll-status { font-size: 13px; color: var(--dim, #999); min-height: 18px; margin-bottom: 14px; }
   /* Bars grow from a common baseline so their HEIGHTS are the comparison — the
      taller one is the answer at a glance, which is the whole point of the chart. */
   .chart { display: flex; gap: 28px; align-items: flex-end; height: 210px; padding: 0 6px; }
+  .chart-title { font-size: 14px; font-weight: 600; margin: 20px 0 8px; }
   .bar-wrap { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 0 0 90px; }
   .bar-count { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
   .bar { width: 62px; border-radius: 6px 6px 0 0; transition: height .45s ease; }
@@ -61,17 +64,17 @@
     <div class="cardhead-main">
     <div class="logo" style="background: linear-gradient(135deg, #0ea5e9, #0369a1);">&#9635;</div>
     <h1>Max volume limit</h1>
-    <div class="updated">Somos InControl &middot; One question, one tap</div>
+    <div class="updated">Somos InControl &middot; Two questions, two taps</div>
     </div>
   </div>
 
   <p style="font-size: 15px; line-height: 1.7;">
-    <strong>Max volume limit</strong> is the per-room ceiling in Somos &mdash; hold the volume bar to set
-    a level the room will not go past. We are deciding whether to keep it, and the only thing that
-    decides it is whether people actually use it.</p>
+    <strong>Max volume</strong> was the per-room ceiling in Somos &mdash; hold the volume bar to set
+    a level the room would not go past. It has been removed. We want to know whether you used it,
+    and whether you want it back.</p>
 
   <p style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
-    One tap. Nothing is sent from the app &mdash; it only opened this page &mdash; and the count below
+    Two taps. Nothing is sent from the app &mdash; it only opened this page &mdash; and the count below
     is tallied from the answers and refreshed a few times a day.</p>
 
   <form id="poll" action="https://formsubmit.co/cjmo.app@gmail.com" method="POST">
@@ -82,30 +85,54 @@
     <input type="hidden" name="_next" value="https://cjmo71.github.io/somos-incontrol/max-volume.html?thanks=1">
     <input type="text" name="_honey" style="display:none">
     <input type="hidden" name="Uses Max Volume" id="answer" value="">
+    <input type="hidden" name="Wants It Back" id="answer-back" value="">
 
-    <div class="poll-q">Do you use the Max volume limit feature?</div>
-    <div class="poll-buttons">
-      <button type="submit" class="vote" data-vote="Yes">Yes, I use it</button>
-      <button type="submit" class="vote" data-vote="No">No, never</button>
+    <div class="poll-q">Did you use the max volume feature?</div>
+    <div class="poll-buttons" id="q1">
+      <button type="button" class="vote" data-vote="Yes">Yes, I used it</button>
+      <button type="button" class="vote" data-vote="No">No, never</button>
+    </div>
+    <div id="q2" hidden>
+      <div class="poll-q">Do you want it back?</div>
+      <div class="poll-buttons">
+        <button type="submit" class="vote" data-vote="Yes">Yes, bring it back</button>
+        <button type="submit" class="vote" data-vote="No">No, leave it out</button>
+      </div>
     </div>
     <div id="poll-status" class="poll-status"></div>
-    <div class="chart" id="chart" hidden>
-      <div class="bar-wrap">
-        <div class="bar-count" id="yes-count">0</div>
-        <div class="bar bar-yes" id="yes-bar"></div>
-        <div class="bar-label">Yes</div>
+    <div id="charts" hidden>
+      <div class="chart-title">Did you use it?</div>
+      <div class="chart">
+        <div class="bar-wrap">
+          <div class="bar-count" id="yes-count">0</div>
+          <div class="bar bar-yes" id="yes-bar"></div>
+          <div class="bar-label">Yes</div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-count" id="no-count">0</div>
+          <div class="bar bar-no" id="no-bar"></div>
+          <div class="bar-label">No</div>
+        </div>
       </div>
-      <div class="bar-wrap">
-        <div class="bar-count" id="no-count">0</div>
-        <div class="bar bar-no" id="no-bar"></div>
-        <div class="bar-label">No</div>
+      <div class="chart-title">Do you want it back?</div>
+      <div class="chart">
+        <div class="bar-wrap">
+          <div class="bar-count" id="back-yes-count">0</div>
+          <div class="bar bar-yes" id="back-yes-bar"></div>
+          <div class="bar-label">Yes</div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-count" id="back-no-count">0</div>
+          <div class="bar bar-no" id="back-no-bar"></div>
+          <div class="bar-label">No</div>
+        </div>
       </div>
     </div>
     <div class="poll-asof" id="poll-asof"></div>
   </form>
 
   <p style="font-size: 13px; color: var(--dim); margin-top: 26px;">
-    No account, no email, nothing that identifies you &mdash; the page keeps two numbers and your
+    No account, no email, nothing that identifies you &mdash; the page keeps four numbers and your
     browser remembers that you already voted so the count is not skewed by one person tapping twice.
     See our <a href="privacy.html">Privacy Policy</a>.
   </p>
@@ -132,42 +159,60 @@
   // questionnaire, and a job on tiny tallies the mail and commits counts.json
   // back into this repo. The chart reads that file — accurate as of the last run,
   // and it says so rather than pretending to be live.
-  var chart  = document.getElementById("chart");
+  var charts = document.getElementById("charts");
   var status = document.getElementById("poll-status");
   var asOf   = document.getElementById("poll-asof");
+  var q2     = document.getElementById("q2");
   var VOTED_KEY = "somos.maxvolume.voted";
 
-  function draw(yes, no, when) {
-    document.getElementById("yes-count").textContent = yes;
-    document.getElementById("no-count").textContent  = no;
+  function bars(yesId, noId, yes, no) {
+    document.getElementById(yesId + "-count").textContent = yes;
+    document.getElementById(noId  + "-count").textContent = no;
     // Heights ARE the comparison: the bigger answer is always full height and the
     // other is drawn against it, so which is winning reads at a glance.
     var top = Math.max(yes, no, 1);
-    document.getElementById("yes-bar").style.height = (12 + (yes / top) * 148) + "px";
-    document.getElementById("no-bar").style.height  = (12 + (no  / top) * 148) + "px";
-    chart.hidden = false;
-    if (when) { asOf.textContent = "Counted up to " + when + ". Your answer appears at the next count."; }
+    document.getElementById(yesId + "-bar").style.height = (12 + (yes / top) * 148) + "px";
+    document.getElementById(noId  + "-bar").style.height = (12 + (no  / top) * 148) + "px";
+  }
+
+  function draw(d) {
+    bars("yes", "no", d.yes || 0, d.no || 0);
+    bars("back-yes", "back-no", d.back_yes || 0, d.back_no || 0);
+    charts.hidden = false;
+    if (d.as_of) { asOf.textContent = "Counted up to " + d.as_of + ". Your answers appear at the next count."; }
   }
 
   fetch("counts.json", { cache: "no-store" })
     .then(function (r) { return r.json(); })
-    .then(function (d) { draw(d.yes || 0, d.no || 0, d.as_of || ""); })
-    .catch(function () { /* no counts yet — the chart simply stays hidden */ });
+    .then(draw)
+    .catch(function () { /* no counts yet — the charts simply stay hidden */ });
 
-  // Which button was pressed decides the answer that travels with the form.
-  document.querySelectorAll(".vote").forEach(function (btn) {
+  // First question picks, second question sends. Both answers travel in the one email.
+  document.querySelectorAll("#q1 .vote").forEach(function (btn) {
     btn.addEventListener("click", function () {
       document.getElementById("answer").value = btn.getAttribute("data-vote");
-      try { localStorage.setItem(VOTED_KEY, btn.getAttribute("data-vote")); } catch (e) {}
+      document.querySelectorAll("#q1 .vote").forEach(function (b) { b.classList.remove("picked"); });
+      btn.classList.add("picked");
+      q2.hidden = false;
+    });
+  });
+  document.querySelectorAll("#q2 .vote").forEach(function (btn) {
+    btn.addEventListener("click", function (ev) {
+      if (!document.getElementById("answer").value) { ev.preventDefault(); return; }
+      document.getElementById("answer-back").value = btn.getAttribute("data-vote");
+      try {
+        localStorage.setItem(VOTED_KEY, "used it: " + document.getElementById("answer").value +
+                                        ", want it back: " + btn.getAttribute("data-vote"));
+      } catch (e) {}
     });
   });
 
   if (new URLSearchParams(location.search).get("thanks")) {
-    status.textContent = "Thanks — your answer is in. The bars update at the next count.";
+    status.textContent = "Thanks — your answers are in. The bars update at the next count.";
   } else {
     try {
       var prev = localStorage.getItem(VOTED_KEY);
-      if (prev) { status.textContent = "You already answered " + prev + " from this browser."; }
+      if (prev) { status.textContent = "You already answered from this browser (" + prev + ")."; }
     } catch (e) {}
   }
 })();

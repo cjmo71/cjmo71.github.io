@@ -47,8 +47,9 @@
   </div>
 
   <p style="font-size: 15px; line-height: 1.7;">
-    Somos tried to change <strong>the crossover</strong>, read it back, and saw that your speaker had not
-    taken it. That is why you are here &mdash; the app told you rather than pretending it worked.</p>
+    You have a Sonos Amp, and we recently changed how Somos handles <strong>the crossover</strong> on it.
+    We want to know whether it works for you &mdash; a &ldquo;yes, it works&rdquo; counts as much as a
+    &ldquo;no&rdquo;, because it tells us where to stop looking.</p>
 
   <p style="font-size: 15px; line-height: 1.7;">
     <strong>Nobody on the Somos team owns every Sonos model.</strong> Some of these faults we simply
@@ -56,7 +57,8 @@
     of it.</p>
 
   <p style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
-    Every question can be skipped, and the app itself sent us nothing &mdash; it only opened this page.</p>
+    The four yes/no questions are required &mdash; they are what settles it. The rest can be skipped,
+    and the app itself sent us nothing &mdash; it only opened this page.</p>
 
   <form action="https://formsubmit.co/cjmo.app@gmail.com" method="POST" class="contact-form">
     <input type="hidden" name="_subject" value="Crossover — Somos speaker check (v2)">
@@ -69,28 +71,33 @@
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">1. Do you have a Sonos Amp?</legend>
-      <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">If No, you won't see a crossover control in Somos, and that's correct — you can stop here.</p>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Amp present" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Amp present" value="No"> No</label>
+      <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">If No, you won't see a crossover control in Somos, and that's correct — there is nothing to send us, so you can stop here.</p>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Amp present" value="Yes"> Yes</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Amp present" value="No"> No</label>
     </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">2. Does the crossover control appear in Somos?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Crossover control appears" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Crossover control appears" value="No"> No</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Crossover control appears" value="Yes"> Yes</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Crossover control appears" value="No"> No</label>
     </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">3. Does changing the crossover in Somos actually change the sound?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Changing crossover changes sound" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Changing crossover changes sound" value="No"> No</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Changing crossover changes sound" value="Yes"> Yes</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Changing crossover changes sound" value="No"> No</label>
+      <div id="q-somos-what" style="margin-top: 10px;">
+        <label style="font-weight: normal;">If No to 2 or 3 &mdash; what happens when you move the crossover in Somos?
+          <textarea name="What happens in Somos" placeholder="e.g. the slider moves but the sound doesn't change, it snaps back, the control never appears" style="min-height: 80px;"></textarea>
+        </label>
+      </div>
     </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">4. Does crossover work in the OFFICIAL SONOS APP?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Works in the OFFICIAL SONOS APP" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Works in the OFFICIAL SONOS APP" value="No"> No</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Works in the OFFICIAL SONOS APP" value="It's not available there"> It's not available there</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Works in the OFFICIAL SONOS APP" value="Yes"> Yes</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Works in the OFFICIAL SONOS APP" value="No"> No</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Works in the OFFICIAL SONOS APP" value="It's not available there"> It's not available there</label>
     </fieldset>
 
     <label>Is there anything else you would like to add? (optional)
@@ -106,8 +113,8 @@
 
   <div style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 16px 18px; margin: 28px 0 8px;">
     <p style="margin: 0; font-size: 15px;">
-      <strong>Wrong setting?</strong> If it was Speech Boost that got refused, that has its own
-      page &mdash; <a href="speech-boost.html">answer the Speech Boost questions instead</a>.</p>
+      <strong>Wrong page?</strong> Speech Boost has <a href="speech-boost.html">its own questions</a>, and so
+      does <a href="speakers-not-found.html">a speaker or system that doesn't show up</a>.</p>
   </div>
 
   <p style="font-size: 14px; color: var(--dim); margin-top: 22px;">
@@ -115,8 +122,8 @@
     gets triaged as a bug.</p>
 
   <p style="font-size: 13px; color: var(--dim); margin-top: 12px;">
-    <strong>Every question here is optional</strong>, including your email address &mdash; leave it
-    blank and we simply have no way to write back. Your answers go straight to the developer, and the
+    <strong>Only the yes/no questions are required.</strong> Everything else is optional, including
+    your email address &mdash; leave it blank and we simply have no way to write back. Your answers go straight to the developer, and the
     app sent nothing itself; it only opened this page. See our
     <a href="privacy.html">Privacy Policy</a>.
   </p>
@@ -142,6 +149,23 @@
       if (email && replyto && email.value) { replyto.value = email.value; }
     });
   });
+</script>
+<script>
+  // "What happens in Somos" only matters when the Somos-side answer is No, so it is folded away
+  // until then. Without JS it simply stays visible. A div, not the label itself: the shared
+  // stylesheet gives .contact-form label its own display, which would override [hidden].
+  (function () {
+    var box = document.getElementById('q-somos-what');
+    var radios = document.querySelectorAll('input[name="Crossover control appears"], input[name="Changing crossover changes sound"]');
+    if (!box || !radios.length) { return; }
+    function update() {
+      var no = false;
+      for (var i = 0; i < radios.length; i++) { if (radios[i].checked && radios[i].value === 'No') { no = true; } }
+      box.hidden = !no;
+    }
+    for (var i = 0; i < radios.length; i++) { radios[i].addEventListener('change', update); }
+    update();
+  })();
 </script>
 </body>
 </html>

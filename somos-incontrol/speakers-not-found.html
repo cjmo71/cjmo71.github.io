@@ -47,8 +47,9 @@
   </div>
 
   <p style="font-size: 15px; line-height: 1.7;">
-    Somos looked for your speakers and did not find all of them. That is why you are here &mdash; the
-    app told you rather than pretending everything was there.</p>
+    We recently changed how Somos finds a second Sonos system, and we want to know whether everything
+    shows up for you &mdash; every speaker, and every system if you have more than one. A &ldquo;yes,
+    it's all there&rdquo; counts as much as a &ldquo;no&rdquo;, because it tells us where to stop looking.</p>
 
   <p style="font-size: 15px; line-height: 1.7;">
     <strong>Nobody on the Somos team owns every Sonos model or every home network.</strong> Some of these
@@ -56,7 +57,8 @@
     more than a week of it.</p>
 
   <p style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
-    Every question can be skipped, and the app itself sent us nothing &mdash; it only opened this page.</p>
+    The first two questions are required &mdash; they are the two that settle it. The rest can be
+    skipped, and the app itself sent us nothing &mdash; it only opened this page.</p>
 
   <form action="https://formsubmit.co/cjmo.app@gmail.com" method="POST" class="contact-form">
     <input type="hidden" name="_subject" value="Speakers not found — Somos speaker check (v2)">
@@ -69,15 +71,20 @@
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">1. Does Somos find all your speakers?</legend>
-      <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">If Yes, skip to the last section.</p>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Somos finds all speakers" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Somos finds all speakers" value="No"> No</label>
+      <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">If Yes, answer question 2 and you're done &mdash; the rest are optional.</p>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Somos finds all speakers" value="Yes"> Yes</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Somos finds all speakers" value="No"> No</label>
+      <div id="q-somos-what" style="margin-top: 10px;">
+        <label style="font-weight: normal;">If No &mdash; what is missing, and what does Somos show instead?
+          <textarea name="What happens in Somos" placeholder="e.g. my S1 system never appears, one room is missing, Somos shows a second system with one speaker in it" style="min-height: 80px;"></textarea>
+        </label>
+      </div>
     </fieldset>
 
     <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
       <legend style="padding: 0 6px; font-size: 14px;">2. Does the OFFICIAL SONOS APP find all your speakers?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds all speakers" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" name="Sonos app finds all speakers" value="No"> No</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Sonos app finds all speakers" value="Yes"> Yes</label>
+      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Sonos app finds all speakers" value="No"> No</label>
     </fieldset>
 
     <fieldset id="q-address" style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
@@ -117,8 +124,8 @@
 
   <div style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 16px 18px; margin: 28px 0 8px;">
     <p style="margin: 0; font-size: 15px;">
-      <strong>Wrong setting?</strong> If it was a setting that got refused, that has its own
-      page &mdash; <a href="speech-boost.html">answer the Speech Boost questions instead</a>.</p>
+      <strong>Wrong page?</strong> A setting that won't take has its own questions &mdash;
+      <a href="speech-boost.html">Speech Boost</a> or <a href="crossover.html">the crossover</a>.</p>
   </div>
 
   <p style="font-size: 14px; color: var(--dim); margin-top: 22px;">
@@ -126,8 +133,8 @@
     gets triaged as a bug.</p>
 
   <p style="font-size: 13px; color: var(--dim); margin-top: 12px;">
-    <strong>Every question here is optional</strong>, including your email address &mdash; leave it
-    blank and we simply have no way to write back. Your answers go straight to the developer, and the
+    <strong>Only the first two questions are required.</strong> Everything else is optional, including
+    your email address &mdash; leave it blank and we simply have no way to write back. Your answers go straight to the developer, and the
     app sent nothing itself; it only opened this page. See our
     <a href="privacy.html">Privacy Policy</a>.
   </p>
@@ -190,6 +197,23 @@
       renumber();
     }
     for (var i = 0; i < addr.length; i++) { addr[i].addEventListener('change', update); }
+    update();
+  })();
+</script>
+<script>
+  // "What happens in Somos" only matters when the Somos-side answer is No, so it is folded away
+  // until then. Without JS it simply stays visible. A div, not the label itself: the shared
+  // stylesheet gives .contact-form label its own display, which would override [hidden].
+  (function () {
+    var box = document.getElementById('q-somos-what');
+    var radios = document.querySelectorAll('input[name="Somos finds all speakers"]');
+    if (!box || !radios.length) { return; }
+    function update() {
+      var no = false;
+      for (var i = 0; i < radios.length; i++) { if (radios[i].checked && radios[i].value === 'No') { no = true; } }
+      box.hidden = !no;
+    }
+    for (var i = 0; i < radios.length; i++) { radios[i].addEventListener('change', update); }
     update();
   })();
 </script>

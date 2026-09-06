@@ -60,7 +60,8 @@
     The first two questions are required &mdash; they are the two that settle it. The rest can be
     skipped, and the app itself sent us nothing &mdash; it only opened this page.</p>
 
-  <form action="https://formsubmit.co/cjmo.app@gmail.com" method="POST" class="contact-form">
+  <form action="https://somos-forms.somos-poll.workers.dev/submit" method="POST" class="contact-form">
+    <input type="hidden" name="_next" value="https://somosincontrol.com/somos-incontrol/speech-boost.html?thanks=1">
     <input type="hidden" name="_subject" value="Speech Boost — Somos speaker check (v2)">
     <input type="hidden" name="_replyto" value="">
     <input type="hidden" name="_template" value="table">
@@ -160,6 +161,20 @@
     for (var i = 0; i < radios.length; i++) { radios[i].addEventListener('change', update); }
     update();
   })();
+</script>
+
+<script>
+// Sent straight back here by the form Worker with ?thanks=1 — say so at the top
+// of the page, because the Worker answers with JSON and nothing else would show.
+(function () {
+  if (!new URLSearchParams(location.search).get("thanks")) return;
+  var d = document.createElement("div");
+  d.setAttribute("role", "status");
+  d.style.cssText = "margin:16px auto;max-width:760px;padding:12px 16px;border-radius:10px;background:#e7f6ec;color:#14532d;border:1px solid #b7e4c7;font:15px/1.5 -apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;";
+  d.textContent = "Thanks — that reached the developer.";
+  document.body.insertBefore(d, document.body.firstChild);
+  window.scrollTo(0, 0);
+})();
 </script>
 </body>
 </html>

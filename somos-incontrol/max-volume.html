@@ -196,13 +196,28 @@
     bars("yes", "no", d.yes || 0, d.no || 0);
     bars("back-yes", "back-no", d.back_yes || 0, d.back_no || 0);
     charts.hidden = false;
-    if (d.as_of) { asOf.textContent = "Counted up to " + d.as_of + ". Your answers appear at the next count."; }
+    if (d.as_of) { asOf.textContent = "Live count, as of " + d.as_of + "."; }
   }
 
-  fetch("counts.json", { cache: "no-store" })
+  // LIVE from the Worker that already stores every vote. Chris, 2026-09-07: "fix the max poll.
+  // it's an easy one to track. I don't want anything on form submit." The old counts.json was a
+  // static file someone had to rewrite by hand — it read 2/1/0/0 while the store held 17 votes.
+  // A poll vote carries no free text, so it never touches FormSubmit at all.
+  function pick(d, question) {
+    var q = (d.questions || []).filter(function (x) { return x.question === question; })[0];
+    return (q && q.counts) || {};
+  }
+  fetch("https://somos-forms.somos-poll.workers.dev/results?form=max-volume", { cache: "no-store" })
     .then(function (r) { return r.json(); })
-    .then(draw)
-    .catch(function () { /* no counts yet — the charts simply stay hidden */ });
+    .then(function (d) {
+      var used = pick(d, "Uses Max Volume"), back = pick(d, "Wants It Back");
+      draw({
+        yes: used.Yes || 0, no: used.No || 0,
+        back_yes: back.Yes || 0, back_no: back.No || 0,
+        as_of: d.updated_at ? new Date(d.updated_at).toUTCString().replace(" GMT", " UTC") : ""
+      });
+    })
+    .catch(function () { /* worker unreachable — the charts simply stay hidden */ });
 
   // First question picks, second question sends. Both answers travel in the one email.
   document.querySelectorAll("#q1 .vote").forEach(function (btn) {
@@ -225,7 +240,7 @@
   });
 
   if (new URLSearchParams(location.search).get("thanks")) {
-    status.textContent = "Thanks — your answers are in. The bars update at the next count.";
+    status.textContent = "Thanks — your answers are in and the bars above already include them.";
   } else {
     try {
       var prev = localStorage.getItem(VOTED_KEY);

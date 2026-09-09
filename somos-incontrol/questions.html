@@ -85,5 +85,17 @@
 
 </div>
 
+<script>
+// Anonymous page-view ping (Chris's own Cloudflare Worker, no third-party analytics).
+// No cookies, no IDs, no identifying data of any kind is sent or stored — see privacy.html.
+// Fires once after load; fails silently if the counter is unreachable so it can never
+// affect the page.
+window.addEventListener('load', function () {
+  try {
+    var i = new Image();
+    i.src = 'https://somos-hits.somos-poll.workers.dev/hit?p=' + encodeURIComponent(location.pathname);
+  } catch (e) {}
+});
+</script>
 </body>
 </html>

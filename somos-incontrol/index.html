@@ -127,6 +127,55 @@ footer a { color: var(--dim); margin-right: 14px; }
   .top nav a:not(.btn) { display: none; }
   .top .wrap { grid-template-columns: 1fr auto; }
 }
+
+/* ---- Press & quotes ------------------------------------------------------
+   Was two bulleted lists with an emoji that rendered as a broken glyph on the
+   Mac. Now: press tiles you can see are links, and the user quotes as cards
+   that fade up as they come into view. Everything below is motion-safe —
+   prefers-reduced-motion turns every animation off and leaves the layout. */
+.press { padding: 52px 0; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--bg), var(--bg-2)); }
+.press h2 { position: relative; display: inline-block; margin-bottom: 6px; }
+.press h2::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 3px; width: 100%;
+  border-radius: 3px; background: linear-gradient(90deg, var(--accent), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform .7s cubic-bezier(.2,.7,.3,1); }
+.press.in h2::after { transform: scaleX(1); }
+.press .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--dim); margin: 22px 0 12px; }
+
+.press-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.press-tile { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: 14px;
+  background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--body);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.press-tile:hover { text-decoration: none; transform: translateY(-3px); border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(37,99,235,.16); }
+.press-tile .mono { flex: 0 0 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+  font-weight: 800; font-size: 14px; letter-spacing: -.02em; background: var(--tint); color: var(--accent); }
+.press-tile .who { display: block; font-weight: 700; color: var(--fg); font-size: 15px; }
+.press-tile .what { display: block; font-size: 14px; color: var(--dim); margin-top: 2px; }
+.press-tile .arrow { margin-left: auto; align-self: center; color: var(--dim); font-size: 18px;
+  transition: transform .25s ease, color .25s ease; }
+.press-tile:hover .arrow { transform: translateX(4px); color: var(--accent); }
+
+.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;
+  list-style: none; padding: 0; margin: 0; }
+.quotes li { position: relative; padding: 20px 18px 18px; border-radius: 14px; background: var(--card);
+  border: 1px solid var(--line); box-shadow: var(--shadow); font-size: 15px; color: var(--body);
+  transition: transform .25s ease, border-color .25s ease; }
+.quotes li:hover { transform: translateY(-2px); border-color: var(--accent); }
+.quotes li::before { content: "\201C"; position: absolute; top: 2px; left: 12px; font-size: 42px;
+  line-height: 1; color: var(--accent); opacity: .28; font-family: Georgia, "Times New Roman", serif; }
+
+/* ---- Reveal on scroll ----------------------------------------------------
+   One class, one observer. Anything with .reveal starts a little low and
+   fades up the first time it enters the viewport, staggered by --d. */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1); transition-delay: var(--d, 0s); }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .press h2::after, .press-tile, .press-tile .arrow, .quotes li { transition: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .press h2::after { transform: scaleX(1) !important; }
+}
 </style>
 <script src="assets/rail-menu.js" defer></script>
 </head>
@@ -182,16 +231,16 @@ footer a { color: var(--dim); margin-right: 14px; }
       </div>
       <p class="meta">Free during the beta · iPhone and iPad · iOS 16.2 or later · Independent, not affiliated with Sonos, Inc.</p>
     </div>
-    <div class="device"><img src="assets/1-room-page.webp" alt="Room page for a soundbar room showing the Dolby Atmos badge, volume, sound presets and EQ sliders" width="720" height="1565"></div>
+    <div class="device reveal"><img src="assets/1-room-page.webp" alt="Room page for a soundbar room showing the Dolby Atmos badge, volume, sound presets and EQ sliders" width="720" height="1565"></div>
   </div>
 </section>
 
 <section class="steps">
   <div class="wrap">
     <ol>
-      <li><b>Install from TestFlight</b>You'll need Apple's free TestFlight app first. Then tap the link above and install Somos InControl.</li>
-      <li><b>Tap Find My Speakers</b>iOS asks for Local Network permission — tap Allow. It's the only way the app can see your Sonos® speakers. <a href="https://docs.somosincontrol.com/getting-started/permissions">Why it's needed</a>.</li>
-      <li><b>Pick a room</b>The app scans your network and opens your first room. Everything applies instantly, and a short tour shows you around.</li>
+      <li class="reveal" style="--d:0.05s"><b>Install from TestFlight</b>You'll need Apple's free TestFlight app first. Then tap the link above and install Somos InControl.</li>
+      <li class="reveal" style="--d:0.10s"><b>Tap Find My Speakers</b>iOS asks for Local Network permission — tap Allow. It's the only way the app can see your Sonos® speakers. <a href="https://docs.somosincontrol.com/getting-started/permissions">Why it's needed</a>.</li>
+      <li class="reveal" style="--d:0.15s"><b>Pick a room</b>The app scans your network and opens your first room. Everything applies instantly, and a short tour shows you around.</li>
     </ol>
   </div>
 </section>
@@ -200,19 +249,33 @@ footer a { color: var(--dim); margin-right: 14px; }
   <div class="wrap">
     <h2>What people are saying</h2>
 
-    <p style="font-size:14px;color:var(--dim);margin-top:-6px;">Written about, unprompted:</p>
-    <ul style="line-height:1.9;list-style:none;padding-left:0;margin-bottom:26px;">
-      <li>📰 <a href="https://stadt--bremerhaven-de.translate.goog/somos-incontrol-die-inoffizielle-ios-alternative-fuer-euer-sonos-heimkino/?_x_tr_sl=de&amp;_x_tr_tl=en&amp;_x_tr_hl=en">Caschys Blog</a> &mdash; <span style="color:var(--dim);">a German write-up, all about Somos &mdash; this link opens it in English</span></li>
-      <li>📰 <a href="https://www.techradar.com/televisions/home-theater/sonos-is-finally-improving-its-app-but-its-not-moving-fast-enough-so-people-are-building-new-alternatives-to-solve-big-gripes-about-home-theater-setups-and-more-customizable-sound">TechRadar</a> &mdash; <span style="color:var(--dim);">&ldquo;the app Sonos should have made&rdquo;</span></li>
-    </ul>
+    <p class="eyebrow reveal">Written about, unprompted</p>
+    <div class="press-tiles">
+      <a class="press-tile reveal" style="--d:.05s" href="https://stadt--bremerhaven-de.translate.goog/somos-incontrol-die-inoffizielle-ios-alternative-fuer-euer-sonos-heimkino/?_x_tr_sl=de&amp;_x_tr_tl=en&amp;_x_tr_hl=en">
+        <span class="mono" aria-hidden="true">CB</span>
+        <span>
+          <span class="who">Caschys Blog</span>
+          <span class="what">A German write-up, all about Somos &mdash; this link opens it in English</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="press-tile reveal" style="--d:.15s" href="https://www.techradar.com/televisions/home-theater/sonos-is-finally-improving-its-app-but-its-not-moving-fast-enough-so-people-are-building-new-alternatives-to-solve-big-gripes-about-home-theater-setups-and-more-customizable-sound">
+        <span class="mono" aria-hidden="true">TR</span>
+        <span>
+          <span class="who">TechRadar</span>
+          <span class="what">&ldquo;The app Sonos should have made&rdquo;</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
 
-    <p style="font-size:14px;color:var(--dim);">And from the people using it:</p>
-    <ul style="line-height:1.9;list-style:none;padding-left:0;">
-      <li>&ldquo;I&rsquo;ve been testing and trying new apps for 10-15 years now and I am really impressed with what you put together here.&rdquo;</li>
-      <li>&ldquo;This so the best Sonos app I found!&rdquo;</li>
-      <li>&ldquo;I had the application installed on my iPhone and I love it.&rdquo;</li>
-      <li>&ldquo;Thank you very much and congratulations on a great app.&rdquo;</li>
-      <li>&ldquo;This is great! Downloaded.&rdquo;</li>
+    <p class="eyebrow reveal">And from the people using it</p>
+    <ul class="quotes">
+      <li class="reveal" style="--d:.05s">I&rsquo;ve been testing and trying new apps for 10-15 years now and I am really impressed with what you put together here.</li>
+      <li class="reveal" style="--d:.12s">This so the best Sonos app I found!</li>
+      <li class="reveal" style="--d:.19s">I had the application installed on my iPhone and I love it.</li>
+      <li class="reveal" style="--d:.26s">Thank you very much and congratulations on a great app.</li>
+      <li class="reveal" style="--d:.33s">This is great! Downloaded.</li>
     </ul>
   </div>
 </section>
@@ -363,6 +426,25 @@ window.addEventListener('load', function () {
     i.src = 'https://somos-hits.somos-poll.workers.dev/hit?p=' + encodeURIComponent(location.pathname);
   } catch (e) {}
 });
+</script>
+<script>
+/* Reveal-on-scroll. One observer for every .reveal on the page; the press
+   section also gets .in so its heading underline draws. No motion at all when
+   the visitor has asked for reduced motion — they just get the finished state. */
+(function () {
+  var els = document.querySelectorAll('.reveal, .press');
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (var i = 0; i < els.length; i++) els[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  els.forEach(function (el) { io.observe(el); });
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+# Files that live in this folder but must NOT be published.
+#
+# WHY (2026-09-09): `wrangler pages deploy .` uploads everything in the directory, .gitignore
+# and all — so the three draft front pages and the old front-page backup were live on
+# somosincontrol.com. Chris found out from an audit: "why does it show the old page. I don't
+# want that of course."
+preview/
+*.bak

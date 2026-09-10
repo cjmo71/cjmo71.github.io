@@ -1,0 +1,10 @@
+# somosincontrol.com
+# Everything here is public and meant to be read — by people, by search engines,
+# and by the AI assistants people now ask instead of searching.
+
+User-agent: *
+Allow: /
+Disallow: /preview/
+Disallow: /downloads/
+
+Sitemap: https://somosincontrol.com/sitemap.xml

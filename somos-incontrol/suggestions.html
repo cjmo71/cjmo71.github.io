@@ -66,8 +66,8 @@
   </div>
 
 
-  <h2 style="font-size: 28px; line-height: 1.25; margin-bottom: 8px;">The Somos InControl Roadmap built by our users.</h2>
-  <p style="font-size: 14px; color: var(--dim); margin-top: 0; margin-bottom: 26px;">Somos is built in the open, shaped directly by what its users ask for. There is no formal roadmap — instead, we follow the direction of our users. Your suggestions are important, so please add yours to our list in the form below.</p>
+  <h2 style="font-size: 28px; line-height: 1.25; margin-bottom: 8px;">What users asked for, and what has shipped.</h2>
+  <p style="font-size: 14px; color: var(--dim); margin-top: 0; margin-bottom: 26px;">Somos is built in the open, shaped directly by what its users ask for. There is no fixed roadmap and no promised dates &mdash; what gets built next is whatever users ask for most. Your suggestions are important, so please add yours to our list in the form below.</p>
 
   <h3 style="margin-top:6px;">Shipped — in the app now, or in the beta</h3>
   <ul style="line-height: 1.9; list-style: none; padding-left: 0;">
@@ -80,7 +80,7 @@
     <li>✅ Create stereo pairs in Somos — <span style="color: var(--dim);">build 31 · July 20</span></li>
     <li>✅ Faster, more reliable surround &amp; fronts setup — <span style="color: var(--dim);">build 31 · July 20</span></li>
     <li>✅ Sliders apply live while you drag (the &ldquo;volume delay&rdquo; reports) — <span style="color: var(--dim);">build 32 · July 21</span></li>
-    <li>✅ Max volume limit per room — <span style="color: var(--dim);">build 32 · July 21</span></li>
+    <li>✅ Max volume limit per room — <span style="color: var(--dim);">build 32 · July 21 · since <strong>removed</strong> — <a href="max-volume.html">tell us if you want it back</a></span></li>
     <li>✅ Music Playback (Ambient/Full) surround toggle — <span style="color: var(--dim);">build 32 · July 21</span></li>
     <li>✅ S1 + S2 split-system support — <span style="color: var(--dim);">rebuilt on Sonos household identity · build 32</span></li>
     <li>✅ Speech Boost / dialogue enhancement reports and sets correctly on Arc-class bars — <span style="color: var(--dim);">build 35.7 · beta · September</span></li>
@@ -99,7 +99,7 @@
 
   <h3>In the current beta — build <span data-somos-build>35.7.4</span>, being tested now</h3>
   <p style="font-size: 14px; color: var(--dim); margin-top: -6px; margin-bottom: 14px;">
-    Finished and in testers&rsquo; hands, not yet in the App Store version.
+    Finished and in testers&rsquo; hands. Somos is still a TestFlight beta &mdash; there is no App Store release yet.
     <a href="support.html#contact">Ask for a beta invite</a> if you want it early.</p>
   <ul style="line-height: 1.9; list-style: none; padding-left: 0;">
     <li>🧪 Split S1 + S2 systems: your S2 rooms no longer go missing</li>
@@ -199,8 +199,8 @@
 
   <script>
 
-    // There are two forms on this page now (the poll and the suggestion box), so this
-    // only touches the one that actually has a subject line and an email field.
+    // Only one form is left on this page (the suggestion box) — the poll moved to its own
+    // page. This still guards on the subject field so it stays correct if a second one returns.
     document.querySelectorAll('.contact-form').forEach(function (form) {
       var subjField = form.querySelector('[name="user_subject"]');
       if (!subjField) return;

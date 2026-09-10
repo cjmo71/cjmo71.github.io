@@ -6,3 +6,9 @@
 # want that of course."
 preview/
 *.bak
+
+# Dead files kept in git but NOT published (2026-09-09 audit, F12):
+#   the three PDFs carry pre-v1.1 content and are unlinked but were still reachable;
+#   counts.json is the retired static poll tally, replaced by the live Worker /results.
+downloads/
+somos-incontrol/counts.json

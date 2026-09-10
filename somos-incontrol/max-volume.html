@@ -91,7 +91,8 @@
     and whether you want it back.</p>
 
   <p style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
-    Two taps. Nothing is sent from the app &mdash; it only opened this page &mdash; and the count below
+    Two taps. Nothing is sent from the app &mdash; it only opened this page, which counts the visit and
+    records the page address and nothing about you &mdash; and the count below
     is tallied from the answers and refreshed a few times a day.</p>
 
   <form id="poll" action="https://somos-forms.somos-poll.workers.dev/submit" method="POST">
@@ -169,13 +170,10 @@
 
 <script>
 (function () {
-  // NO live counter. GitHub Pages cannot write a file when somebody votes, and
-  // Chris did not want to stand up a service for it: "you can't push the info to
-  // the site as the emails come in? Won't be live on the site but some what up to
-  // date." So the vote goes out as an ordinary FormSubmit email like every other
-  // questionnaire, and a job on tiny tallies the mail and commits counts.json
-  // back into this repo. The chart reads that file — accurate as of the last run,
-  // and it says so rather than pretending to be live.
+  // The counter IS live now — it reads /results straight off the Worker (see the fetch
+  // below). The old description of a tallied-email job writing counts.json into this repo
+  // was left here after that changed and was removed 2026-09-09; counts.json itself is dead
+  // and is no longer published.
   var charts = document.getElementById("charts");
   var status = document.getElementById("poll-status");
   var asOf   = document.getElementById("poll-asof");
@@ -244,7 +242,16 @@
   } else {
     try {
       var prev = localStorage.getItem(VOTED_KEY);
-      if (prev) { status.textContent = "You already answered from this browser (" + prev + ")."; }
+      if (prev) {
+        // The page tells the reader their browser remembers the vote so one person cannot
+        // skew the count. Until 2026-09-09 it only SAID so — the buttons stayed live and the
+        // form resubmitted. Now the vote is actually closed off.
+        status.textContent = "You already answered from this browser (" + prev + ").";
+        document.querySelectorAll("#poll .vote").forEach(function (b) { b.disabled = true; });
+        document.getElementById("poll").addEventListener("submit", function (ev) {
+          ev.preventDefault();
+        });
+      }
     } catch (e) {}
   }
 })();

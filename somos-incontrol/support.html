@@ -179,17 +179,10 @@
   <p>Have a <strong>feature idea</strong>? Use the dedicated <a href="suggestions.html">suggestions form</a> so it lands on the right list. For everything else: send us a message and we'll get back to you. Responses usually take less than 48 hours. You can also get here straight from the app: open the menu and tap <strong>Support &amp; Feedback</strong>.</p>
 
   <!--
-    Contact form powered by FormSubmit.co (free, no account, no dashboard).
-
-    Replace YOUR_EMAIL_HERE below with the dedicated Gmail you want
-    submissions for Somos InControl delivered to.
-
-    On first submission from a browser, FormSubmit emails that address
-    a confirmation link. Click it once. Done.
-
-    To hide your email in the page source: visit https://formsubmit.co ,
-    paste your email, and FormSubmit gives you a random-string endpoint
-    like https://formsubmit.co/el/xyz789 that forwards to your real email.
+    Contact form posts to Chris's own Cloudflare Worker at
+    https://somos-forms.somos-poll.workers.dev/submit , which emails the submission on.
+    FormSubmit.co has not been used since that Worker existed — the old FormSubmit
+    instructions that sat here were removed 2026-09-09.
   -->
   <form action="https://somos-forms.somos-poll.workers.dev/submit" method="POST" class="contact-form">
     <input type="hidden" name="_next" value="https://somosincontrol.com/somos-incontrol/support.html?thanks=1">

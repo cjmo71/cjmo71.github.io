@@ -45,7 +45,6 @@
   <a href="how-to.html">How to Use</a>
   <a href="support.html">Support</a>
   <h4>Have your say</h4>
-  <a href="questions.html">Help us track down bugs</a>
   <a href="polls.html">Polls</a>
   <a href="suggestions.html">Suggest a feature</a>
   <h4>Legal</h4>
@@ -56,115 +55,14 @@
 
 <div class="container">
 
-  <div class="cardhead">
-    <div class="cardhead-main">
-    <div class="logo" style="background: linear-gradient(135deg, #0ea5e9, #0369a1);">&#127925;</div>
-    <h1>Crossover</h1>
-    <div class="updated">Somos InControl &middot; Crossover speaker check</div>
-    </div>
-  </div>
-
-  <div class="req-check" style="border: 1px solid var(--dim, #999); border-radius: 12px; padding: 14px 16px; margin: 0 0 22px;">
-    <p style="font-size: 15px; font-weight: 700; margin: 0 0 8px;">Before you check anything &mdash; five things Somos needs</p>
-    <ol style="font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
-      <li><strong>UPnP on in the Sonos app.</strong> Sonos app &rsaquo; Account &rsaquo; Privacy &amp; Security &rsaquo; UPnP &rsaquo; on.</li>
-      <li><strong>VPN off on your phone.</strong> A VPN hides your home network from Somos.</li>
-      <li><strong>Phone on the same Wi-Fi as the speakers.</strong> Not cellular.</li>
-      <li><strong>Local Network permission on for Somos.</strong> iOS Settings &rsaquo; Somos InControl &rsaquo; Local Network.</li>
-      <li><strong>Not a guest or IoT network.</strong> Those keep devices from seeing each other.</li>
-    </ol>
-    <p style="font-size: 13px; color: var(--dim); margin: 8px 0 0;">Bluetooth is optional &mdash; Somos works over Wi-Fi alone. It only helps spot a speaker that is on but not on your Wi-Fi yet.</p>
-  </div>
-
-  <p style="font-size: 15px; line-height: 1.7;">
-    You have a Sonos Amp, and we recently changed how Somos handles <strong>the crossover</strong> on it.
-    We want to know whether it works for you &mdash; a &ldquo;yes, it works&rdquo; counts as much as a
-    &ldquo;no&rdquo;, because it tells us where to stop looking.</p>
-
-  <p style="font-size: 15px; line-height: 1.7;">
-    <strong>Nobody on the Somos team owns every Sonos model.</strong> Some of these faults we simply
-    cannot reproduce, and guessing has not got us anywhere. A few taps below tells us more than a week
-    of it.</p>
-
-  <p style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
-    The four yes/no questions are required &mdash; they are what settles it. The rest can be skipped,
-    and the app itself sent us nothing &mdash; it only opened this page. The page counts the visit,
-    which records the page address and nothing about you.</p>
-
-  <form action="https://somos-forms.somos-poll.workers.dev/submit" method="POST" class="contact-form">
-    <input type="hidden" name="_next" value="https://somosincontrol.com/somos-incontrol/crossover.html?thanks=1">
-    <input type="hidden" name="_subject" value="Crossover — Somos speaker check (v2)">
-    <input type="hidden" name="_replyto" value="">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="true">
-    <input type="hidden" name="_form_version" value="v2">
-    <input type="hidden" name="_questionnaire" value="crossover">
-    <input type="text" name="_honey" style="display:none">
-
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">1. Do you have a Sonos Amp?</legend>
-      <p style="font-size: 13px; color: var(--dim); margin: 2px 0 10px;">If No, you won't see a crossover control in Somos, and that's correct — there is nothing to send us, so you can stop here.</p>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Amp present" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Amp present" value="No"> No</label>
-    </fieldset>
-
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">2. Does the crossover control appear in Somos?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Crossover control appears" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Crossover control appears" value="No"> No</label>
-    </fieldset>
-
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">3. Does changing the crossover in Somos actually change the sound?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Changing crossover changes sound" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Changing crossover changes sound" value="No"> No</label>
-      <div id="q-somos-what" style="margin-top: 10px;">
-        <label style="font-weight: normal;">If No to 2 or 3 &mdash; what happens when you move the crossover in Somos?
-          <textarea name="What happens in Somos" placeholder="e.g. the slider moves but the sound doesn't change, it snaps back, the control never appears" style="min-height: 80px;"></textarea>
-        </label>
-      </div>
-    </fieldset>
-
-    <fieldset style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 14px 16px; margin: 0 0 14px;">
-      <legend style="padding: 0 6px; font-size: 14px;">4. Does crossover work in the OFFICIAL SONOS APP?</legend>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Works in the OFFICIAL SONOS APP" value="Yes"> Yes</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Works in the OFFICIAL SONOS APP" value="No"> No</label>
-      <label style="display:block; font-weight: normal; margin: 6px 0;"><input type="radio" required name="Works in the OFFICIAL SONOS APP" value="It's not available there"> It's not available there</label>
-    </fieldset>
-
-    <label>Is there anything else you would like to add? (optional)
-      <textarea name="Anything else" placeholder="Optional — anything you'd like to add"></textarea>
-    </label>
-
-    <label>If you would like a reply please leave your email
-      <input type="email" name="email" placeholder="Optional">
-    </label>
-
-    <button type="submit">Send my answers</button>
-  </form>
-
-  <div style="border: 1px solid var(--line, #333); border-radius: 10px; padding: 16px 18px; margin: 28px 0 8px;">
-    <p style="margin: 0; font-size: 15px;">
-      <strong>Wrong page?</strong> Speech Boost has <a href="speech-boost.html">its own questions</a>, and so
-      does <a href="speakers-not-found.html">a speaker or system that doesn't show up</a>.</p>
-  </div>
-
-  <p style="font-size: 14px; color: var(--dim); margin-top: 22px;">
-    Something actually broken instead? Use the <a href="support.html#contact">support form</a> so it
-    gets triaged as a bug.</p>
-
-  <p style="font-size: 13px; color: var(--dim); margin-top: 12px;">
-    <strong>Only the yes/no questions are required.</strong> Everything else is optional, including
-    your email address &mdash; leave it blank and we simply have no way to write back. Your answers go straight to the developer, and the
-    app sent nothing itself; it only opened this page. See our
-    <a href="privacy.html">Privacy Policy</a>.
-  </p>
+  <div class="cardhead"><div class="cardhead-main"><h1>This check is closed</h1>
+    <div class="updated">Thanks to everyone who answered — the fix is in the next build. Nothing more to send here.</div></div></div>
+  <p style="font-size:15px; line-height:1.7;"><a href="support.html">Support</a> &middot; <a href="polls.html">Polls</a> &middot; <a href="index.html">Home</a></p>
 
   <div class="footer">
     Somos InControl &middot; &copy; 2026 Chris Moore &middot;
     <a href="index.html">Home</a> &middot;
     <a href="how-to.html">How to Use</a> &middot;
-    <a href="questions.html">Questions</a> &middot;
     <a href="polls.html">Polls</a> &middot;
     <a href="suggestions.html">Suggestions</a> &middot;
     <a href="support.html">Support</a> &middot;

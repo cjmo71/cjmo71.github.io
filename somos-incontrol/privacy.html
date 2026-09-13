@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Somos InControl</title>
-<meta name="description" content="Somos InControl privacy policy. No accounts, no tracking, no cloud. Works entirely on your local network.">
+<meta name="description" content="Somos InControl privacy policy. No accounts, no tracking, no cloud for control. Speaker control stays on your local network; a linked music service talks to that service directly.">
 <link rel="stylesheet" href="../assets/style.css">
 <link rel="stylesheet" href="assets/shell.css">
 <link rel="stylesheet" href="lightbox.css">
@@ -71,7 +71,7 @@
       <li><a href="#collect">What we collect</a></li>
       <li><a href="#network">Local network access</a></li>
       <li><a href="#bluetooth">Bluetooth access</a></li>
-      <li><a href="#internet">The one internet request we make</a></li>
+      <li><a href="#internet">Internet requests we make</a></li>
       <li><a href="#storage">Where your settings live</a></li>
       <li><a href="#sonos">Relationship with Sonos®</a></li>
       <li><a href="#children">Children's privacy</a></li>
@@ -82,14 +82,14 @@
   </div>
 
   <h2 id="summary">The short version</h2>
-  <p>Somos InControl is designed to stay on your local network and mind its own business. We don't collect any data, we don't have any servers that see your activity, and the only thing the app talks to on the internet is Sonos® own public image library (to show you photos of your speakers). No account. No analytics. No ads.</p>
+  <p>Somos InControl is designed to stay on your local network and mind its own business. We don't collect any data, and we don't have any servers that see your activity. On its own, the only thing the app talks to on the internet is Sonos® own public image library (to show you photos of your speakers); once you link a music service, using it talks to that service directly from your phone too &mdash; see below for exactly what that involves. No account. No analytics. No ads.</p>
 
   <h2 id="collect">What we collect</h2>
   <p><strong>Nothing.</strong> Somos InControl does not collect, transmit, or store any personal information. <strong>The app</strong> uses no analytics, no advertising identifiers, no crash reporting SDKs, and no third-party code that phones home. It contains zero third-party libraries; it's built entirely on Apple's own frameworks.</p>
 
   <p><strong>This website counts page views, and that is the only thing it counts.</strong> Each page loads a tiny invisible image from our own counter, which records the date and which page was opened &mdash; nothing else. No IP address, no browser details, no referrer, no cookie, no identifier of any kind, and nothing that could be joined up to say one person visited twice. We cannot tell who you are and we are not trying to. The counter runs on our own Cloudflare account; no third party is involved, and if it fails to load the page carries on as normal.</p>
 
-  <p><strong>The website is a separate thing, and it is entirely opt-in.</strong> The forms on this site &mdash; support, suggestions, and the Speaker Check questionnaires &mdash; send us whatever you choose to type into them, and nothing else. <strong>On the Speaker Check questionnaires every field is optional, including your email address</strong> &mdash; leave it blank and we simply have no way to write back. The support and suggestion forms do ask for an email, because without one there is no way to reply to you. The app never fills any of this in for you. When a speaker refuses a setting, Somos only opens a link to this site; whether you answer anything after that is entirely your choice.</p>
+  <p><strong>The website is a separate thing, and it is entirely opt-in.</strong> The forms on this site &mdash; support, suggestions, and the music-services poll &mdash; send us whatever you choose to type into them, and nothing else. <strong>The music-services poll asks for nothing but your picks.</strong> The support and suggestion forms ask for your name, email, subject and message, because without an email there is no way to reply to you. The app never fills any of this in for you.</p>
 
   <h2 id="network">Local network access</h2>
   <p>To find your Sonos® speakers, the app uses two standard local discovery methods on the Wi-Fi network your device is connected to:</p>
@@ -104,15 +104,16 @@
   <p>The app also uses Bluetooth for one purpose: detecting Sonos® speakers that are nearby but <strong>not yet on your Wi-Fi network</strong> — for example, a brand-new speaker you're about to set up, or one that's temporarily offline. iOS will ask for Bluetooth permission on first launch.</p>
   <p>The app only looks at the advertising name of nearby devices and filters for Sonos® speakers. It does not pair with anything, does not send any data over Bluetooth, and does not identify you or your device. If you decline Bluetooth permission, the app still works for speakers already on your Wi-Fi.</p>
 
-  <h2 id="internet">The one internet request we make</h2>
+  <h2 id="internet">Internet requests we make</h2>
   <p>We want to be upfront about this: when the app displays your speakers, it fetches each speaker's product photo from Sonos® public image library at <code>media.sonos.com</code>. This is a plain HTTPS request for a static image, the same kind of request your browser makes when loading any website's logo. <strong>No personal information is sent</strong> — not your IP address beyond what any HTTPS request reveals, not your speaker names, not your network, nothing. It's purely "please send me the picture of this speaker model."</p>
-  <p>If Sonos® image library is unreachable, the app falls back to the low-resolution icon served by your speaker itself on the local network, so the app still works fully offline.</p>
-  <p>Beyond this one image fetch, the app makes no other internet requests. No telemetry, no "analytics," no "product improvement" pings. You can verify this yourself by putting your iPhone in Airplane Mode with Wi-Fi on — everything except the speaker images still works.</p>
+  <p>If Sonos® image library is unreachable, the app falls back to the low-resolution icon served by your speaker itself on the local network, so speaker control never depends on the internet &mdash; only a linked music service's section does (Apple Music's list comes from the phone; playing needs your Sonos® system online). See below.</p>
+  <p>Connecting a music service &mdash; Amazon Music, Pandora, Spotify, iHeartRadio or Bandcamp &mdash; opens that service's own sign-in page in Safari, inside the app (Apple Music is the exception: it links from the Sonos® app, not from Somos). Once you're signed in, Somos keeps the token, plus the account id (so Disconnect can take the account off your Sonos® system too), in the iPhone Keychain, and hands the token to your Sonos® system the next time the Music sheet loads that service (or the first time you play from it) so the speakers can stream from the account &mdash; the same as a Sonos®-app link. After that, opening the Music sheet at all loads every linked service's front page, so the phone sends the stored token straight to that service's own servers as soon as the sheet opens &mdash; not only when you tap into the service; browsing and playing send more of the same, and its artwork images load from the service too &mdash; plain HTTPS requests to the service, never to us. Each of those requests also carries a random device id Somos made up for this install and your Sonos® household id, and on most services the sign-in itself adds your iPhone model, iOS version and the app's name, because the service asks what kind of controller it's talking to. Loading a service's front page also makes two small fetches from Sonos®'s own servers &mdash; the service's listing and its layout description (its presentation map), both static files; no token or account goes with them. Apple Music is different again: its section lists your library from the phone itself through Apple's own MusicKit, with the artwork coming from Apple's servers.</p>
+  <p>Beyond the image fetch and the music-service activity described above, the app makes no other internet requests. No telemetry, no "analytics," no "product improvement" pings. You can see for yourself that speaker control needs no cloud: cut your home's internet at the router (pull the internet cable from the router) and keep your iPhone on the Wi-Fi &mdash; everything the app does except the speaker images, any linked service's section, and signing in to a new service keeps working (Apple Music's list still shows; its artwork and playing don't &mdash; and your speakers still need the internet to stream, but that's their connection, not the app's). That shows control is local; it isn't proof the app sends nothing &mdash; the list above is.</p>
 
   <h2 id="storage">Where your settings live</h2>
-  <p>Your preferences — selected speakers, presets, EQ settings, and tutorial state — are stored in the app's local storage on your device (iOS <code>UserDefaults</code>), the same way any iOS app stores its settings. A small piece of this storage is shared with the Somos InControl widget and Live Activity so they can show the same speaker you're controlling. Everything stays on your device.</p>
+  <p>Your preferences — selected speakers, presets, EQ settings, tutorial state, and the random device id the app made up for music-service sign-ins — are stored in the app's local storage on your device (iOS <code>UserDefaults</code>), the same way any iOS app stores its settings. The sign-in token and account id for each music service you link through Somos are kept separately, in the iPhone Keychain; which services are linked is worked out from those tokens, not stored as a setting. A small piece of this storage is shared with the Somos InControl widget and Live Activity so they can show the same speaker you're controlling. Everything stays on your device.</p>
   <p>The app does not use iCloud, iCloud Drive, or CloudKit for your data. Nothing syncs to any cloud.</p>
-  <p>Uninstalling the app removes all of its local data.</p>
+  <p>Uninstalling the app removes all of its settings. A music-service token kept in the Keychain can outlive an uninstall on the same phone, the way iOS treats Keychain items — tap Disconnect on the service first if you want it gone.</p>
 
   <h2 id="sonos">Relationship with Sonos®</h2>
   <p>Somos InControl is an independent, unofficial third-party app. It is not affiliated with, endorsed by, or sponsored by Sonos, Inc. Sonos® is a registered trademark of Sonos, Inc., used here only for the factual purpose of describing which speakers the app works with.</p>

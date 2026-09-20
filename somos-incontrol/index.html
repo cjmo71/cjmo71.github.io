@@ -23,13 +23,13 @@ a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: un
 
 /* top bar */
 .top { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 10; }
-.top .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 58px; gap: 16px; }
-.top .wrap > .btn { justify-self: end; }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--fg); font-weight: 600; font-size: 15px; }
-.brand img { width: 28px; height: 28px; border-radius: 7px; }
+/* Brand left, Get the beta right, one row at every width. The link row that used to sit
+   between them is gone (2026-09-19) — the rail carries every one of those links. */
+.top .wrap { display: flex; justify-content: space-between; align-items: center; min-height: 58px; gap: 16px; }
+.top .wrap > .btn { flex: none; white-space: nowrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--fg); font-weight: 600; font-size: 17px; white-space: nowrap; }
+.brand img { width: 28px; height: 28px; border-radius: 7px; flex: none; }
 .brand:hover { text-decoration: none; }
-.top nav { display: flex; gap: 20px; font-size: 14px; align-items: center; }
-.top nav a { color: var(--body); } .top nav a:hover { color: var(--accent); text-decoration: none; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 14px; border: 1px solid var(--line); color: var(--fg); background: var(--card); }
 .btn:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
 .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -124,8 +124,6 @@ footer a { color: var(--dim); margin-right: 14px; }
   .walk, .walk:nth-child(even) { grid-template-columns: 1fr; }
   .walk:nth-child(even) .device { order: 0; }
   .card.docs { grid-template-columns: 1fr; }
-  .top nav a:not(.btn) { display: none; }
-  .top .wrap { grid-template-columns: 1fr auto; }
 }
 
 /* ---- Press & quotes ------------------------------------------------------
@@ -184,16 +182,6 @@ footer a { color: var(--dim); margin-right: 14px; }
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#"><img src="assets/app-icon-glyph.png" alt="">Somos InControl</a>
-    <nav>
-      <a href="#see-it">See it</a>
-      <a href="#tour">Tour</a>
-      <a href="#coming-soon">Coming soon</a>
-      <a href="#hardware">Hardware</a>
-      <a href="https://docs.somosincontrol.com">Documentation</a>
-      <a href="answers.html">Questions, answered</a>
-  <a href="how-to.html">How to Use</a>
-      <a href="support.html">Support</a>
-    </nav>
     <a class="btn primary" href="https://testflight.apple.com/join/2D778AXH" target="_blank" rel="noopener">Get the beta</a>
   </div>
 </header>

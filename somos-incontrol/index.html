@@ -235,7 +235,7 @@ footer a { color: var(--dim); margin-right: 14px; }
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="pill">Version 1.1 (<span data-somos-build>36.0.6</span>) · Public beta on TestFlight</span>
+      <span class="pill">Version 1.1 (<span data-somos-build>36.0.7</span>) · Public beta on TestFlight</span>
       <h1>A fast, focused remote for your Sonos® speakers.</h1>
       <p class="lead">Somos InControl gives you one page per room — instant volume, real EQ, sound presets, home theater setup and music — over your local Wi-Fi, with no account, and no cloud for control. It's built for people who want to adjust the sound and get back to whatever they were doing.</p>
       <div class="ctas">
@@ -317,9 +317,9 @@ footer a { color: var(--dim); margin-right: 14px; }
         <p>Each room gets one page. On a soundbar room, the top row shows the source (TV / Music), the connection and the format the bar is decoding right now — here, eARC and Dolby Atmos — so you can confirm your TV is sending what you expect.</p>
         <ul>
           <li>A large volume slider pinned at the top, with − / + and mute</li>
-          <li>Three TV presets: hold to save, tap to load</li>
+          <li>Three TV presets: hold to save, tap to load — on a soundbar room; a single speaker, a stereo pair or an Amp is a music room, with or without a Sub, and keeps its presets and EQ on the Music sheet</li>
           <li>Bass, treble, and — because this room has surrounds — a Surround level and on/off switch</li>
-          <li>Your four favorite rooms in the bottom bar, saved groups on its second page</li>
+          <li>Your four favorite rooms in the bottom bar — hold a tab to reorder them — with saved groups on its second page</li>
         </ul>
         <a class="more" href="https://docs.somosincontrol.com/rooms/overview">Anatomy of a room page</a>
       </div>
@@ -343,12 +343,13 @@ footer a { color: var(--dim); margin-right: 14px; }
       <div class="device"><img src="assets/3-music-page.webp" alt="The Music sheet: a Volume slider, empty album art reading Tap a song to play, shuffle, previous, pause, next and repeat controls, TV and Music buttons, three music presets, and a collapsible EQ and Sound card." loading="lazy" width="720" height="1565"></div>
       <div>
         <h3>The Music sheet</h3>
-        <p>Tap <strong>Music</strong> in the source row to open it. Play your Sonos® favorites and playlists on the speaker — the speaker streams straight from the service, your phone is only the remote — and see the queue.</p>
+        <p>Tap <strong>Music</strong> in the source row to open it. Browse and play your music services on the speaker — the speaker streams straight from the service, your phone is only the remote — keep favorites with the heart, and see the queue.</p>
         <ul>
           <li>Previous, play/pause, next, shuffle and repeat</li>
           <li>Three music presets, separate from the room page's TV presets</li>
           <li>A collapsible EQ &amp; Sound card, plus music-only Music Level and Ambient / Full for surrounds</li>
           <li>A TV switch to send a soundbar straight back to the TV input</li>
+          <li>A Favorites page that shows what is playing at the top, with <strong>Play all</strong> to queue every hearted song in order and start the first</li>
         </ul>
         <a class="more" href="https://docs.somosincontrol.com/features/music">Music guide</a>
       </div>
@@ -412,8 +413,8 @@ footer a { color: var(--dim); margin-right: 14px; }
       <thead><tr><th>Room type</th><th>Additional controls</th></tr></thead>
       <tbody>
         <tr><td>Soundbar room</td><td>TV / Music source, audio-format badge, Night Sound, Speech Boost (a five-step slider on the Arc Ultra), height on height-capable bars, surround level and on/off, Group Audio Delay, Home Theater Setup</td></tr>
-        <tr><td>Stereo pair</td><td>Balance slider, separate-pair option</td></tr>
-        <tr><td>Any room with a bonded Sub</td><td>Subwoofer level and on/off; crossover (50–110 Hz) on a Sonos Amp</td></tr>
+        <tr><td>Stereo pair</td><td>Balance slider, separate-pair option; a music room — its presets and EQ are on the Music sheet</td></tr>
+        <tr><td>Any room with a bonded Sub</td><td>Subwoofer level and on/off; Sub phase (Normal / Reversed, set by Trueplay while Trueplay is on); crossover (50–110 Hz) wherever the speaker reports one. A Sub never turns a music room into a TV room</td></tr>
         <tr><td>Portable (Move, Roam)</td><td>Battery level in the status line</td></tr>
       </tbody>
     </table>
@@ -450,9 +451,9 @@ footer a { color: var(--dim); margin-right: 14px; }
         <tr><td>Connect</td><td>Amp</td><td>S1 + S2</td><td>—</td></tr>
         <tr><td>Connect:Amp</td><td>Amp</td><td>S1 + S2</td><td>—</td></tr>
         <tr><td>Port</td><td>Amp</td><td>S1 + S2</td><td>—</td></tr>
-        <tr><td>Sub (incl. Sub Gen 2)</td><td>Sub</td><td>S1 + S2</td><td>Bonds into the paired room's Sub level (and crossover, where offered) — no page of its own</td></tr>
-        <tr><td>Sub (Gen 4)</td><td>Sub</td><td>S2 only</td><td>Bonds into the paired room's Sub level (and crossover, where offered) — no page of its own</td></tr>
-        <tr><td>Sub Mini</td><td>Sub</td><td>S2 only</td><td>Bonds into the paired room's Sub level (and crossover, where offered) — no page of its own</td></tr>
+        <tr><td>Sub (incl. Sub Gen 2)</td><td>Sub</td><td>S1 + S2</td><td>Bonds into the paired room's Sub level, on/off and Sub phase (and crossover, where offered) — no page of its own</td></tr>
+        <tr><td>Sub (Gen 4)</td><td>Sub</td><td>S2 only</td><td>Bonds into the paired room's Sub level, on/off and Sub phase (and crossover, where offered) — no page of its own</td></tr>
+        <tr><td>Sub Mini</td><td>Sub</td><td>S2 only</td><td>Bonds into the paired room's Sub level, on/off and Sub phase (and crossover, where offered) — no page of its own</td></tr>
       </tbody>
     </table>
     </div>

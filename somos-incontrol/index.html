@@ -67,6 +67,10 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .walk li { margin: 4px 0; }
 .walk .more { font-size: 14px; font-weight: 600; }
 .walk .more::after { content: " →"; }
+/* Apple Watch: two Ultra-shaped frames side by side in the device column */
+.watches { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.device.watch { border-radius: 26%; padding: 7px; }
+.device.watch img { border-radius: 22%; }
 
 /* support table */
 .rail { position: fixed; top: 0; left: 0; bottom: 0; width: 216px; overflow-y: auto; z-index: 20;
@@ -123,6 +127,8 @@ footer a { color: var(--dim); margin-right: 14px; }
   .steps ol, .cards { grid-template-columns: 1fr; }
   .walk, .walk:nth-child(even) { grid-template-columns: 1fr; }
   .walk:nth-child(even) .device { order: 0; }
+  .watches { max-width: 320px; margin: 0 auto; }
+  .watches .device { max-width: none; margin: 0; }
   .card.docs { grid-template-columns: 1fr; }
 }
 
@@ -342,6 +348,24 @@ footer a { color: var(--dim); margin-right: 14px; }
         <a class="more" href="https://docs.somosincontrol.com/getting-started/menu">The menu, section by section</a>
       </div>
     </div>
+
+    <div class="walk">
+      <div class="watches">
+        <div class="device watch"><img src="assets/5-watch-rooms.webp" alt="The Somos Apple Watch app's first screen: a list titled Somos with the rooms Era Right S, Era Right S 2 and Living Room." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/6-watch-room.webp" alt="A room on the Apple Watch: Era Right S, now playing Rhymin' &amp; Stealin' by Beastie Boys, volume 10, a play button, a next button and a Favourites button." loading="lazy" width="422" height="514"></div>
+      </div>
+      <div>
+        <h3>On your wrist: the Apple Watch app</h3>
+        <p>Somos InControl installs a small Apple Watch app alongside the iPhone app. Open Somos on the phone once and your rooms appear on the Watch, in the same order as your bottom bar. Tap a room to see what is playing, then turn the Digital Crown for volume — the Watch talks to the speaker directly over your home Wi-Fi.</p>
+        <ul>
+          <li>Rooms come from the phone; the Watch keeps them, even when the phone is out of reach</li>
+          <li>Play / pause and next on the room screen, with the title and artist</li>
+          <li>The Crown is the volume dial — the number on screen follows it</li>
+          <li>A Favourites button starts a Sonos® favorite on that room</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/features/apple-watch">The Apple Watch app, step by step</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -418,7 +442,7 @@ footer a { color: var(--dim); margin-right: 14px; }
   <div class="wrap">
     <div class="cards">
       <a class="card docs" href="https://docs.somosincontrol.com">
-        <div><b>Documentation — docs.somosincontrol.com</b><span>First launch, permissions, every control by room type, Live Activity, widget and Siri, troubleshooting, privacy. Updated with each beta build.</span></div>
+        <div><b>Documentation — docs.somosincontrol.com</b><span>First launch, permissions, every control by room type, Live Activity, widget and Siri, the Apple Watch app, troubleshooting, privacy. Updated with each beta build.</span></div>
         <span class="btn">Open the guide</span>
       </a>
       <a class="card" href="support.html"><b>Support</b><span>FAQ, troubleshooting and a contact form that reaches the developer. Replies usually within 48 hours.</span></a>

@@ -76,24 +76,44 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .rail { position: fixed; top: 0; left: 0; bottom: 0; width: 216px; overflow-y: auto; z-index: 20;
   background: var(--bg-2); border-right: 1px solid var(--line); padding: 16px 18px 26px; }
 .rail h4 { margin: 18px 0 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
-.rail h4:first-child { margin-top: 0; }
+.rail h4:first-of-type { margin-top: 0; }
 .rail a { display: block; padding: 7px 0; color: var(--body); font-size: 14.5px; border-bottom: 1px solid var(--line); }
 .rail a:hover { color: var(--accent); text-decoration: none; }
 .rail .btn { display: block; margin-top: 18px; text-align: center; border-bottom: 0; }
 @media (min-width: 1000px) { body { padding-left: 216px; } }
-.rail-toggle { display: none; }
+.rail-bar, .rail-backdrop, .rail-close { display: none; }
 @media (max-width: 999px) {
   /* The rail becomes a Menu button on phones — added 2026-09-06 because its full list
-     pushed the page two screens down. Desktop keeps it open, always. */
-  .rail-toggle { display: flex; align-items: center; gap: 10px; width: 100%;
+     pushed the page two screens down. Desktop keeps it open, always.
+     2026-09-20 (Chris 03:20, "make the side menu on the mobile site stay on screen"): the
+     Menu button sits in a slim bar that is position: sticky at the top of the viewport and
+     the open rail is a drawer over the page. The header stops sticking on phones so the
+     slim bar is the only chrome pinned to the screen; its beta link moves into the bar. */
+  .top { position: static; }
+  .rail-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    position: sticky; top: 0; z-index: 30; padding: 0 22px 0 0;
+    background: var(--bg-2); border-bottom: 1px solid var(--line); }
+  .rail-toggle { display: flex; align-items: center; gap: 10px; flex: 1 1 auto; min-width: 0;
     padding: 12px 22px; font: inherit; font-size: 15px; font-weight: 600;
-    color: var(--fg); background: var(--bg-2); border: 0;
-    border-bottom: 1px solid var(--line); cursor: pointer; }
+    color: var(--fg); background: transparent; border: 0; cursor: pointer; text-align: left; }
   .rail-bars { display: inline-block; width: 18px; height: 2px; position: relative;
     background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
-  .rail { display: none; position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
-  .rail.rail-open { display: block; }
+  .rail-bar-cta { display: none; flex: none; white-space: nowrap; border: 1px solid var(--accent); background: var(--accent);
+    color: #fff; border-radius: 8px; padding: 6px 11px; font-size: 13px; font-weight: 600; }
+  .rail-bar-stuck .rail-bar-cta { display: inline-block; }
+  .rail-bar-cta:hover { background: var(--accent-2); text-decoration: none; }
+  .rail { display: none; }
+  .rail.rail-open { display: block; position: fixed; top: 0; left: 0; bottom: 0; width: min(300px, 86vw);
+    height: auto; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 40;
+    border-right: 1px solid var(--line); border-bottom: 0; box-shadow: var(--shadow); }
   .rail a { padding: 6px 0; }
+  .rail-backdrop.rail-open { display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 35; background: rgba(15,23,42,.45); }
+  .rail-close { display: block; position: absolute; top: 8px; right: 10px; width: 36px; height: 36px;
+    font: inherit; font-size: 26px; line-height: 36px; text-align: center; color: var(--dim);
+    background: transparent; border: 0; cursor: pointer; }
+  .rail.rail-open h4:first-of-type { padding-right: 36px; }
+  html.rail-locked, html.rail-locked body { overflow: hidden; }
 }
 .film { padding: 10px 0 6px; }
 .film .wrap { text-align: center; }

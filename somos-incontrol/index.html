@@ -67,6 +67,11 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .walk li { margin: 4px 0; }
 .walk .more { font-size: 14px; font-weight: 600; }
 .walk .more::after { content: " →"; }
+/* iPad: a squarer frame with iPad Pro corners, and a wider device column (2026-09-21) */
+.tour.pad .walk { grid-template-columns: 420px 1fr; }
+.tour.pad .walk:nth-child(even) { grid-template-columns: 1fr 420px; }
+.tour.pad .device { border-radius: 26px; padding: 10px; }
+.tour.pad .device img { border-radius: 18px; }
 /* Apple Watch: two Ultra-shaped frames side by side in the device column */
 .watches { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
 .device.watch { border-radius: 26%; padding: 7px; }
@@ -150,6 +155,7 @@ footer a { color: var(--dim); margin-right: 14px; }
   .device { max-width: 280px; margin: 0 auto; }
   .steps ol, .cards { grid-template-columns: 1fr; }
   .walk, .walk:nth-child(even) { grid-template-columns: 1fr; }
+  .tour.pad .walk, .tour.pad .walk:nth-child(even) { grid-template-columns: 1fr; }
   .walk:nth-child(even) .device { order: 0; }
   .watches { max-width: 320px; margin: 0 auto; }
   .watches .device { max-width: none; margin: 0; }
@@ -221,6 +227,8 @@ footer a { color: var(--dim); margin-right: 14px; }
   <a href="#press">What people are saying</a>
   <a href="#see-it">See it in action</a>
   <a href="#tour">A tour of the app</a>
+  <a href="#ipad">On iPad</a>
+  <a href="#watch">On Apple Watch</a>
   <a href="#coming-soon">Coming soon</a>
   <a href="#hardware">What works with what</a>
   <h4>Help</h4>
@@ -248,7 +256,7 @@ footer a { color: var(--dim); margin-right: 14px; }
       </div>
       <p class="meta">Free during the beta · iPhone and iPad · iOS 16.2 or later · Independent, not affiliated with Sonos, Inc.</p>
     </div>
-    <div class="device reveal"><img src="assets/1-room-page.webp" alt="Room page for a soundbar room showing the Dolby Atmos badge, volume, sound presets and EQ sliders" width="720" height="1565"></div>
+    <div class="device reveal"><img src="assets/1-room-page.webp" alt="The Living Room page in dark mode: volume 45%, the Movie Night, Late Night and Dialogue presets, and Bass, Treble and Subwoofer sliders" width="720" height="1565"></div>
   </div>
 </section>
 
@@ -322,17 +330,17 @@ footer a { color: var(--dim); margin-right: 14px; }
 <section class="tour" id="tour">
   <div class="wrap">
     <h2>A tour of the app</h2>
-    <p class="sub">Real screenshots from the current beta, with what each screen does. Every item links to its page in the guide.</p>
+    <p class="sub">Real screenshots from the current beta in Demo Mode and dark mode, with what each screen does. Every item links to its page in the guide.</p>
 
     <div class="walk">
-      <div class="device"><img src="assets/1-room-page.webp" alt="The Office room page: an Arc soundbar shown Connected, TV and Music buttons, a TV / eARC / Dolby Atmos (MAT) row, a Volume slider at 12%, three sound presets, and Bass +6, Treble +2 and Surround +4 sliders with a Surrounds switch." loading="lazy" width="720" height="1565"></div>
+      <div class="device"><img src="assets/1-room-page.webp" alt="The Living Room page in dark mode: a Demo Mode banner, a Volume slider at 45%, three sound presets named Movie Night, Late Night and Dialogue with Movie Night lit, Bass +2, Treble +1 and Subwoofer +2 sliders with a Subwoofer switch, and the Living Room, Bedroom, Home Office and Saved Groups tabs at the bottom." loading="lazy" width="720" height="1565"></div>
       <div>
         <h3>The room page</h3>
-        <p>Each room gets one page. On a soundbar room, the top row shows the source (TV / Music), the connection and the format the bar is decoding right now — here, eARC and Dolby Atmos — so you can confirm your TV is sending what you expect.</p>
+        <p>Each room gets one page. Everything you touch applies to the speaker as you touch it, and the page follows the app's light or dark appearance — this is dark mode, on the Demo Mode room the app lets you explore before it has found your speakers.</p>
         <ul>
           <li>A large volume slider pinned at the top, with − / + and mute</li>
-          <li>Three TV presets: hold to save, tap to load — on a soundbar room; a single speaker, a stereo pair or an Amp is a music room, with or without a Sub, and keeps its presets and EQ on the Music sheet</li>
-          <li>Bass, treble, and — because this room has surrounds — a Surround level and on/off switch</li>
+          <li>Three TV presets on a soundbar room: hold to save, tap to load — the loaded one is lit</li>
+          <li>Bass, treble and, on this room, a Subwoofer level and on/off switch</li>
           <li>Your four favorite rooms in the bottom bar — hold a tab to reorder them — with saved groups on its second page</li>
         </ul>
         <a class="more" href="https://docs.somosincontrol.com/rooms/overview">Anatomy of a room page</a>
@@ -340,13 +348,26 @@ footer a { color: var(--dim); margin-right: 14px; }
     </div>
 
     <div class="walk">
-      <div class="device"><img src="assets/2-home-theater.webp" alt="The Home Theater Setup sheet: an Arc listed as the soundbar coordinator, four Era 100 speakers assigned to Front Left, Front Right, Surround Left and Surround Right, two empty Subwoofer slots, and a Remove All Speakers button." loading="lazy" width="720" height="1565"></div>
+      <div class="device"><img src="assets/10-room-map.webp" alt="The bottom of the Living Room page: Loudness, Night Sound, Speech Boost, Trueplay, Status Light and Touch Controls switches, then the room map card with Front Left, an Arc in the centre and Front Right, reading Hold to configure." loading="lazy" width="720" height="1565"></div>
+      <div>
+        <h3>The room map</h3>
+        <p>Below the sound switches sits a drawing of the room: the soundbar in the centre and every speaker bonded to it, in the place it plays from. Here an Arc with a separate front left and front right.</p>
+        <ul>
+          <li>Loudness, Night Sound, Speech Boost, Trueplay, Status Light and Touch Controls, each a single switch</li>
+          <li>Hold the map to open Home Theater Setup</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/rooms/room-diagram">The room diagram</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/2-home-theater.webp" alt="The Home Theater Setup sheet in dark mode: an Arc listed as the soundbar coordinator for Living Room, a Play a tone when identifying switch, Era 300 speakers assigned to Front Left and Front Right, and Assign speaker rows for Surround Left, Surround Right, Subwoofer 1 and Subwoofer 2." loading="lazy" width="720" height="1565"></div>
       <div>
         <h3>Home Theater Setup</h3>
-        <p>Press and hold the room diagram on a soundbar's page to open this sheet. Assign speakers to Front Left, Front Right, Surround Left, Surround Right, Subwoofer and Subwoofer 2 — including separate front speakers, which the official app doesn't offer.</p>
+        <p>Press and hold the room map on a soundbar's page to open this sheet. Assign speakers to Front Left, Front Right, Surround Left, Surround Right, Subwoofer and Subwoofer 2 — including separate front speakers, which the official app doesn't offer.</p>
         <ul>
           <li>Up to two Subs, including two older-generation Subs</li>
-          <li>The app warns you before bonding fronts: Sonos® firmware can't Trueplay-tune a room with separate fronts</li>
+          <li>Each assigned speaker has a bulb to flash its light and an × to remove it; the tone switch plays a sound on the speaker being identified</li>
           <li>Stereo pairs can be created and separated the same way</li>
         </ul>
         <a class="more" href="https://docs.somosincontrol.com/rooms/speaker-setup">Speaker setup guide</a>
@@ -354,51 +375,181 @@ footer a { color: var(--dim); margin-right: 14px; }
     </div>
 
     <div class="walk">
-      <div class="device"><img src="assets/3-music-page.webp" alt="The Music sheet: a Volume slider, empty album art reading Tap a song to play, shuffle, previous, pause, next and repeat controls, TV and Music buttons, three music presets, and a collapsible EQ and Sound card." loading="lazy" width="720" height="1565"></div>
+      <div class="device"><img src="assets/3-music-page.webp" alt="The Music page in dark mode: Music and Living Room in the title, a Volume slider at 45%, a strip of pills reading Favorites, Apple Music, Spotify and TuneIn, a player card with an orange sunset album cover, Open Windows by Field Notes, a progress bar at 1:25, shuffle, previous, pause, next and repeat, TV and Music buttons with Music lit, and three music presets named Party Mix, Low Bass and Chill with Party Mix lit." loading="lazy" width="720" height="1565"></div>
       <div>
-        <h3>The Music sheet</h3>
-        <p>Tap <strong>Music</strong> in the source row to open it. Browse and play your music services on the speaker — the speaker streams straight from the service, your phone is only the remote — keep favorites with the heart, and see the queue.</p>
+        <h3>The Music page</h3>
+        <p>Tap <strong>Music</strong> in the source row to open it. Your music services sit in a strip under the volume — tap one to browse it — and the player card shows what the speaker is playing. The speaker streams straight from the service; your phone is only the remote.</p>
         <ul>
-          <li>Previous, play/pause, next, shuffle and repeat</li>
+          <li>Favorites, then one pill per linked service</li>
+          <li>Album art, title and artist, a scrubber, and previous, play/pause, next, shuffle and repeat</li>
           <li>Three music presets, separate from the room page's TV presets</li>
-          <li>A collapsible EQ &amp; Sound card, plus music-only Music Level and Ambient / Full for surrounds</li>
           <li>A TV switch to send a soundbar straight back to the TV input</li>
-          <li>A Favorites page that shows what is playing at the top, with <strong>Play all</strong> to queue every hearted song in order and start the first</li>
         </ul>
         <a class="more" href="https://docs.somosincontrol.com/features/music">Music guide</a>
       </div>
     </div>
 
     <div class="walk">
-      <div class="device"><img src="assets/4-menu.webp" alt="The app menu sliding over a room page: Suggest a Feature and Support and Feedback, then Settings with the S2 system, Add a Home, Live Activity off, Haptics on and Appearance set to System, then the Office and Living Room list." loading="lazy" width="720" height="1565"></div>
+      <div class="device"><img src="assets/11-music-queue.webp" alt="The Music page scrolled down in dark mode: TV and Music buttons, the Party Mix, Low Bass and Chill presets with Party Mix lit, a collapsed EQ and Sound row, then a Queue header with Clear and the first four songs, Open Windows by Field Notes marked as playing, Copper Sky by Lena Marsh, Long Way Round by The Tidewaters and Quiet Engines by Noor Ellis, each with its own cover." loading="lazy" width="720" height="1565"></div>
+      <div>
+        <h3>Presets, EQ and the queue</h3>
+        <p>Scroll the Music page and the rest follows: the music presets, a collapsible <strong>EQ &amp; Sound</strong> card, and the queue with a cover for every song and the playing one marked.</p>
+        <ul>
+          <li>Three music presets: hold to save, tap to load</li>
+          <li>EQ &amp; Sound opens to bass, treble, sub, Music Level, Loudness and Full / Ambient</li>
+          <li>The queue, numbered, with <strong>Clear</strong> at its head</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/features/sound-presets">Sound presets</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/4-menu.webp" alt="The app menu sliding over a room page in dark mode: the Somos InControl name and version, Poll: your favorite music services, Coming Soon, a System heading, Rooms with Living Room ticked, Bedroom and Home Office, and System settings expanded to show Live Activity off, Haptics on and Appearance set to System." loading="lazy" width="720" height="1565"></div>
       <div>
         <h3>The menu</h3>
         <p>Everything that isn't a sound control lives here, top-left of every room.</p>
         <ul>
-          <li><strong>Support &amp; Feedback</strong> and <strong>Suggest a Feature</strong> reach the developer directly</li>
-          <li>The <strong>System</strong> switcher for S1 + S2 households, and <strong>Add a Home</strong> for a second address</li>
-          <li><strong>Live Activity</strong> puts volume, mute, your three sound presets and music transport on your Lock Screen and in the Dynamic Island</li>
-          <li>Haptics, Appearance, and your rooms — tap to switch, hold to reorder, swipe to rename</li>
+          <li>Your rooms — tap to switch, hold to reorder</li>
+          <li><strong>System settings</strong> opens in place: <strong>Live Activity</strong> puts volume, mute, your three sound presets and music transport on your Lock Screen and in the Dynamic Island; Haptics; Appearance</li>
+          <li>The <strong>System</strong> heading: the S1 / S2 switcher, for households with both</li>
+          <li>Further down, Help &amp; Support: Settings Somos needs, Getting Started, the Feature Reference, and the rows that reach the developer directly</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/getting-started/menu">The menu, section by section</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tour pad" id="ipad">
+  <div class="wrap">
+    <h2>On iPad</h2>
+    <p class="sub">The same app, with the room to breathe: on an iPad Pro 11-inch the whole room page fits on one screen. Demo Mode, dark mode, from the current beta.</p>
+
+    <div class="walk">
+      <div class="device"><img src="assets/ipad-1-room.webp" alt="The Living Room page on an iPad in dark mode, all on one screen: Demo Mode banner, Volume 45%, Movie Night, Dialogue and Late Night presets with Movie Night lit, Bass, Treble and Subwoofer sliders, a Subwoofer switch, Sub phase Normal or Reversed, six switches for Loudness, Night Sound, Speech Boost, Trueplay, Status Light and Touch Controls, the room map with Front Left, Arc Center and Front Right, and the four room tabs." loading="lazy" width="800" height="1161"></div>
+      <div>
+        <h3>The room page</h3>
+        <p>Volume, presets, every slider, every switch and the room map, without scrolling. The presets spread into three wide cards and the switches into two columns.</p>
+        <ul>
+          <li>Volume, Bass, Treble and Subwoofer sliders with − / + at both ends</li>
+          <li>Sub phase, Normal or Reversed, set by Trueplay while Trueplay is on</li>
+          <li>The room map at the bottom — hold it for Home Theater Setup</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/rooms/overview">Anatomy of a room page</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/ipad-2-home-theater.webp" alt="The Home Theater Setup sheet centred over the Living Room page on an iPad: Living Room as the soundbar coordinator, Play a tone when identifying on, Era 300 in Front Left and Front Right with bulb and remove buttons, and Assign speaker rows for Surround Left, Surround Right and Subwoofer 1." loading="lazy" width="800" height="1161"></div>
+      <div>
+        <h3>Home Theater Setup</h3>
+        <p>The sheet floats in the middle of the page instead of covering it, so the room stays visible behind it while you assign speakers.</p>
+        <ul>
+          <li>The soundbar as coordinator, then a card per position</li>
+          <li>Bulb to flash a speaker's light, × to remove it, Assign speaker… to fill an empty slot</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/rooms/speaker-setup">Speaker setup guide</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/ipad-3-assign.webp" alt="The Assign Surround Left picker on an iPad: two rows, Era 100 in Bedroom and Era 300 in Home Office, each with a bulb button, and Cancel." loading="lazy" width="800" height="1161"></div>
+      <div>
+        <h3>Picking a speaker</h3>
+        <p>Tap <strong>Assign speaker…</strong> and every speaker in the house that could take the slot is listed with its room. Tap the bulb to flash the one you mean before you commit.</p>
+        <ul>
+          <li>Cancel leaves the slot empty</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/rooms/speaker-setup">Speaker setup guide</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/ipad-4-music.webp" alt="The Music page on an iPad in dark mode: Volume 45%, a strip reading Favorites, Apple Music, Spotify, TuneIn and Add, a player card with an orange sunset cover, Open Windows by Field Notes, a progress bar at 1:25 of 2:38 remaining, transport buttons, TV and Music with Music lit, Party Mix, Low Bass and Chill presets with Party Mix lit, an EQ and Sound row, and a Queue whose first five songs each carry a cover." loading="lazy" width="800" height="1161"></div>
+      <div>
+        <h3>The Music page</h3>
+        <p>The services strip, the player, the music presets and the queue on one screen, each song in the queue with its cover.</p>
+        <ul>
+          <li>Favorites and one pill per linked service — Apple Music, Spotify and TuneIn here — then Add</li>
+          <li>The current song is marked in the queue and its cover fills the player</li>
+          <li>Party Mix, Low Bass and Chill: music presets, separate from the TV ones</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/features/music">Music guide</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/ipad-5-music-eq.webp" alt="The Music page on an iPad scrolled to the EQ and Sound card, open: Bass +2, Treble +1 and Sub +2 sliders, Music Level 0, a Loudness switch off and a Full or Ambient switch set to Full, with the queue below." loading="lazy" width="800" height="1161"></div>
+      <div>
+        <h3>EQ &amp; Sound</h3>
+        <p>Open the card and the music EQ unfolds under the presets: the same bass and treble as the room page, plus the controls that only matter for music.</p>
+        <ul>
+          <li>Bass, Treble and Sub level</li>
+          <li>Music Level for the surrounds, and Full ⇄ Ambient for how much of the music they carry</li>
+          <li>Loudness as a switch</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/features/eq-and-trueplay">EQ and Trueplay</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/ipad-6-menu.webp" alt="The side menu open over the Living Room page on an iPad in dark mode: Somos InControl and its version, Poll: your favorite music services, Coming Soon, System, Rooms with Living Room ticked, Bedroom, Home Office and System settings, Help and Support with Settings Somos needs, Getting Started, Feature Reference, Apple Watch, Support and Feedback and Suggest a Feature, Submit diagnostics, and Privacy, Trademark and About." loading="lazy" width="800" height="1161"></div>
+      <div>
+        <h3>The menu</h3>
+        <p>On the iPad the menu slides over the left third of the page, so the room stays in view. The whole list fits without scrolling.</p>
+        <ul>
+          <li>Rooms and System settings at the top</li>
+          <li>Help &amp; Support: the in-app guides, the Apple Watch guide, Support &amp; Feedback and Suggest a Feature</li>
+          <li>Submit diagnostics, and Privacy, Trademark &amp; About</li>
         </ul>
         <a class="more" href="https://docs.somosincontrol.com/getting-started/menu">The menu, section by section</a>
       </div>
     </div>
 
     <div class="walk">
+      <div class="device"><img src="assets/ipad-7-widgets.webp" alt="The Somos widgets in dark mode on a plain dark background: the medium widget with six preset buttons, Movie Night, Late Night and Dialogue for LR and Party Mix, Low Bass and Chill for Bedroom, the loaded ones green; and the large widget with the same six presets plus a Living Room row with Vol − and Vol + buttons." loading="lazy" width="800" height="1161"></div>
+      <div>
+        <h3>The widgets</h3>
+        <p>The Home Screen widgets, shown here at iPad size on a plain background: the medium widget carries two rooms' presets, the large one adds a volume row for a room. Each button loads that preset.</p>
+        <ul>
+          <li>Row one: a room's three TV presets; row two: another room's three music presets</li>
+          <li>The loaded preset is lit green</li>
+          <li>Large only: the room name, Vol − and Vol +</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/features/widget-and-siri">Widget and Siri</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ON MAC — placeholder, 2026-09-21. The Mac section (the iPad build running on macOS as
+     "Designed for iPad": room page, Home Theater Setup, music page, side menu, Notification Center
+     widget) is on hold at Chris's request (03:06): the app must not be launched on his screen
+     while he is at the Mac. When the shots exist, add <section class="tour pad" id="mac"> here,
+     same markup as #ipad, and a rail link "On Mac" after "On iPad". -->
+
+<section class="tour" id="watch">
+  <div class="wrap">
+    <h2>On Apple Watch</h2>
+    <p class="sub">Somos InControl installs a small Apple Watch app alongside the iPhone app. Real screenshots from the Apple Watch Ultra 3 simulator with Demo Mode rooms; the last frame is the app's Smart Stack card drawn on a plain background.</p>
+
+    <div class="walk">
       <div class="watches">
         <div class="device watch"><img src="assets/5-watch-rooms.webp" alt="The Somos Apple Watch app's first screen: a list titled Somos with the rooms Bedroom, Home Office and Living Room." loading="lazy" width="422" height="514"></div>
-        <div class="device watch"><img src="assets/9-watch-music-room.webp" alt="A music room on the Apple Watch: Bedroom, album art with Midnight City by M83, volume 30 with a Mute button, pause and next, three presets Party Mix, Low Bass and Chill with Party Mix lit, and a Favourites button." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/8-watch-tv-room.webp" alt="A TV room on the Apple Watch: Living Room, a TV icon with TV · Dolby Atmos (MAT), volume 45 with a Mute button, and three presets Movie Night, Late Night and Dialogue." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/9-watch-music-room.webp" alt="A music room on the Apple Watch: Bedroom, an orange sunset album cover with Open Windows by Field Notes, volume 30 with a Mute button, pause and next, three presets Party Mix, Low Bass and Chill with Party Mix lit, and a Favourites button." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/12-watch-smart-stack.webp" alt="The Smart Stack card on a plain black background: a music note, Bedroom, Open Windows and 30%." loading="lazy" width="422" height="514"></div>
       </div>
       <div>
         <h3>On your wrist: the Apple Watch app</h3>
-        <p>Somos InControl installs a small Apple Watch app alongside the iPhone app. Open Somos on the phone once and your rooms appear on the Watch, in the same order as your bottom bar. Tap a room to see what is playing — the TV input and its audio format, or the song and its art — then turn the Digital Crown for volume; the Watch talks to the speaker directly over your home Wi-Fi.</p>
+        <p>Open Somos on the phone once and your rooms appear on the Watch, in the same order as your bottom bar. Tap a room to see what is playing — the TV input and its audio format, or the song and its cover — then turn the Digital Crown for volume; the Watch talks to the speaker directly over your home Wi-Fi.</p>
         <ul>
           <li>Rooms come from the phone; the Watch keeps them, even when the phone is out of reach</li>
-          <li>Play / pause and next on a music room, with the title and artist; a TV room shows the format instead</li>
+          <li>Play / pause and next on a music room, with the cover, title and artist; a TV room shows the format instead — Dolby Atmos (MAT) here</li>
           <li>The Crown is the volume dial — the number on screen follows it — with Mute beside it</li>
-          <li>The room's three presets from the wrist: TV presets on a TV room, music presets on a music room, the loaded one lit here, on the phone and on the Lock Screen alike</li>
+          <li>The room's three presets from the wrist: TV presets on a TV room, music presets on a music room, the loaded one lit — Party Mix on the Bedroom</li>
           <li>A Favourites button starts a Sonos® favorite on a music room</li>
-          <li>With Live Activity on, the phone's card also sits in the Watch's Smart Stack — room, volume, format and what is playing at a glance; tap it and the Watch app opens on that room</li>
+          <li>With Live Activity on, the phone's card also sits in the Watch's Smart Stack — room, what is playing and the volume at a glance, as in the last frame; tap it and the Watch app opens on that room</li>
         </ul>
         <a class="more" href="https://docs.somosincontrol.com/features/apple-watch">The Apple Watch app, step by step</a>
       </div>

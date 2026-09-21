@@ -72,6 +72,11 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .tour.pad .walk:nth-child(even) { grid-template-columns: 1fr 420px; }
 .tour.pad .device { border-radius: 26px; padding: 10px; }
 .tour.pad .device img { border-radius: 18px; }
+/* Mac: a landscape window frame — Mac window corners, a slim bezel, a wider device column (2026-09-21) */
+.tour.mac .walk { grid-template-columns: 560px 1fr; }
+.tour.mac .walk:nth-child(even) { grid-template-columns: 1fr 560px; }
+.tour.mac .device { border-radius: 16px; padding: 6px; }
+.tour.mac .device img { border-radius: 11px; }
 /* Apple Watch: two Ultra-shaped frames side by side in the device column */
 .watches { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
 .device.watch { border-radius: 26%; padding: 7px; }
@@ -156,6 +161,8 @@ footer a { color: var(--dim); margin-right: 14px; }
   .steps ol, .cards { grid-template-columns: 1fr; }
   .walk, .walk:nth-child(even) { grid-template-columns: 1fr; }
   .tour.pad .walk, .tour.pad .walk:nth-child(even) { grid-template-columns: 1fr; }
+  .tour.mac .walk, .tour.mac .walk:nth-child(even) { grid-template-columns: 1fr; }
+  .tour.mac .device { max-width: none; }
   .walk:nth-child(even) .device { order: 0; }
   .watches { max-width: 320px; margin: 0 auto; }
   .watches .device { max-width: none; margin: 0; }
@@ -228,6 +235,7 @@ footer a { color: var(--dim); margin-right: 14px; }
   <a href="#see-it">See it in action</a>
   <a href="#tour">A tour of the app</a>
   <a href="#ipad">On iPad</a>
+  <a href="#mac">On Mac</a>
   <a href="#watch">On Apple Watch</a>
   <a href="#coming-soon">Coming soon</a>
   <a href="#hardware">What works with what</a>
@@ -522,11 +530,110 @@ footer a { color: var(--dim); margin-right: 14px; }
   </div>
 </section>
 
-<!-- ON MAC — placeholder, 2026-09-21. The Mac section (the iPad build running on macOS as
-     "Designed for iPad": room page, Home Theater Setup, music page, side menu, Notification Center
-     widget) is on hold at Chris's request (03:06): the app must not be launched on his screen
-     while he is at the Mac. When the shots exist, add <section class="tour pad" id="mac"> here,
-     same markup as #ipad, and a rail link "On Mac" after "On iPad". -->
+<section class="tour mac" id="mac">
+  <div class="wrap">
+    <h2>On Mac</h2>
+    <p class="sub">On a Mac with Apple silicon, Somos InControl is the iPad app in a window on your desk: the same pages, the same rooms, a mouse and a keyboard. Real screenshots of the Mac app in Demo Mode and dark mode, from the current beta.</p>
+
+    <div class="walk">
+      <div class="device"><img src="assets/mac-1-room.webp" alt="The Somos InControl window on a Mac in dark mode, on the Living Room page: the menu button, Hold to rename under the room name, a Demo Mode banner with Exit Demo, Volume 45%, Movie Night, Dialogue and Late Night presets with Movie Night lit, Bass +2, Treble +1 and Subwoofer +2 sliders, and the Living Room, Bedroom, Home Office and Saved Groups tabs along the bottom." loading="lazy" width="1120" height="877"></div>
+      <div>
+        <h3>The room page</h3>
+        <p>A Mac window with the room page inside it: volume at the top, the three TV presets in a row, then the sliders. The room tabs sit along the bottom edge of the window, with Saved Groups at the end.</p>
+        <ul>
+          <li>Volume, Bass, Treble and Subwoofer sliders with − / + at both ends, dragged with the mouse</li>
+          <li>Load or Save on each preset card; the loaded one is outlined</li>
+          <li>Hold a room tab to reorder the tabs, hold the room name to rename it</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/rooms/overview">Anatomy of a room page</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/mac-2-room-map.webp" alt="The Living Room page in the Mac window scrolled to the bottom: the volume slider stays pinned under the Demo Mode banner, then six switches, Loudness and Night Sound off, Speech Boost, Trueplay, Status Light and Touch Controls on, and the room map with Front Left, Arc Center and Front Right and the words Hold to configure." loading="lazy" width="1120" height="877"></div>
+      <div>
+        <h3>The room map</h3>
+        <p>Scroll the window and the volume slider stays put at the top while the rest of the page moves under it. At the bottom: the six switches in two columns and the room map.</p>
+        <ul>
+          <li>Loudness, Night Sound, Speech Boost, Trueplay, Status Light and Touch Controls</li>
+          <li>The map shows the soundbar and each speaker in its position</li>
+          <li>Hold the map for Home Theater Setup</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/rooms/room-diagram">The room map</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/mac-3-home-theater.webp" alt="The Home Theater Setup sheet in the middle of the Mac window, the Living Room page dimmed behind it: Living Room as the soundbar coordinator with a green tick, Play a tone when identifying on, Front Left with Era 300 Living Room L and Front Right with Era 300 Living Room R, each with a remove button and a bulb, then Surround Left and Surround Right with Assign speaker rows, and a Done button." loading="lazy" width="1120" height="877"></div>
+      <div>
+        <h3>Home Theater Setup</h3>
+        <p>The sheet opens in the middle of the window with the room dimmed behind it, the soundbar at the top and a card for each position below.</p>
+        <ul>
+          <li>Bulb to flash a speaker's light, × to remove it from the slot</li>
+          <li>Assign speaker… lists every speaker in the house that could take the slot</li>
+          <li>Done closes the sheet</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/rooms/speaker-setup">Speaker setup guide</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/mac-4-music.webp" alt="The Music page for the Living Room in the Mac window: a back button, Volume 45%, a strip reading Favorites, Apple Music, Spotify, TuneIn and Add, a player card with an orange sunset cover, Open Windows by Field Notes, a progress bar at 1:24 with 2:39 remaining, shuffle, previous, pause, next and repeat buttons, TV and Music buttons with Music lit, and the Party Mix, Low Bass and Chill presets with Party Mix lit." loading="lazy" width="1120" height="877"></div>
+      <div>
+        <h3>The Music page</h3>
+        <p>The services strip, the player and the music presets. Volume and the strip stay pinned at the top of the window; everything below them scrolls.</p>
+        <ul>
+          <li>Favorites and one pill per linked service — Apple Music, Spotify and TuneIn here — then Add</li>
+          <li>Cover, song and artist, the progress bar, and the transport buttons</li>
+          <li>TV ⇄ Music switches the room's source; Party Mix, Low Bass and Chill are the music presets</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/features/music">Music guide</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/mac-5-music-eq.webp" alt="The Music page in the Mac window scrolled to the EQ and Sound card, open: Bass +2, Treble +1 and Sub +2 sliders, Music Level 0, a Loudness switch off and a Full or Ambient switch set to Full, then the Queue heading with Clear and the first song, Open Windows by Field Notes, below." loading="lazy" width="1120" height="877"></div>
+      <div>
+        <h3>EQ &amp; Sound</h3>
+        <p>Click the EQ &amp; Sound row under the presets and the music EQ unfolds in place: the same bass and treble as the room page, plus the controls that only matter for music.</p>
+        <ul>
+          <li>Bass, Treble and Sub level</li>
+          <li>Music Level for the surrounds, and Full ⇄ Ambient for how much of the music they carry</li>
+          <li>Loudness as a switch; the queue starts right under the card</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/features/eq-and-trueplay">EQ and Trueplay</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/mac-6-queue.webp" alt="The queue on the Music page in the Mac window: the Queue heading with Clear, Open Windows by Field Notes marked as playing with a speaker glyph, then numbered songs each with a cover: 2 Copper Sky by Lena Marsh, 3 Long Way Round by The Tidewaters, 4 Quiet Engines by Noor Ellis, 5 Salt and Static by Field Notes, 6 Hollow Moon by Juno Vale, 7 Second Summer by The Tidewaters and 8 Late Train Home." loading="lazy" width="1120" height="877"></div>
+      <div>
+        <h3>The queue</h3>
+        <p>Scroll past the EQ and the whole queue is there, each song with its cover and artist, numbered in play order. The song playing now carries a speaker glyph instead of a number.</p>
+        <ul>
+          <li>Clear at the top of the list</li>
+          <li>Eight of the ten demo songs fit in the window at once</li>
+          <li>The songs and covers are made up for the demo</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/features/music">Music guide</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="device"><img src="assets/mac-7-menu.webp" alt="The side menu open over the left third of the Mac window in dark mode: the app icon, Somos InControl, Version 1.1 (36.0.9), a card with Poll: your favorite music services and Coming Soon, System, Rooms with hold to reorder and Living Room ticked, Bedroom, Home Office and System settings, then Help and Support with Settings Somos needs; the Living Room page shows to the right." loading="lazy" width="1120" height="877"></div>
+      <div>
+        <h3>The menu</h3>
+        <p>The menu button at the top left slides the menu over the left of the window and the room stays in view beside it. Scroll the menu for the rest of Help &amp; Support and the About rows.</p>
+        <ul>
+          <li>Version, the poll and Coming Soon at the top</li>
+          <li>Rooms — the current one ticked, hold to reorder — and System settings</li>
+          <li>Help &amp; Support starts with Settings Somos needs</li>
+        </ul>
+        <a class="more" href="https://docs.somosincontrol.com/getting-started/menu">The menu, section by section</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="tour" id="watch">
   <div class="wrap">

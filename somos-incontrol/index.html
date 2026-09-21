@@ -115,6 +115,10 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
   .rail.rail-open h4:first-of-type { padding-right: 36px; }
   html.rail-locked, html.rail-locked body { overflow: hidden; }
 }
+.intro { padding: 6px 0 4px; }
+.intro .wrap { text-align: center; }
+.intro .screen { max-width: 1100px; margin: 0 auto; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: var(--shadow), 0 0 0 1px rgba(0,0,0,.08); }
+.intro video { display: block; width: 100%; height: auto; }
 .film { padding: 10px 0 6px; }
 .film .wrap { text-align: center; }
 .film .device { max-width: 380px; margin: 18px auto 0; }
@@ -245,6 +249,16 @@ footer a { color: var(--dim); margin-right: 14px; }
       <p class="meta">Free during the beta · iPhone and iPad · iOS 16.2 or later · Independent, not affiliated with Sonos, Inc.</p>
     </div>
     <div class="device reveal"><img src="assets/1-room-page.webp" alt="Room page for a soundbar room showing the Dolby Atmos badge, volume, sound presets and EQ sliders" width="720" height="1565"></div>
+  </div>
+</section>
+
+<section class="intro" id="intro">
+  <div class="wrap">
+    <div class="screen reveal">
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/intro-poster.jpg" aria-label="Somos InControl in 80 seconds: all your Sonos settings, without the scavenger hunt">
+        <source src="assets/intro.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 </section>
 

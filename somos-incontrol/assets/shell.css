@@ -15,6 +15,14 @@
 .sh-brand img { width: 28px; height: 28px; border-radius: 7px; }
 .sh-cta { border: 1px solid var(--sh-accent); background: var(--sh-accent); color: #fff; border-radius: 9px;
   padding: 7px 13px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+/* launch banner (2026-09-23, App Store launch + intro sale) */
+.launch-banner { background: var(--sh-bg2); border-bottom: 1px solid var(--sh-line); padding: 10px 22px; text-align: center; }
+.launch-banner p { margin: 0; }
+.launch-banner-main { font-size: 14.5px; font-weight: 600; color: var(--sh-accent); }
+.launch-banner-sub { margin-top: 2px !important; font-size: 12px; color: var(--sh-dim); font-weight: 400; }
+@media (max-width: 480px) { .launch-banner-main { font-size: 13.5px; } }
+
 .sh-rail { position: fixed; top: 0; left: 0; bottom: 0; width: 216px; overflow-y: auto; z-index: 20;
   background: var(--sh-bg2); border-right: 1px solid var(--sh-line); padding: 16px 18px 26px; }
 .sh-rail h4 { margin: 18px 0 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;

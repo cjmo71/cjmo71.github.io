@@ -81,6 +81,7 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .watches { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
 .device.watch { border-radius: 26%; padding: 7px; }
 .device.watch img { border-radius: 22%; }
+.walk:nth-child(even) .watches { order: 2; }
 
 /* support table */
 .rail { position: fixed; top: 0; left: 0; bottom: 0; width: 216px; overflow-y: auto; z-index: 20;
@@ -165,6 +166,7 @@ footer a { color: var(--dim); margin-right: 14px; }
   .tour.mac .device { max-width: none; }
   .walk:nth-child(even) .device { order: 0; }
   .watches { max-width: 320px; margin: 0 auto; }
+  .walk:nth-child(even) .watches { order: 0; }
   .watches .device { max-width: none; margin: 0; }
   .card.docs { grid-template-columns: 1fr; }
 }
@@ -638,27 +640,42 @@ footer a { color: var(--dim); margin-right: 14px; }
 <section class="tour" id="watch">
   <div class="wrap">
     <h2>On Apple Watch</h2>
-    <p class="sub">Somos InControl installs a small Apple Watch app alongside the iPhone app. Real screenshots from the Apple Watch Ultra 3 simulator with Demo Mode rooms; the last frame is the app's Smart Stack card drawn on a plain background.</p>
+    <p class="sub">Somos InControl installs a small Apple Watch app alongside the iPhone app. Real screenshots of the Watch app and two watch faces, with demo rooms and made-up songs; the Smart Stack frame is the app's card drawn on a plain background.</p>
 
     <div class="walk">
       <div class="watches">
-        <div class="device watch"><img src="assets/5-watch-rooms.webp" alt="The Somos Apple Watch app's first screen: a list titled Somos with the rooms Bedroom, Home Office and Living Room." loading="lazy" width="422" height="514"></div>
-        <div class="device watch"><img src="assets/8-watch-tv-room.webp" alt="A TV room on the Apple Watch: Living Room, a TV icon with TV · Dolby Atmos (MAT), volume 45 with a Mute button, and three presets Movie Night, Late Night and Dialogue." loading="lazy" width="422" height="514"></div>
-        <div class="device watch"><img src="assets/9-watch-music-room.webp" alt="A music room on the Apple Watch: Bedroom, an orange sunset album cover with Open Windows by Field Notes, volume 30 with a Mute button, pause and next, three presets Party Mix, Low Bass and Chill with Party Mix lit, and a Favourites button." loading="lazy" width="422" height="514"></div>
-        <div class="device watch"><img src="assets/12-watch-smart-stack.webp" alt="The Smart Stack card on a plain black background: a music note, Bedroom, Open Windows and 30%." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/5-watch-rooms.webp" alt="The Somos Apple Watch app's first screen: a list titled Somos with the rooms Living Room, Kitchen and Bedroom." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/9-watch-music-room.webp" alt="A music room on the Apple Watch: Kitchen, an orange sunset album cover with Golden Hour Drive by The Tidewaters, volume 32 with a Mute button, pause and next, three presets Party Mix, Jazz and Chill with Party Mix lit, and a Favourites button." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/8-watch-tv-room.webp" alt="A TV room on the Apple Watch: Living Room, a TV icon with TV · Dolby Atmos, volume 45 with a Mute button, and three presets Movie Night, Late Night and Sports with Movie Night lit." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/7-watch-favourites.webp" alt="The Favourites list on the Apple Watch: Morning Coffee and Chill Evening with a playlist icon, and Jazz Radio with a radio icon." loading="lazy" width="422" height="514"></div>
       </div>
       <div>
         <h3>On your wrist: the Apple Watch app</h3>
         <p>Open Somos on the phone once and your rooms appear on the Watch, in the same order as your bottom bar. Tap a room to see what is playing — the TV input and its audio format, or the song and its cover — then turn the Digital Crown for volume; the Watch talks to the speaker directly over your home Wi-Fi.</p>
         <ul>
           <li>Rooms come from the phone; the Watch keeps them, even when the phone is out of reach</li>
-          <li>Play / pause and next on a music room, with the cover, title and artist; a TV room shows the format instead — Dolby Atmos (MAT) here</li>
+          <li>Play / pause and next on a music room, with the cover, title and artist; a TV room shows the format instead — Dolby Atmos here</li>
           <li>The Crown is the volume dial — the number on screen follows it — with Mute beside it</li>
-          <li>The room's three presets from the wrist: TV presets on a TV room, music presets on a music room, the loaded one lit — Party Mix on the Bedroom</li>
-          <li>A Favourites button starts a Sonos® favorite on a music room</li>
-          <li>With Live Activity on, the phone's card also sits in the Watch's Smart Stack — room, what is playing and the volume at a glance, as in the last frame; tap it and the Watch app opens on that room</li>
+          <li>The room's three presets from the wrist: TV presets on a TV room, music presets on a music room, the loaded one lit — Party Mix in the Kitchen, Movie Night in the Living Room</li>
+          <li>A Favourites button on a music room lists your favorites — playlists and radio stations — and a tap starts one</li>
         </ul>
         <a class="more" href="https://docs.somosincontrol.com/features/apple-watch">The Apple Watch app, step by step</a>
+      </div>
+    </div>
+
+    <div class="walk">
+      <div class="watches">
+        <div class="device watch"><img src="assets/13-watch-face-modular-ultra.webp" alt="The Modular Ultra watch face with Somos complications: the Somos icon at the top left, the time 8:14, Living Room and Movie Night above EQ bars for Bass, Treble, Sub, Height and Surround with Loudness and Speech across the middle, then Play/Pause, Next Room reading Kitchen, and a Room dial at volume 45 along the bottom." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/14-watch-face-wayfinder.webp" alt="The Wayfinder watch face with Somos complications: Next: Kitchen and Bass +4 · Treble in the top corners, a Room dial at volume 45, EQ and Play/Pause inside the dial, and the Somos icon at the bottom left." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/15-watch-complications.webp" alt="The complication picker on the Apple Watch under Somos: the Somos InControl icon and the Room complication, a ring at volume 45." loading="lazy" width="422" height="514"></div>
+        <div class="device watch"><img src="assets/12-watch-smart-stack.webp" alt="The Smart Stack card on a plain black background: a music note, Bedroom, Open Windows and 30%." loading="lazy" width="422" height="514"></div>
+      </div>
+      <div>
+        <h3>On your watch face: complications</h3>
+        <p>Somos has five complications for your watch face: Icon, Room, EQ, Play/Pause and Next Room. Add them in the face editor under Somos — the Modular Ultra face in the first frame carries all five, with the EQ across the middle.</p>
+        <ul>
+          <li>With Live Activity on, the phone's card also sits in the Watch's Smart Stack — room, what is playing and the volume at a glance, as in the last frame; tap it and the Watch app opens on that room</li>
+        </ul>
       </div>
     </div>
   </div>

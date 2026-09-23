@@ -177,6 +177,11 @@ footer a { color: var(--dim); margin-right: 14px; }
   .walk:nth-child(even) .watches { order: 0; }
   .watches .device { max-width: none; margin: 0; }
   .card.docs { grid-template-columns: 1fr; }
+  /* phones: let the first column wrap, and give the four-column model table room to scroll
+     sideways instead of squeezing 'What Somos adds' into a one-word-per-line strip */
+  td:first-child { white-space: normal; min-width: 104px; }
+  .tbl table.models { min-width: 640px; }
+  .models td:nth-child(2), .models td:nth-child(3) { white-space: nowrap; }
 }
 
 /* ---- Press & quotes ------------------------------------------------------
@@ -301,7 +306,7 @@ footer a { color: var(--dim); margin-right: 14px; }
     <ol>
       <li class="reveal" style="--d:0.05s"><b>Install from TestFlight</b>You'll need Apple's free TestFlight app first. Then tap the link above and install Somos InControl.</li>
       <li class="reveal" style="--d:0.10s"><b>Tap Get started</b>One screen each for Local Network and Bluetooth, then Find My Speakers. Allow Local Network — it's the only way the app can see your Sonos® speakers. <a href="https://docs.somosincontrol.com/getting-started/permissions">Why it's needed</a>.</li>
-      <li class="reveal" style="--d:0.15s"><b>Pick a room</b>The app scans your network and opens your first room. Everything applies instantly, and a short tour shows you around.</li>
+      <li class="reveal" style="--d:0.15s"><b>Pick a room</b>The app scans your network and opens your first room. Everything applies instantly.</li>
     </ol>
   </div>
 </section>
@@ -728,7 +733,7 @@ footer a { color: var(--dim); margin-right: 14px; }
     <h3>Which Sonos speakers, and what each one gets</h3>
     <p class="sub">Every model below also gets the basics from the table above — volume, bass, treble, loudness, presets, Trueplay, Status Light, Touch Controls and Music. This is what's added on top, model by model, and which Sonos system each one runs on.</p>
     <div class="tbl">
-    <table>
+    <table class="models">
       <thead><tr><th>Speaker</th><th>Type</th><th>Runs on</th><th>What Somos adds</th></tr></thead>
       <tbody>
         <tr><td>Playbar</td><td>Soundbar</td><td>S1 + S2</td><td>TV / Music source, audio-format badge, Night Sound, Speech Boost, fronts / surrounds / Sub bonding</td></tr>

@@ -43,6 +43,16 @@
   .bar-yes { background: linear-gradient(180deg, #0ea5e9, #0369a1); }
   .bar-no  { background: linear-gradient(180deg, #64748b, #334155); }
   .bar-label { font-size: 14px; color: var(--dim, #999); margin-top: 8px; }
+  /* after voting: the form is replaced by a thank-you line and the live top three (same bars as polls.html) */
+  .poll-thanks { font-size: 20px; font-weight: 700; margin: 6px 0 18px; }
+  .poll-top { margin-top: 16px; }
+  .poll-top-head { font-size: 13px; font-weight: 600; margin: 0 0 8px; }
+  .poll-bar { margin: 0 0 8px; }
+  .poll-bar-label { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; margin-bottom: 3px; }
+  .poll-bar-track { height: 10px; border-radius: 5px; background: var(--sh-line, #e5e7eb); overflow: hidden; }
+  .poll-bar-fill { height: 100%; border-radius: 5px; background: var(--sh-accent, #2563eb); }
+  .poll-top-note { font-size: 12px; color: var(--dim, #64748b); margin: 6px 0 0; }
+  [hidden] { display: none !important; }
 </style>
 <script src="assets/rail-menu.js" defer></script>
 </head>
@@ -99,7 +109,7 @@
     words &mdash; Apple Music, Spotify, Plex, a radio app, whatever you actually play. The most-named ones
     are the ones Somos adds next.</p>
 
-  <p style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
+  <p id="poll-note" style="font-size: 14px; color: var(--dim); margin-bottom: 26px;">
     No name, no email. Three boxes, one tap. Nothing about you is recorded &mdash; only the names you type.</p>
 
   <form id="poll" class="contact-form" action="https://somos-forms.somos-poll.workers.dev/submit" method="POST">
@@ -119,6 +129,15 @@
     <div class="poll-status" id="status"></div>
   </form>
 
+  <div id="poll-done" hidden>
+    <p class="poll-thanks" id="poll-thanks"></p>
+    <div id="music-top" class="poll-top" hidden>
+      <p class="poll-top-head">Top three so far</p>
+      <div id="music-bars"></div>
+      <p id="music-total" class="poll-top-note"></p>
+    </div>
+  </div>
+
   <div class="footer">
     Somos InControl &middot; &copy; 2026 Chris Moore &middot;
     <a href="index.html">Home</a> &middot;
@@ -131,27 +150,39 @@
 
 </div>
 
+<script src="assets/poll-top.js"></script>
 <script>
 (function () {
   var VOTED_KEY = "somos-poll-music-services";
-  var status = document.getElementById("status");
   var form = document.getElementById("poll");
-  form.addEventListener("submit", function () {
-    try { localStorage.setItem(VOTED_KEY, new Date().toISOString().slice(0, 10)); } catch (e) {}
-  });
-  if (new URLSearchParams(location.search).get("thanks")) {
-    status.textContent = "Thanks — your picks are in.";
-    form.querySelectorAll("input, button").forEach(function (b) { b.disabled = true; });
-  } else {
-    try {
-      var prev = localStorage.getItem(VOTED_KEY);
-      if (prev) {
-        status.textContent = "You already answered from this browser (" + prev + ").";
-        form.querySelectorAll("input, button").forEach(function (b) { b.disabled = true; });
-        form.addEventListener("submit", function (ev) { ev.preventDefault(); });
-      }
-    } catch (e) {}
+  // The date is stored as the visitor's LOCAL calendar day (YYYY-MM-DD), at the moment they send.
+  function localDay() {
+    var d = new Date(), z = function (n) { return (n < 10 ? "0" : "") + n; };
+    return d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate());
   }
+  function pretty(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || "");
+    if (!m) return "";
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    return isNaN(d) ? "" : d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+  }
+  // Already voted: hide the form, say thanks with the date, and show the live top three.
+  function showDone(iso) {
+    var when = pretty(iso);
+    document.getElementById("poll-thanks").textContent =
+      when ? "Thanks \u2014 you voted on " + when + "." : "Thanks \u2014 your picks are in.";
+    form.hidden = true;
+    var note = document.getElementById("poll-note"); if (note) note.hidden = true;
+    document.getElementById("poll-done").hidden = false;
+    somosPollTop(document.getElementById("music-bars"), document.getElementById("music-total"),
+      function () { document.getElementById("music-top").hidden = false; });
+  }
+  form.addEventListener("submit", function () {
+    try { localStorage.setItem(VOTED_KEY, localDay()); } catch (e) {}
+  });
+  var prev = null;
+  try { prev = localStorage.getItem(VOTED_KEY); } catch (e) {}
+  if (prev || new URLSearchParams(location.search).get("thanks")) showDone(prev);
 })();
 </script>
 <script>

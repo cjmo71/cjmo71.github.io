@@ -105,30 +105,11 @@ window.addEventListener('load', function () {
   } catch (e) {}
 });
 </script>
+<script src="assets/poll-top.js"></script>
 <script>
-// Live top three of the music-services poll (Chris 2026-09-24): counts only, straight from the
-// forms worker, so the bars move the moment someone answers. Hidden if the worker is unreachable.
-fetch('https://somos-forms.somos-poll.workers.dev/tally?form=music-services')
-  .then(function (r) { return r.json() })
-  .then(function (d) {
-    if (!d.names || !d.names.length) return;
-    var max = d.names[0].n, bars = document.getElementById('music-bars');
-    d.names.forEach(function (x) {
-      var row = document.createElement('div'); row.className = 'poll-bar';
-      var label = document.createElement('div'); label.className = 'poll-bar-label';
-      var name = document.createElement('span'); name.textContent = x.name;
-      var n = document.createElement('span'); n.textContent = x.n + (x.n === 1 ? ' vote' : ' votes');
-      label.appendChild(name); label.appendChild(n);
-      var track = document.createElement('div'); track.className = 'poll-bar-track';
-      var fill = document.createElement('div'); fill.className = 'poll-bar-fill';
-      fill.style.width = Math.round(100 * x.n / max) + '%';
-      track.appendChild(fill); row.appendChild(label); row.appendChild(track); bars.appendChild(row);
-    });
-    document.getElementById('music-total').textContent =
-      d.total_submissions + ' people have answered. Ties at third place are all shown.';
-    document.getElementById('music-top').hidden = false;
-  })
-  .catch(function () {});
+// Live top three of the music-services poll (shared with the music-services page after voting).
+somosPollTop(document.getElementById('music-bars'), document.getElementById('music-total'),
+  function () { document.getElementById('music-top').hidden = false; });
 </script>
 </body>
 </html>

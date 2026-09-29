@@ -370,7 +370,7 @@ footer a { color: var(--dim); margin-right: 14px; }
     <h2>See it in action</h2>
     <p class="sub">A minute in the app — the room page, presets, the room map, Home Theater Setup and Music — plus iPad, Mac and Apple Watch.</p>
     <div class="device">
-      <video controls autoplay muted playsinline preload="metadata">
+      <video controls autoplay muted playsinline preload="metadata" poster="assets/see-it-in-action-poster.jpg">
         <source src="assets/see-it-in-action.mp4" type="video/mp4">
       </video>
     </div>
@@ -727,7 +727,7 @@ footer a { color: var(--dim); margin-right: 14px; }
     <h2>What's coming — and what just shipped</h2>
     <p class="sub">Music services — sign in to Amazon Music, Pandora, Spotify, iHeartRadio and Bandcamp right from the Music sheet, plus Apple Music (linked in the Sonos app) — are live in the beta now. Your own music server is next.</p>
     <div class="device">
-      <video controls autoplay muted loop playsinline preload="metadata">
+      <video controls autoplay muted loop playsinline preload="metadata" poster="assets/coming-soon-poster.jpg">
         <source src="assets/music-page-coming-soon.mp4" type="video/mp4">
       </video>
     </div>
@@ -849,5 +849,6 @@ window.addEventListener('load', function () {
   els.forEach(function (el) { io.observe(el); });
 })();
 </script>
+<script src="assets/autoplay.js" defer></script>
 </body>
 </html>

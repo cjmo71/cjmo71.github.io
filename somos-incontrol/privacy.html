@@ -100,7 +100,7 @@
   <p><strong>This website counts page views, and that is the only thing it counts.</strong> Each page loads a tiny invisible image from our own counter, which records the date and which page was opened &mdash; nothing else. No IP address, no browser details, no referrer, no cookie, no identifier of any kind, and nothing that could be joined up to say one person visited twice. We cannot tell who you are and we are not trying to. The counter runs on our own Cloudflare account; no third party is involved, and if it fails to load the page carries on as normal.</p>
 
   <p><strong>The website is a separate thing, and it is entirely opt-in.</strong> The forms on this site &mdash; support, suggestions, and the music-services poll &mdash; send us whatever you choose to type into them, and nothing else. <strong>The music-services poll asks for nothing but your picks.</strong> The support and suggestion forms ask for your name, email, subject and message, because without an email there is no way to reply to you. The app never fills any of this in for you.</p>
-  <p><strong>Somos Guide, the help button on every page, is opt-in too.</strong> It is an AI assistant that answers from the user manual. Nothing is sent until you type a question. Your question and the chat so far go to our own Cloudflare Worker, which passes them to Anthropic&rsquo;s Claude API to write the answer; Anthropic handles them under its commercial terms and does not train on them. To stop one visitor from running up the bill, the Worker keeps your IP address for about an hour, then deletes it. When the manual can&rsquo;t answer a question, or you tell the Guide an answer didn&rsquo;t work, we keep the text of that question for up to 90 days, with no IP, name or browser details, and with any email address or phone number masked, so we can add the missing answer to the manual. Please don&rsquo;t type personal details into it.</p>
+  <p><strong>Somos Bookworm, the help button on every page, is opt-in too.</strong> It is an AI assistant that answers from the user manual. Nothing is sent until you type a question. Your question and the chat so far go to our own Cloudflare Worker, which passes them to Anthropic&rsquo;s Claude API to write the answer; Anthropic handles them under its commercial terms and does not train on them. To stop one visitor from running up the bill, the Worker keeps your IP address for about an hour, then deletes it. When the manual can&rsquo;t answer a question, or you tell Somos Bookworm an answer didn&rsquo;t work, we keep the text of that question for up to 90 days, with no IP, name or browser details, and with any email address or phone number masked, so we can add the missing answer to the manual. Please don&rsquo;t type personal details into it.</p>
 
   <h2 id="network">Local network access</h2>
   <p>To find your Sonos® speakers, the app uses two standard local discovery methods on the Wi-Fi network your device is connected to:</p>
@@ -172,7 +172,7 @@ window.addEventListener('load', function () {
   } catch (e) {}
 });
 </script>
-<!-- Somos Guide: the help bot button (answers from the manual; Worker somos-guide) -->
+<!-- Somos Bookworm: the help bot button (answers from the manual; Worker somos-guide) -->
 <script src="https://somos-guide.somos-poll.workers.dev/widget.js" defer></script>
 </body>
 </html>

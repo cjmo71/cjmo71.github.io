@@ -1,1 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><!-- PLACEHOLDER book symbol. The Bookworm widget loads this one file; replace it with Chris's pick. --><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="68 90 888 888" width="888" height="888"><!-- Somos Bookworm, option b (Chris 2026-10-26 16:28), cropped to the art for small sizes. -->
+<defs>
+<linearGradient id="navy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#375B95"/><stop offset="1" stop-color="#10203E"/></linearGradient>
+</defs>
+<circle cx="870" cy="520" r="60" fill="#7ED37A" stroke="#10203E" stroke-width="20"/><circle cx="820" cy="440" r="80" fill="#7ED37A" stroke="#10203E" stroke-width="20"/><circle cx="760" cy="360" r="96" fill="#7ED37A" stroke="#10203E" stroke-width="20"/>
+<path d="M80,560 Q300,500 512,580 Q724,500 944,560 L944,880 Q724,830 512,900 Q300,830 80,880 Z" fill="url(#navy)" stroke="#10203E" stroke-width="16" stroke-linejoin="round"/>
+<path d="M110,530 Q310,470 512,560 L512,860 Q310,790 110,840 Z" fill="#fff" stroke="#10203E" stroke-width="14" stroke-linejoin="round"/>
+<path d="M914,530 Q714,470 512,560 L512,860 Q714,790 914,840 Z" fill="#F0F1F4" stroke="#10203E" stroke-width="14" stroke-linejoin="round"/>
+<path d="M313,719 A215,215 0 0 1 711,719" fill="none" stroke="url(#navy)" stroke-width="58" stroke-linecap="round"/><path d="M382,748 A140,140 0 0 1 642,748" fill="none" stroke="url(#navy)" stroke-width="42" stroke-linecap="round"/><path d="M447,774 A70,70 0 0 1 577,774" fill="none" stroke="url(#navy)" stroke-width="30" stroke-linecap="round"/>
+<g transform="translate(640,300) scale(1.0)">
+  <circle r="130" fill="#7ED37A" stroke="#10203E" stroke-width="20"/>
+  <ellipse cx="-40" cy="-78" rx="44" ry="22" fill="#C2F0B4" transform="rotate(-20 -40 -78)"/>
+  <circle cx="-86" cy="44" r="20" fill="#FF9AA2"/>
+  <circle cx="86" cy="44" r="20" fill="#FF9AA2"/>
+  <circle cx="-46" cy="-12" r="38" fill="#fff" stroke="#10203E" stroke-width="12"/>
+  <circle cx="46" cy="-12" r="38" fill="#fff" stroke="#10203E" stroke-width="12"/>
+  <circle cx="-56" cy="4" r="20" fill="#10203E"/>
+  <circle cx="36" cy="4" r="20" fill="#10203E"/>
+  <circle cx="-62" cy="-3" r="7" fill="#fff"/>
+  <circle cx="30" cy="-3" r="7" fill="#fff"/>
+  <ellipse cx="0" cy="62" rx="14" ry="12" fill="#10203E"/>
+  <circle cx="-46" cy="-12" r="56" fill="#fff" fill-opacity=".25" stroke="#10203E" stroke-width="16"/>
+  <circle cx="46" cy="-12" r="56" fill="#fff" fill-opacity=".25" stroke="#10203E" stroke-width="16"/>
+  <path d="M-12,-18 Q0,-30 12,-18" fill="none" stroke="#10203E" stroke-width="14"/>
+  <path d="M-102,-20 L-128,-34 M102,-20 L128,-34" stroke="#10203E" stroke-width="14" stroke-linecap="round"/>
+</g>
+<ellipse cx="560" cy="540" rx="40" ry="30" fill="#7ED37A" stroke="#10203E" stroke-width="18" transform="rotate(-25 560 540)"/><ellipse cx="760" cy="525" rx="40" ry="30" fill="#7ED37A" stroke="#10203E" stroke-width="18" transform="rotate(25 760 525)"/>
+</svg>

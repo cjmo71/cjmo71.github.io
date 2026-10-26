@@ -108,6 +108,11 @@ h2 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 6px; }
 .rail a { display: block; padding: 7px 0; color: var(--body); font-size: 14.5px; border-bottom: 1px solid var(--line); }
 .rail a:hover { color: var(--accent); text-decoration: none; }
 .rail .btn { display: block; margin-top: 18px; text-align: center; border-bottom: 0; }
+.rail a.rail-bookworm { padding: 9px 0; }
+.rail-bookworm .rb-line { display: block; font-size: 12px; color: var(--dim); margin-bottom: 5px; }
+.rail-bookworm .rb-name { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--fg); }
+.rail-bookworm:hover .rb-name { color: var(--accent); }
+.rail-bookworm img { width: 26px; height: 26px; flex: none; }
 @media (min-width: 1000px) { body { padding-left: 216px; } }
 .rail-bar, .rail-backdrop, .rail-close { display: none; }
 @media (max-width: 999px) {
@@ -272,6 +277,8 @@ footer a { color: var(--dim); margin-right: 14px; }
   <a href="#coming-soon">Coming soon</a>
   <a href="#hardware">What works with what</a>
   <h4>Help</h4>
+  <!-- Somos Bookworm (Chris 2026-10-26 16:28: "make sure it says over his symbol get help from Somos Bookworm"; side rail, Cage's pick). widget.js opens the chat on #bookworm. -->
+  <a class="rail-bookworm" href="#bookworm"><span class="rb-line">Get help from Somos Bookworm</span><span class="rb-name"><img src="assets/SomosBookworm.svg" alt="" width="22" height="22">Somos Bookworm</span></a>
   <a href="https://docs.somosincontrol.com">Documentation</a>
   <a href="answers.html">Questions, answered</a>
   <a href="how-to.html">How to Use</a>

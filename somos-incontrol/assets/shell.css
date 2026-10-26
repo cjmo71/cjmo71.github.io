@@ -46,6 +46,12 @@
   border-bottom: 1px solid var(--sh-line); text-decoration: none; }
 .sh-rail a:hover { color: var(--sh-accent); }
 .sh-rail .sh-cta { display: block; margin-top: 18px; text-align: center; border-bottom: 0; }
+/* Somos Bookworm (2026-10-26): "Get help from Somos Bookworm" over the worm and his name. */
+.sh-rail a.rail-bookworm { padding: 9px 0; }
+.rail-bookworm .rb-line { display: block; font-size: 12px; color: var(--sh-dim); margin-bottom: 5px; }
+.rail-bookworm .rb-name { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--sh-fg); }
+.rail-bookworm:hover .rb-name { color: var(--sh-accent); }
+.rail-bookworm img { width: 26px; height: 26px; flex: none; }
 @media (min-width: 1000px) { body { padding-left: 216px; } }
 @media (max-width: 999px) {
   .sh-rail { position: static; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--sh-line); }

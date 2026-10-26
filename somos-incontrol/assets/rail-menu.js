@@ -81,6 +81,13 @@
     if (e.key === 'Escape' && rail.classList.contains('rail-open')) setOpen(false);
   });
 
+  /* Somos Bookworm: widget.js opens the chat on a hashchange to #bookworm, so a second tap
+     with the hash already set clears it first and the change fires again. */
+  rail.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href="#bookworm"]');
+    if (a && location.hash === '#bookworm') history.replaceState(null, '', location.pathname + location.search);
+  });
+
   /* Tapping a link closes it, so the page he asked for is what he sees next. */
   rail.addEventListener('click', function (e) {
     if (e.target.closest('a') && phone.matches) setOpen(false);

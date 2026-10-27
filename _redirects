@@ -1,0 +1,12 @@
+# Cloudflare Pages redirects (shipped by scripts/deploy-site.sh, which rsyncs the whole tree).
+# Pages already 308s /x.html -> /x and /index.html -> /; these rules are the ones it does not do.
+/  /somos-incontrol/  301
+/index.html  /somos-incontrol/  301
+# Pages once public, since deleted (git log --diff-filter=D). Send them to the closest live page.
+/ezee2do  /somos-incontrol/  301
+/ezee2do/*  /somos-incontrol/  301
+/somos-incontrol/speaker-check  /somos-incontrol/speakers-not-found  301
+/somos-incontrol/speaker-check.html  /somos-incontrol/speakers-not-found  301
+/somos-incontrol/widget  /somos-incontrol/  301
+/somos-incontrol/widget.html  /somos-incontrol/  301
+# NOTE: www -> apex cannot live here (Pages _redirects has no host-qualified source); see _worker.js.

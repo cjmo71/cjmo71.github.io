@@ -301,9 +301,24 @@ footer a { color: var(--dim); margin-right: 14px; }
 <section class="intro" id="intro">
   <div class="wrap">
     <div class="screen reveal">
-      <video autoplay muted loop playsinline preload="metadata" poster="assets/intro-poster.jpg" aria-label="Somos InControl in 80 seconds: all your Sonos settings, without the scavenger hunt">
-        <source src="assets/intro.mp4" type="video/mp4">
+      <video id="intro-video" autoplay muted loop playsinline preload="metadata" poster="assets/intro-poster-desktop-v3.jpg" width="1920" height="1080" aria-label="Somos InControl in 79 seconds: your rooms, your music and your sound on iPhone, iPad and Apple Watch, from bass and presets to groups, timers, widgets and the Lock Screen">
+        <source src="assets/intro-mobile-v3.mp4" type="video/mp4" media="(max-width: 760px)">
+        <source src="assets/intro-desktop-v3.mp4" type="video/mp4">
+        <track kind="captions" src="assets/intro-captions-v3.vtt" srclang="en" label="English">
       </video>
+      <script>
+        /* Phone widths get the portrait cut and its poster; reduced motion leaves playback to the visitor. */
+        (function () {
+          var v = document.getElementById('intro-video');
+          if (matchMedia('(max-width: 760px)').matches) {
+            v.poster = 'assets/intro-poster-mobile-v3.jpg';
+            v.width = 720; v.height = 1280;
+          }
+          if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            v.removeAttribute('autoplay'); v.pause(); v.controls = true;
+          }
+        })();
+      </script>
     </div>
   </div>
 </section>

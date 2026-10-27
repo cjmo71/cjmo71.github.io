@@ -45,20 +45,6 @@ a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: un
 .launch-banner-sub { margin-top: 2px !important; font-size: 12px; color: var(--dim); font-weight: 400; }
 @media (max-width: 480px) { .launch-banner-main { font-size: 13.5px; } }
 
-/* Reddit community banner (2026-09-29): red twin of the launch banner, sits directly under it */
-:root { --rd-bg: #b91c1c; --rd-line: #991b1b; --rd-fg: #ffffff; --rd-cta-bg: #ffffff; --rd-cta-fg: #991b1b; }
-@media (prefers-color-scheme: dark) {
-  :root { --rd-bg: #7f1d1d; --rd-line: #5f1414; --rd-fg: #fee2e2; --rd-cta-bg: #fee2e2; --rd-cta-fg: #7f1d1d; }
-}
-.reddit-banner { background: var(--rd-bg); border-bottom: 1px solid var(--rd-line); padding: 10px 22px; text-align: center;
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 14px; }
-.reddit-banner p { margin: 0; }
-.reddit-banner-main { font-size: 14.5px; font-weight: 600; color: var(--rd-fg); max-width: 760px; }
-.reddit-banner-cta { display: inline-block; white-space: nowrap; background: var(--rd-cta-bg); color: var(--rd-cta-fg) !important;
-  border-radius: 8px; padding: 5px 13px; font-size: 13.5px; font-weight: 700; text-decoration: none; }
-.reddit-banner-cta:hover { text-decoration: underline; }
-@media (max-width: 480px) { .reddit-banner-main { font-size: 13.5px; } }
-
 /* hero */
 .hero { padding: 56px 0 40px; background: linear-gradient(180deg, var(--bg-2), var(--bg)); border-bottom: 1px solid var(--line); }
 .hero .wrap { display: grid; grid-template-columns: 1fr 400px; gap: 40px; align-items: center; }
@@ -263,10 +249,6 @@ footer a { color: var(--dim); margin-right: 14px; }
     <p class="launch-banner-main">Coming soon to the App Store.</p>
   </div>
 </div>
-<div class="reddit-banner">
-  <p class="reddit-banner-main">Join the Somos community on Reddit &mdash; talk with other Somos users, report bugs, share ideas, and help decide what comes next.</p>
-  <a class="reddit-banner-cta" href="https://www.reddit.com/r/SomosInControl/" target="_blank" rel="noopener">Join on Reddit &rarr;</a>
-</div>
 
 <aside class="rail">
   <h4>This page</h4>
@@ -292,6 +274,7 @@ footer a { color: var(--dim); margin-right: 14px; }
   <h4>Have your say</h4>
   <a href="polls">Polls</a>
   <a href="suggestions">Suggest a feature</a>
+  <a href="https://www.reddit.com/r/SomosInControl/" target="_blank" rel="noopener">Join us on Reddit</a>
   <h4>Legal</h4>
   <a href="privacy">Privacy</a>
   <a class="btn primary" href="https://testflight.apple.com/join/2D778AXH" target="_blank" rel="noopener">Get the beta</a>
@@ -714,7 +697,7 @@ footer a { color: var(--dim); margin-right: 14px; }
       <a href="privacy">Privacy</a>
     </div>
     <div>Questions? Ask the <a href="https://docs.somosincontrol.com">manual's assistant</a> first; still stuck, the <a href="support#contact">support form</a> reaches a real person, usually within 48 hours.</div>
-    <div><a href="https://www.reddit.com/r/SomosInControl/" target="_blank" rel="noopener">Join the Somos community on Reddit &rarr;</a></div>
+    <div><a href="https://www.reddit.com/r/SomosInControl/" target="_blank" rel="noopener">Join us on Reddit</a></div>
     <div>© 2026 Chris Moore · Not affiliated with, endorsed by or sponsored by Sonos, Inc. Sonos® is a registered trademark of Sonos, Inc.</div>
   </div>
 </footer>
